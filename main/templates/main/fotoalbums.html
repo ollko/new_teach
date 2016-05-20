@@ -1,0 +1,59 @@
+{% extends "main/base-top.html" %}
+{% load staticfiles %}
+{% block fotoalbums %}
+<!--<div>
+	<h3 style = "text-align: center;" >ФОТОГАЛЕРЕЯ</h3>
+	<form action="new">
+		<button type="submit">добавить новые фотографии</button>
+	</form>
+</div>
+-->
+<div class="page-header">
+	<h3 style = "text-align: center;">Фотоальбомы:</h3>
+	<div>
+		<a href="{% url 'main:foto_new' %}" title="добавить новый фотоальбом">
+			<h1 style = "text-align: center;">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+			</h1>
+		</a>
+		<a href="{% url 'main:foto_new' %}" title="удалить фотоальбом">
+			<h1 style = "text-align: center;">
+				<span class="glyphicon glyphicon-minus-sign"></span>
+			</h1>
+		</a>	
+	</div>
+
+</div>
+<form action="{% url 'main:fotostring' %}" method="post">
+{% csrf_token %}
+	<div class="button">
+        <button type="submit">Фотопоток(последние фотографии)</button>
+    </div>
+</form>
+<table>
+	{% for item in event_list %}
+	<tr>
+		<td>
+			<a href="{% url 'main:foto_from_event' item.id %}">{{ item.event }}</a>
+			<br>
+			{{item.event_data}}
+		</td>	
+		
+		<td>
+			
+
+			<a href="{% url 'main:foto_from_event' item.id %}">
+				{% if not item.foto.url %}
+				<img style="width: 100px; height:100px " src={% static 'images/cap.svg' %} alt="{{ item.event }}">
+				{% else %}
+				<img style="width: 100px; height:100px " src="{{item.foto.url}}" alt="{{ item.event }}">
+				{% endif %}
+			</a>
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+
+	
+
+{% endblock %}

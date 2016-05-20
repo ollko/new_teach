@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Кухаренко Ольга Борисовна</title>
+		<meta lang="ru">
+		<link rel="stylesheet" type="text/css" href="{% static 'main/bootstrap/bootstrap.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'main/bootstrap/bootstrap-theme.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'main/fancybox/jquery.fancybox.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'main/base-top-style.css' %}">
+	<style> 
+		.mosaicflow__item {
+			padding:3px; 
+} 
+		.mosaicflow__column {
+			float:left; 
+} 
+		.mosaicflow__item img { 
+			display:block; 
+			width:100%; 
+			height:auto; 
+			padding: 8px; 
+			background-color: #fff; 
+			border: 1px solid #ddd; 
+			border-radius: 4px; 
+} 
+		.mosaicflow__item img:hover { 
+			opacity: 0.6; 
+			filter: alpha(opacity=60); 
+} 
+	</style> 
+
+	</head>
+	<body>
+		<header>
+			<div class="base-top">
+				<div class="base-top-top">
+					<div class="logo"><a href = "/"><img style="height: 40px" src="{% static 'images/logo.svg' %}"></a></div>	
+					<div class="base-top-top-right">
+						<div class="exception">"I am not young enough to know everything." Oscar Wilde</div>
+						<div class="sign">
+							<div class="sign up">Регистрация</div>
+							<div class="sign in">Вход</div>
+						</div>
+					</div>			
+				</div>
+				<div class = "base-top-everege">
+					<div style ="height: 220px" class="blue-top">
+						<img class="olga-foto" src="{% static 'images/olga-foto-220px.jpg' %}">									
+					</div>
+				</div>
+
+			{% include "includes/nav_bs.html" %}
+
+			</div>		
+		</header>
+		
+		<div id="main">
+		{% block main %}
+		{% endblock %}
+		</div>
+
+		<div id="about">
+		{% block about %}
+		{% endblock %}
+		</div>
+
+		<div id="news">
+		{% block news %}
+		{% endblock %}
+		</div>
+
+		<div id="oge">
+		{% block oge %}
+		{% endblock %}
+		</div>
+
+		<div id="fotoalbums">
+		{% block fotoalbums %}
+		{% endblock %}
+		</div>
+
+		<div id="video">
+		{% block video %}
+		{% endblock %}
+		</div>
+
+		<div id="newproject">
+		{% block newproject %}
+		{% endblock %}
+		</div>
+
+		<div class="footer">Все права принадлежат разработчикам сайта.</div>
+		<script type="text/javascript" src="{% static 'js/jquery/jQuery.js'%}"></script>
+		<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap.min.js'%}"></script>
+		<script type="text/javascript" src = "{% static 'main/fancybox/jquery.fancybox.pack.js' %}"></script>
+		<script src="{% static 'js/mosaicflow/jquery.mosaicflow.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/base-top.js'%}"></script>
+		<script type="text/javascript" src = "{% static 'js/foto-video.js' %}"></script>
+
+	</body>
+</html>

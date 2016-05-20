@@ -1,0 +1,45 @@
+{% extends "main/base-top.html" %}
+{% load staticfiles %}
+{% block fotoalbums %}
+<!--<div>
+	<h3 style = "text-align: center;" >ФОТОГАЛЕРЕЯ</h3>
+	<form action="new">
+		<button type="submit">добавить новые фотографии</button>
+	</form>
+</div>
+-->
+<div class="page-header">
+	<h3 style = "text-align: center;">{{event.name}}</h3>
+	<div>
+		<a href="{% url 'main:foto_new' %}" title="Жми,чтобы добавить фото">
+			<h1 style = "text-align: center;">
+				<span class="glyphicon glyphicon-plus-sign"></span>
+			</h1>
+		</a>
+
+		<a href="{% url 'main:foto_from_event_del' event.id %}" title="Жми,чтобы удалить фото">
+			<h1 style = "text-align: center;">
+				<span class="glyphicon glyphicon-minus-sign"></span>
+			</h1>
+		</a>	
+	</div>
+
+</div>
+
+
+<div class="container" id="foto">
+	<div class="clearfix mosaicflow">
+		{% for item in foto_from_event %}
+		<div class="mosaicflow__item">
+			<a class="fancyimage" data-fancybox-group="group" title="{{item.event}}" href="{{item.foto.url}}">
+				<img src="{{item.foto.url}}" alt="{{item.event}}">
+			</a>
+		</div>
+		{% endfor %}
+
+	</div>
+
+</div>
+
+
+{% endblock %}
