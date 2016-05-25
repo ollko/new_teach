@@ -1,0 +1,37 @@
+{% extends "main/base-top.html" %}
+{% load staticfiles %}
+{% block fotoalbums %}
+<!--<div>
+	<h3 style = "text-align: center;" >ФОТОГАЛЕРЕЯ</h3>
+	<form action="new">
+		<button type="submit">добавить новые фотографии</button>
+	</form>
+</div>
+-->
+<div class="page-header">
+	<h3 style = "text-align: center;">Фотоальбом:"{{album.album}}"</h3>
+	<div class="row">
+		<div class="col-sm-4"><a href="{% url 'main:fotoalbums' %}" title="к фотоальбомам"><span class="glyphicon glyphicon-log-out">к фотоальбомам</span></a></div>
+		<div class="col-sm-4"><a href="{% url 'main:fotostring' %}" title="добавленное недавно"><span class="glyphicon glyphicon-plus">недавнee</span></a></div>
+		<div class="col-sm-4"><a href="{% url 'main:fotofavorite' %}" title="популярное"><span class="glyphicon glyphicon-heart-empty">популярное</span></a></div>
+	</div>
+
+</div>
+
+
+<div class="container" id="foto">
+	<div class="clearfix mosaicflow">
+		{% for item in foto_from_album %}
+		<div class="mosaicflow__item">
+			<a class="fancyimage" data-fancybox-group="group" title="{{item.foto}}" href="{{item.foto.url}}">
+				<img src="{{item.foto.url}}" alt="{{item.foto}}">
+			</a>
+		</div>
+		{% endfor %}
+
+	</div>
+
+</div>
+
+
+{% endblock %}
