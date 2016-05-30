@@ -1,13 +1,24 @@
 {% extends "main/base-top.html" %}
 {% load staticfiles %}
 {% block fotoalbums %}
-<!--<div>
-	<h3 style = "text-align: center;" >ФОТОГАЛЕРЕЯ</h3>
-	<form action="new">
-		<button type="submit">добавить новые фотографии</button>
-	</form>
+
+<!-- fon add albums (modals)  -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-md">добавить альбом</button>
+
+<div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<h3 >добавление нового альбома:</h3>
+			<form enctype="multipart/form-data" action = "{% url 'main:fotoalbums_new' %}" method="post">
+				{% csrf_token %}
+				{{ form.as_p }}
+				<input type="submit" value="OK" />
+			</form>
+		</div>
+	</div>
 </div>
--->
+<!-- fon add albums (modals)  -->
+<!-- links -->
 <div class="page-header">
 	<h3 style = "text-align: center;">Фотоальбомы:</h3>
 	<div class="row">
@@ -16,6 +27,28 @@
 		<div class="col-sm-4"><a href="{% url 'main:fotofavorite' %}" title="популярное"><span class="glyphicon glyphicon-heart-empty">популярное</span></a></div>
 	</div>
 </div>
+<!-- links -->
+<!-- Thumbnails -->
+<div class="con">
+	{% for item in content %}
+		<div class="col-xs-6 col-md-3">
+			<a href="% url 'main:foto_from_album' item.id %}" class="thumbnail">
+				<img src="{{item.foto}}" alt="{{ item.album }}">
+			</a>
+		</div>
+		<div class="col-xs-6 col-md-3">
+			<a href="{% url 'main:foto_from_album' item.id %}" class="thumbnail">
+				{{ item.album }}
+				<br>
+				{{item.date}}
+				<br>
+				{{item.count}}фото<span class="glyphicon glyphicon-asterisk"></span>{{item.views}}просмотров
+			</a>
+		</div>
+		
+	{% endfor %}
+</div>
+
 
 <table>
 	{% for item in content %}

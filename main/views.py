@@ -61,7 +61,9 @@ def fotoalbums(request):
 
 		content.append(content_item)
 
-	return render (request, 'main/fotoalbums.html',{"content": content})
+	form = AlbumForm()
+
+	return render (request, 'main/fotoalbums.html',{"content": content,'form': form})
 	
 
 def foto_from_album(request,album_id):
