@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block fotoalbums %}
 
-<!-- fon add albums (modals)  -->
+<!-- for add albums () modals -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-md">добавить альбом</button>
 
 <div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -17,64 +17,39 @@
 		</div>
 	</div>
 </div>
-<!-- fon add albums (modals)  -->
+<!--end  modals -->
 <!-- links -->
+
 <div class="page-header">
-	<h3 style = "text-align: center;">Фотоальбомы:</h3>
-	<div class="row">
+		<div class="row">
 		<div class="col-sm-4"><a href="{% url 'main:fotoalbums_new' %}" title="добавить новый фотоальбом"><span class="glyphicon glyphicon-plus">добавить альбом</span></a></div>
 		<div class="col-sm-4"><a href="{% url 'main:fotostring' %}" title="добавленное недавно"><span class="glyphicon glyphicon-plus">недавнee</span></a></div>
 		<div class="col-sm-4"><a href="{% url 'main:fotofavorite' %}" title="популярное"><span class="glyphicon glyphicon-heart-empty">популярное</span></a></div>
 	</div>
 </div>
-<!-- links -->
+<!-- end links -->
 <!-- Thumbnails -->
-<div class="con">
+
+<div class="container-fluid">
 	{% for item in content %}
-		<div class="col-xs-6 col-md-3">
-			<a href="% url 'main:foto_from_album' item.id %}" class="thumbnail">
-				<img src="{{item.foto}}" alt="{{ item.album }}">
+		<div class="col-xs-6 col-md-3 albums">
+			<a href="{% url 'main:foto_from_album' item.id %}">
+				<div class="background" style="background-image: url({{item.foto}}); background-size: cover; padding: 60% 7% 20% 7%;" >
+				
+					<div >
+						{{ item.album }}
+						<br>
+						{{item.date}}
+						<br>
+						{{item.count}}фото<span class="glyphicon glyphicon-asterisk"></span>{{item.views}}просмотров
+					</div>
+				</div>
 			</a>
-		</div>
-		<div class="col-xs-6 col-md-3">
-			<a href="{% url 'main:foto_from_album' item.id %}" class="thumbnail">
-				{{ item.album }}
-				<br>
-				{{item.date}}
-				<br>
-				{{item.count}}фото<span class="glyphicon glyphicon-asterisk"></span>{{item.views}}просмотров
-			</a>
-		</div>
-		
+		</div>		
 	{% endfor %}
 </div>
 
 
-<table>
-	{% for item in content %}
-	<tr>
-		<td>
-			<a href="{% url 'main:foto_from_album' item.id %}">{{ item.album }}</a>
-			<br>
-			{{item.date}}
-			<br>
-			{{item.count}}фото<span class="glyphicon glyphicon-asterisk"></span>{{item.views}}просмотров
-		</td>	
-		
-		<td>
-			
-
-			<a href="{% url 'main:foto_from_album' item.id %}">
-				{% if not item.foto %}
-				<img style="width: 100px; height:100px " src={% static 'images/cap.svg' %} alt="{{ item.album }}">
-				{% else %}
-				<img style="width: 100px; height:100px " src="{{item.foto}}" alt="{{ item.album }}">
-				{% endif %}
-			</a>
-		</td>
-	</tr>
-	{% endfor %}
-</table>
 
 	
 
