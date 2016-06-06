@@ -30,7 +30,43 @@
 <!-- end links -->
 <!-- Thumbnails -->
 
-<div class="container-fluid">
+<div class="album-fond">
+	<div class="albums">
+		<div class="flex-container">
+	{% for item in content %}
+			<div class="album-item">
+				<!-- <div class="lists"></div> -->
+				<a href="{% url 'main:foto_from_album' item.id %}">
+					<div class="album" >
+
+						<div class="background" style="background-image: url({{item.foto}}); background-size: cover;">
+							<div class="album-about">
+
+								<div class="album-name">{{ item.album|upper }}</div>
+								<!-- <br> -->
+								<div>{{item.date|date:"SHORT_DATE_FORMAT"}}</div>
+								<!-- <br> -->
+								<span class="foto-count">{{item.count}}</span><span>фото</span>
+								<span class="point">.</span>
+								<span class="view-count">{{item.views}}</span><span>просмотров</span>	
+							</div>
+							
+						</div>
+				
+						
+					</div>
+					
+				</a>
+			</div>
+	{% endfor %}	
+	</div>
+	</div>
+	
+</div>
+
+
+
+<!-- <div class="container-fluid">
 	{% for item in content %}
 		<div class="col-xs-6 col-md-3 albums">
 			<a href="{% url 'main:foto_from_album' item.id %}">
@@ -47,7 +83,7 @@
 			</a>
 		</div>		
 	{% endfor %}
-</div>
+</div> -->
 
 
 
