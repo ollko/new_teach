@@ -6,11 +6,18 @@
 	/*outline: 1px solid red;*/
 
 	}
-
+/*NAVBAR*/
 .navbar-brand {
 	padding: 5px;
 }
 
+li.gate {
+	font-size: 13px;
+	font-weight: 800;
+
+}
+
+/*NAVBAR*/
 div.blue-top{
 	background-color: #AACCFF;
 	padding: 0.5em 0 0.5em;
