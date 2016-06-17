@@ -4,139 +4,84 @@
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
 	/*outline: 1px solid red;*/
-	margin: 0;
+
 	}
 
-div.base-top-top {
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-	align-items: center;
-	min-height: 60px;
-	
-}
-
-div.base-top-top-right {
-	width: 60%;
-
-}
-
-div.exception {
-	font-size: 1.5em;
-	text-align: center;
-	color: #000080;
-
-}
-
-div.sign{
-	display: flex;
-	justify-content: flex-end;
-	padding: 0 2em 0 2em;
-	color: #A02C2C;
-
+.navbar-brand {
+	padding: 5px;
 }
 
 div.blue-top{
 	background-color: #AACCFF;
+	padding: 0.5em 0 0.5em;
+	margin-top: 50px;
 
 }
 
-img.olga-foto{
+div.round-white {
+	
+	width: 154px;
+	height: 154px;
+	border-radius: 50%;
+	margin: auto;
+	background-color: white;
+	z-index: 2;
+}
+
+div.round-foto {
 	position: relative;
-	top: 20px;
-	right: 60px;
-	float: right;
+	width: 140px;
+	height: 140px;
+	border-radius: 50%;
+	top: 7px;
+	left: 7px;
+	z-index: 3;
 
 }
-
-ul#nav-fist-list{
-margin-left: 20px;
-
-}
-
-ul#nav-first-list, ul#nav-about-list,
- ul#nav-pupils-list, ul#nav-parents-list
-{
-	display: flex;
-	list-style-type: none;
-	padding: 0;
-}
-
-ul#nav-about-list, ul#nav-pupils-list,
-ul#nav-parents-list
-{
-	position: absolute;
-	top: -9999px;
-
-}
-li.nav-item, li.nav-item-second{
-	width: 13%;
-	font-size: 1.1em;
-	text-align: center;
-	padding: 0.5em 0 0.5em 0;
-	cursor: pointer;
-}
-
-
-li.nav-item, li.nav-item a{
+h3 {
 	color: white;
-	background-color: #000080;
-	text-decoration: none;
-	text-transform: uppercase;
+	text-align: center;
 }
 
-li.nav-item-second {
-	color: #000080;
-	text-decoration: none;
-	text-transform: capitalize; 
+div.logo-box {
+	text-align: center;
+	padding: inherit;
 }
 
-li.nav-item-second:hover{
-	background-color: #d8d7d7;
-	color: red;
+div.logo {
+	display: inline-block;
 
 }
-
-.navbar-default {
-    background-color: #2ecc71;
-    border-color: #27ae60;
-}
-
 
 /*Albums style*/
 .album-fond {
-	background-color: #ECEFF5;
+	background-color: #AACCFF;
+	width: 100%;
 }
 
 .albums {
 
-	margin: 0 7em 0 7em;
-	padding-top: 4em;
+	width: 100%;
+	padding: 1em 0 0 1em;
 
 }
 
-.flex-container {
-	width: 920;
-	display: flex;
-	flex-wrap: wrap;
+.album-container {
+
+	width: 100%;
 	height: auto;
 }
 
-	/*display: -ms-flexbox;
-	display: -webkit-flex;
-	display: flex;
-	flex-wrap: wrap;
-}*/
+
 
 .album-item {
-	width: 33.33%;
-	padding: 0 auto 4em auto;
+
+	width: 100%;
+	padding-right: 1em;
+	padding-bottom: 1em;
 }
 
-/*div.lists {
-	height: 15px;
-	width: 100%;
-}*/
+
 div.album {
 	position: relative;
 	padding-top: 100%;
@@ -153,12 +98,8 @@ div.background {
 }
 
 div.album-about {
-	/*color: white;
-	padding: 70% 1em 1em 1em;
-	text-shadow: 0 1px 1px #000;
-	font-weight: 600px;*/
-	
-	background-color: rgba(0, 0, 0, 0.1);
+
+	background-color: rgba(0, 0, 0, 0.3);
 	position: absolute;
 	bottom: 0;
 	height: 30%;
@@ -180,6 +121,83 @@ span.point {
 
 span.view-count {
 	padding-right: 0.5em;
+}
+
+.reffer-container-item {
+	text-align: center;
+	position: relative;
+	padding: 1.5em 0;
+}
+.reffer-container-item a{
+	padding: inherit;
+}
+
+.reffer-container-item a:hover{
+	text-decoration: underline;
+	color: #212121;
+}
+.reffer-container {
+	display: none;
+
+}
+
+div.new-albums {
+	text-align: center;
+	padding: 1em 0;
+}
+
+/*Two albums in the row*/
+@media screen and (min-width: 420px){
+
+.album-container, .reffer-container{
+	display: flex;
+	flex-wrap: wrap;
+}
+.album-item {
+	width: 50%;
+}
+
+.reffer-container {
+	display: block;
+}
+
+.reffer-container-item {	
+	width: 100%;
+}
+}
+
+
+/*Three albums in the row*/
+@media screen and (min-width: 700px){
+
+.album-item {
+	width: 33.3%;
+}
+
+div.album-about {
+	height: 40%;
+}
+
+.reffer-container-item {
+	width: 50%;
+}
+}
+
+
+@media screen and (min-width: 999px){
+
+.albums {
+	width: 999px;
+	margin: auto;
+}
+.album-item {
+	width: 25%;
+}
+
+div.album-about {
+
+	font-size: 0.8em;
+}
 }
 
 /*------------*/

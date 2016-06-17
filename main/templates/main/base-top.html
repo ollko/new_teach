@@ -35,28 +35,31 @@
 
 	</head>
 	<body>
-		<header>
-			<div class="base-top">
-				<div class="base-top-top">
-					<div class="logo"><a href = "/"><img style="height: 40px" src="{% static 'images/logo.svg' %}"></a></div>	
-					<div class="base-top-top-right">
-						<div class="exception">"I am not young enough to know everything." Oscar Wilde</div>
-						<div class="sign">
-							<div class="sign up">Регистрация</div>
-							<div class="sign in">Вход</div>
-						</div>
-					</div>			
-				</div>
-				<div class = "base-top-everege">
-					<div style ="height: 220px" class="blue-top">
-						<img class="olga-foto" src="{% static 'images/olga-foto-220px.jpg' %}">									
+	
+	{% include "includes/nav_bs.html" %}
+
+		<header>	
+			<div  class="blue-top">
+				<!-- <div class="logo-box">
+					<div class="logo">
+						<a href = "/">
+							<img style="height: 40px" src="{% static 'images/logo.svg' %}">
+						</a>
 					</div>
+				</div> -->
+				
+				<div class="round-white">
+					<div class="round-foto" style="background-image: url({% static 'images/olga-foto-square.jpg' %}); background-size: cover;"></div>
 				</div>
-
-			{% include "includes/nav_bs.html" %}
-
-			</div>		
+				<h3>Кухаренко Ольга Борисовна</h3>
+				
+			</div>
 		</header>
+
+		<div id="login">
+		{% block login %}
+		{% endblock %}
+		</div>
 		
 		<div id="main">
 		{% block main %}
@@ -93,7 +96,7 @@
 		{% endblock %}
 		</div>
 
-		<div class="footer">Все права принадлежат разработчикам сайта.</div>
+		<div class="footer">XXX</div>
 		<script type="text/javascript" src="{% static 'js/jquery/jQuery.js'%}"></script>
 		<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap.min.js'%}"></script>
 		<script type="text/javascript" src = "{% static 'main/fancybox/jquery.fancybox.pack.js' %}"></script>

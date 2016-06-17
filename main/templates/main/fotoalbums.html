@@ -3,7 +3,9 @@
 {% block fotoalbums %}
 
 <!-- for add albums () modals -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-md">добавить альбом</button>
+<div class="new-albums">
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-md">добавить альбом</button>
+</div>
 
 <div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 	<div class="modal-dialog modal-md">
@@ -20,73 +22,39 @@
 <!--end  modals -->
 <!-- links -->
 
-<div class="page-header">
-		<div class="row">
-		<div class="col-sm-4"><a href="{% url 'main:fotoalbums_new' %}" title="добавить новый фотоальбом"><span class="glyphicon glyphicon-plus">добавить альбом</span></a></div>
-		<div class="col-sm-4"><a href="{% url 'main:fotostring' %}" title="добавленное недавно"><span class="glyphicon glyphicon-plus">недавнee</span></a></div>
-		<div class="col-sm-4"><a href="{% url 'main:fotofavorite' %}" title="популярное"><span class="glyphicon glyphicon-heart-empty">популярное</span></a></div>
-	</div>
+<div class="reffer-container">
+<!-- 		<div class="col-sm-4"><a href="{% url 'main:fotoalbums_new' %}" title="добавить новый фотоальбом"><span class="glyphicon glyphicon-plus">добавить альбом</span></a></div> -->
+	<div class="reffer-container-item"><a href="{% url 'main:fotostring' %}" title="добавленное недавно"><span class="glyphicon glyphicon-plus">новое</span></a></div>
+	<div class="reffer-container-item"><a href="{% url 'main:fotofavorite' %}" title="популярное"><span class="glyphicon glyphicon-heart-empty">популярное</span></a></div>
 </div>
 <!-- end links -->
 <!-- Thumbnails -->
 
 <div class="album-fond">
 	<div class="albums">
-		<div class="flex-container">
+		<div class="album-container">
 	{% for item in content %}
+		{% if  item.foto %}
 			<div class="album-item">
-				<!-- <div class="lists"></div> -->
 				<a href="{% url 'main:foto_from_album' item.id %}">
-					<div class="album" >
-
+					<div class="album" >					
 						<div class="background" style="background-image: url({{item.foto}}); background-size: cover;">
 							<div class="album-about">
-
 								<div class="album-name">{{ item.album|upper }}</div>
-								<!-- <br> -->
 								<div>{{item.date|date:"SHORT_DATE_FORMAT"}}</div>
-								<!-- <br> -->
 								<span class="foto-count">{{item.count}}</span><span>фото</span>
 								<span class="point">.</span>
 								<span class="view-count">{{item.views}}</span><span>просмотров</span>	
-							</div>
-							
+							</div>							
 						</div>
-				
-						
-					</div>
-					
+					</div>				
 				</a>
 			</div>
+		{% endif %}
 	{% endfor %}	
 	</div>
 	</div>
 	
 </div>
-
-
-
-<!-- <div class="container-fluid">
-	{% for item in content %}
-		<div class="col-xs-6 col-md-3 albums">
-			<a href="{% url 'main:foto_from_album' item.id %}">
-				<div class="background" style="background-image: url({{item.foto}}); background-size: cover; padding: 60% 7% 20% 7%;" >
-				
-					<div >
-						{{ item.album }}
-						<br>
-						{{item.date}}
-						<br>
-						{{item.count}}фото<span class="glyphicon glyphicon-asterisk"></span>{{item.views}}просмотров
-					</div>
-				</div>
-			</a>
-		</div>		
-	{% endfor %}
-</div> -->
-
-
-
-	
 
 {% endblock %}

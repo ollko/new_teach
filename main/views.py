@@ -7,6 +7,8 @@ from .forms import AlbumForm
 from main.models import Foto, Album
 from django.utils import timezone
 
+from django.contrib.auth.decorators import login_required
+
 
 
 # Create your views here.
@@ -75,7 +77,8 @@ def foto_from_album(request,album_id):
 	content= {'foto_from_album':foto_from_album,'album':album}	
 	print content
 	return render (request, 'main/foto_from_album.html', content)
-	
+
+@login_required	
 def foto_from_album_del(request,album_id):
 	#Get list of foto with album_id=album_id
 	fotos=Foto.objects.filter(album_id=album_id)

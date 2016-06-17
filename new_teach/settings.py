@@ -127,3 +127,7 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 print "MEDIA_ROOT =",MEDIA_ROOT 
 MEDIA_URL = '/media/'
+
+LOGIN_URL='main:login'
+LOGOUT_URL='main:logout'
+LOGIN_REDIRECT_URL='main:fotoalbums'

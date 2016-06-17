@@ -1,0 +1,9 @@
+{% extends "main/base-top.html" %}
+{% load staticfiles %}
+{% block title %}Выход{% endblock %}
+{% block logout %}
+
+<h2>Выход</h2>
+<p>Вы успешно выполнили процедуру выхода с сайта.</p>
+<p><a href="{% url 'main:fotoalbums' %}">Перейти в фотоальбомы</a></p>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.conf.urls import url
 
 from . import views
+from models import Album
 
 app_name = 'main'
 urlpatterns = [
@@ -20,5 +21,13 @@ urlpatterns = [
     url(r'^newproject/$', views.newproject, name='newproject'),
     url(r'^thanks/$', views.thanks, name='newproject'),
 
+    url(r'^login/',"django.contrib.auth.views.login",
+        {"template_name":"main/login.html",
+        "extra_context":{"albs":Album.objects.all()}},
+        name="login"),
+    url(r'^logout/',"django.contrib.auth.views.logout",
+        {"template_name":"main/logout.html",
+        "extra_context":{"albs":Album.objects.all()}},
+        name="logout"),
 
 ]
