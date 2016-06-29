@@ -21,8 +21,13 @@
         <li><a href="/fotoalbums/">фотоальбомы</a></li>
         <li><a href="/video/">видео</a></li>
         <li><a href="/newproject/">новый проект</a></li>
+        {% if request.user.is_authenticated %}
+        <li class="gate">Добро пожаловать, {{request.user.get_full_name}}</li>
+        <li class="gate"><a href="/logout/">выйти</a></li>
+        {% else %}
         <li class="gate"><a href="/login/">войти</a></li>
-        <li class="gate"><a href="/logup/">зарегистрироваться</a></li>
+        <li class="gate"><a href="/registration/">зарегистрироваться</a></li>
+        {% endif %}
 
 
       </ul>

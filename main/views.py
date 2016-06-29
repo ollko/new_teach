@@ -3,30 +3,32 @@ import datetime
 
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from .forms import AlbumForm
+from .forms import AlbumForm, RegistrationForm
 from main.models import Foto, Album
 from django.utils import timezone
 
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 # Create your views here.
 #def index (request):
 #	return HttpResponse('This is my MAIN app!!!')
-def  mainpage(request):
-	return render (request, 'main/mainpage.html')
+def mainpage(request):
+	return render (request, 'main/mainpage.html',
+		{"request": request})
 
-def  about(request):
+def about(request):
 	return render (request, 'main/about.html')	
 
-def  news(request):
+def news(request):
 	return render (request, 'main/news.html')	
 
-def  oge(request):
+def oge(request):
 	return render (request, 'main/oge.html')
 
-def  fotostring(request):
+def fotostring(request):
 	ten_fist_foto=Foto.objects.order_by('-id')[:10]
 	print 'ten_fist_foto=',ten_fist_foto
 	context= {'ten_fist_foto':ten_fist_foto}
@@ -65,7 +67,8 @@ def fotoalbums(request):
 
 	form = AlbumForm()
 
-	return render (request, 'main/fotoalbums.html',{"content": content,'form': form})
+	return render (request, 'main/fotoalbums.html',{"content": content,
+		'form': form})
 	
 
 def foto_from_album(request,album_id):
@@ -140,9 +143,9 @@ def fotoalbums_new(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         form = AlbumForm()
-        print "print form"
 
-    return render(request, 'main/fotoalbums_new.html', {'form': form})
+
+    return render(request, 'main/form.html', {'title':'добавление нового альбома','value':'добавить альбом','form': form})
 	
 
 def  video(request):
@@ -153,3 +156,30 @@ def  newproject(request):
 
 def thanks(request):
 	return render (request, 'main/thanks.html')
+
+def registration (request):
+	if request.method=='POST':
+		form=RegistrationForm(request.POST)
+		if form.is_valid():
+			print "form.is_valid()=",form.is_valid()
+
+			username=form.cleaned_data['first_name']
+			first_name=form.cleaned_data['first_name']
+			last_name=form.cleaned_data['last_name']
+			email=form.cleaned_data['email']
+			password=form.clean_password2()
+
+			
+			print 'form=',form
+
+			user=User.objects.create_user(username,email,password)
+			user.first_name=first_name
+			user.last_name=last_name
+			user.save()
+			return HttpResponseRedirect('/thanks/')
+	else:	
+		form=RegistrationForm()
+
+
+	return render (request, 'main/form.html',{'form': form, 'title':'Регистрация','value':'зарегистрироваться'})
+

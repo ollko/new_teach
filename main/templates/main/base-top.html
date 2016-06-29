@@ -36,23 +36,18 @@
 	</head>
 	<body>
 	
-	{% include "includes/nav_bs.html" %}
 
-		<header>	
-			<div  class="blue-top">
-				<div class="round-white">
-					<div class="round-foto" style="background-image: url({% static 'images/olga-foto-square.jpg' %}); background-size: cover;"></div>
-				</div>
-				<h3>Кухаренко Ольга Борисовна</h3>
-				
-			</div>
-		</header>
-
-		<div id="login">
-		{% block login %}
+		
+		<div id="auth">
+		{% block auth %}
 		{% endblock %}
 		</div>
-		
+
+		<div id="logout">
+		{% block logout %}
+		{% endblock %}
+		</div>
+
 		<div id="main">
 		{% block main %}
 		{% endblock %}

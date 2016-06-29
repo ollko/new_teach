@@ -2,6 +2,10 @@
 {% load staticfiles %}
 {% block fotoalbums %}
 
+{% include "includes/nav_bs.html" %}
+
+{% include "includes/blue_top.html" %}
+
 <!-- for add albums () modals -->
 <div class="new-albums">
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-md">добавить альбом</button>
@@ -23,7 +27,9 @@
 <!-- links -->
 
 <div class="reffer-container">
-<!-- 		<div class="col-sm-4"><a href="{% url 'main:fotoalbums_new' %}" title="добавить новый фотоальбом"><span class="glyphicon glyphicon-plus">добавить альбом</span></a></div> -->
+	{% if perms.main.add_album %}
+		<div class="reffer-container-item"><a href="{% url 'main:fotoalbums_new' %}" title="добавить фотоальбом"><span class="glyphicon glyphicon-plus">добавить фотоальбом</span></a></div>
+	{% endif %}
 	<div class="reffer-container-item"><a href="{% url 'main:fotostring' %}" title="добавленное недавно"><span class="glyphicon glyphicon-plus">новое</span></a></div>
 	<div class="reffer-container-item"><a href="{% url 'main:fotofavorite' %}" title="популярное"><span class="glyphicon glyphicon-heart-empty">популярное</span></a></div>
 </div>

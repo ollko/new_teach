@@ -130,4 +130,4 @@ MEDIA_URL = '/media/'
 
 LOGIN_URL='main:login'
 LOGOUT_URL='main:logout'
-LOGIN_REDIRECT_URL='main:fotoalbums'
+LOGIN_REDIRECT_URL='main:mainpage'

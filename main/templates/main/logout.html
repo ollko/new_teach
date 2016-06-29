@@ -1,9 +1,24 @@
 {% extends "main/base-top.html" %}
 {% load staticfiles %}
-{% block title %}Выход{% endblock %}
+
+{% block title %}{{title}}{% endblock %}
 {% block logout %}
 
-<h2>Выход</h2>
-<p>Вы успешно выполнили процедуру выхода с сайта.</p>
-<p><a href="{% url 'main:fotoalbums' %}">Перейти в фотоальбомы</a></p>
+{% include "includes/nav_bs.html" %}
+
+{% include "includes/blue_top.html" %}
+
+<div class='form'>
+	<h2>Выход</h2>
+	<form action="{% url 'main:fotoalbums' %}">
+	<table>
+		<tr>
+			<td>
+				Вы успешно выполнили процедуру выхода с сайта.
+			</td>
+		</tr>
+	</table>
+	<input type="submit" value="Перейти в фотоальбомы">
+</div>
+
 {% endblock %}
