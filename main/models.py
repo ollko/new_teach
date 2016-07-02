@@ -3,6 +3,10 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 import datetime
+import Image
+import os.path
+from new_teach.settings import BASE_DIR
+from django.core.files import File
 
 # Create your models here.
 class Album(models.Model):
@@ -15,8 +19,16 @@ class Album(models.Model):
 
 
 class Foto(models.Model):
-	album = models.ForeignKey(Album, verbose_name = u'Выберите из списка или введите новое название:', on_delete=models.CASCADE)
+	album = models.ForeignKey(Album, 
+		verbose_name = u'Выберите из списка или введите новое название:',
+		on_delete=models.CASCADE)
 	foto = models.ImageField(u'Выберите фотофайл',upload_to = 'fotos/thumbnails/%Y/%m/%d')
+	foto_1x = models.ImageField(null=True,default=None,
+		upload_to = 'fotos/thumbnails/%Y/%m/%d')
+	foto_2x = models.ImageField(null=True,default=None,
+		upload_to = 'fotos/thumbnails/%Y/%m/%d')
+	foto_3x = models.ImageField(null=True,default=None,
+		upload_to = 'fotos/thumbnails/%Y/%m/%d')
 	published_date = models.DateField()
 	likes = models.IntegerField(default=0)
 
@@ -36,5 +48,39 @@ class Foto(models.Model):
 		self.foto.delete(save=False)
 		super(Foto,self).delete(*args,**kwargs)
 
+	def foto_1x_2x_3x(self):
+		img=Image.open(self.foto.path)
+		foto_1x=img.copy()
+		foto_2x=img.copy()
+		foto_3x=img.copy()
+		
+		size_1 = 324,420
+		size_2 = 648,840
+		size_3 = 1296,1680
+
+		
+		foto_1x.thumbnail(size_1, Image.ANTIALIAS)
+		foto_1x.save('main/tmp/foto_1x.jpeg')
+		file_data=open('main/tmp/foto_1x.jpeg','r')
+		file_file=File(file_data)
+		print 'type(file_file)=',type(file_file)
+		self.foto_1x=file_file
+		
+		
+		foto_2x.thumbnail(size_1, Image.ANTIALIAS)
+		foto_2x.save('main/tmp/foto_2x.jpeg')
+		file_data=open('main/tmp/foto_2x.jpeg','r')
+		file_file=File(file_data)
+		print 'type(file_file)=',type(file_file)
+		self.foto_2x=file_file
+
+		foto_3x.thumbnail(size_1, Image.ANTIALIAS)
+		foto_3x.save('main/tmp/foto_3x.jpeg')
+		file_data=open('main/tmp/foto_3x.jpeg','r')
+		file_file=File(file_data)
+		print 'type(file_file)=',type(file_file)
+		self.foto_3x=file_file
+
+		
 
 

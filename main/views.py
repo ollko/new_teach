@@ -136,6 +136,10 @@ def fotoalbums_new(request):
 				print 'type(published_date)=',type(published_date)
 				print 'type(foto)=',type(foto)
 				f.save()
+				
+				f.foto_1x_2x_3x()
+				print 'f.__dict__',f.__dict__
+				f.save()
 				i=i-1
 				print f
             # redirect to a new URL:
@@ -145,7 +149,9 @@ def fotoalbums_new(request):
         form = AlbumForm()
 
 
-    return render(request, 'main/form.html', {'title':'добавление нового альбома','value':'добавить альбом','form': form})
+    return render(request,  'main/form.html', {'form': form,
+					    	'title':'добавление нового альбома',
+					    	'value':'добавить альбом'})
 	
 
 def  video(request):
@@ -181,5 +187,6 @@ def registration (request):
 		form=RegistrationForm()
 
 
-	return render (request, 'main/form.html',{'form': form, 'title':'Регистрация','value':'зарегистрироваться'})
+	return render (request, 'main/form.html',
+		{'form': form, 'title':'Регистрация','value':'зарегистрироваться'})
 
