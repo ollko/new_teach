@@ -137,9 +137,11 @@ def fotoalbums_new(request):
 				print 'type(foto)=',type(foto)
 				f.save()
 				
-				f.foto_1x_2x_3x()
-				print 'f.__dict__',f.__dict__
-				f.save()
+				# f.foto_1x_2x_3x()
+				# print 'f.foto_1x.name=',f.foto_1x.name
+				# print 'f.foto_1x.url=',f.foto_1x.url
+				# print 'f.foto_1x.path=',f.foto_1x.path
+				# f.save()
 				i=i-1
 				print f
             # redirect to a new URL:

@@ -33,7 +33,7 @@ class Foto(models.Model):
 	likes = models.IntegerField(default=0)
 
 	def __unicode__(self):
-		return self.foto.url
+		return self.foto.name
 
 	def save(self,*args,**kwargs):
 		try:
@@ -49,37 +49,45 @@ class Foto(models.Model):
 		super(Foto,self).delete(*args,**kwargs)
 
 	def foto_1x_2x_3x(self):
+		print 
 		img=Image.open(self.foto.path)
 		foto_1x=img.copy()
 		foto_2x=img.copy()
 		foto_3x=img.copy()
 		
-		size_1 = 324,420
-		size_2 = 648,840
-		size_3 = 1296,1680
+
+		size_1x = 324,420
+		size_2x = 648,840
+		size_3x = 1296,1680
 
 		
-		foto_1x.thumbnail(size_1, Image.ANTIALIAS)
-		foto_1x.save('main/tmp/foto_1x.jpeg')
-		file_data=open('main/tmp/foto_1x.jpeg','r')
+		foto_1x.thumbnail(size_1x, Image.ANTIALIAS)
+		path=self.foto.path.replace('.jpeg','_1x.jpeg')
+		foto_1x.save(path)
+		file_data=open(path,'r')
 		file_file=File(file_data)
-		print 'type(file_file)=',type(file_file)
+		print 'file_data.closed',file_data.closed
+		print 'file_file.closed',file_file.closed
 		self.foto_1x=file_file
-		
-		
-		foto_2x.thumbnail(size_1, Image.ANTIALIAS)
-		foto_2x.save('main/tmp/foto_2x.jpeg')
-		file_data=open('main/tmp/foto_2x.jpeg','r')
-		file_file=File(file_data)
-		print 'type(file_file)=',type(file_file)
-		self.foto_2x=file_file
+		os.remove(path)
 
-		foto_3x.thumbnail(size_1, Image.ANTIALIAS)
-		foto_3x.save('main/tmp/foto_3x.jpeg')
-		file_data=open('main/tmp/foto_3x.jpeg','r')
+		
+		
+		foto_2x.thumbnail(size_2x, Image.ANTIALIAS)
+		path=self.foto.path.replace('.jpeg','_2x.jpeg')
+		foto_2x.save(path)
+		file_data=open(path,'r')
 		file_file=File(file_data)
-		print 'type(file_file)=',type(file_file)
+		self.foto_2x=file_file
+		os.remove(path)
+
+		foto_3x.thumbnail(size_3x, Image.ANTIALIAS)
+		path=self.foto.path.replace('.jpeg','_3x.jpeg')
+		foto_3x.save(path)
+		file_data=open(path,'r')
+		file_file=File(file_data)
 		self.foto_3x=file_file
+		os.remove(path)
 
 		
 
