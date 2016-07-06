@@ -61,24 +61,24 @@ def fotoalbums(request):
 			#print "foto_from_album=",foto_from_album
 			content_item['foto']=None
 		else:
-			content_item['foto']=fotos[0].foto.url
-
+			content_item['foto_1x_url']=fotos[0].foto_1x.url
+			
 		content.append(content_item)
+		print 'content=',content
 
 	form = AlbumForm()
 
-	return render (request, 'main/fotoalbums.html',{"content": content,
-		'form': form})
+	return render (request, 'main/fotoalbums.html',{"content": content})
 	
 
 def foto_from_album(request,album_id):
 	album=Album.objects.get(id=album_id)
-	print "album=", album.album
+	# print "album=", album.album
 	foto_from_album = Foto.objects.filter(album_id = album_id)
-	print "foto_from_album=", foto_from_album
+	# print "foto_from_album=", foto_from_album
 
 	content= {'foto_from_album':foto_from_album,'album':album}	
-	print content
+	# print content
 	return render (request, 'main/foto_from_album.html', content)
 
 @login_required	
@@ -145,7 +145,7 @@ def fotoalbums_new(request):
 				i=i-1
 				print f
             # redirect to a new URL:
-			return HttpResponseRedirect('/thanks/')
+			return HttpResponseRedirect('/thanksfornewalbum/')
     # if a GET (or any other method) we'll create a blank form
     else:
         form = AlbumForm()
@@ -166,6 +166,9 @@ def  newproject(request):
 
 def thanks(request):
 	return render (request, 'main/thanks.html')
+
+def thanksfornewalbum(request):
+	return render(request, 'main/thanksfornewalbum.html')
 
 def registration (request):
 	if request.method=='POST':

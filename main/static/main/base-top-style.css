@@ -3,7 +3,7 @@
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
-	/*outline: 1px solid red;*/
+	outline: 1px solid red;
 
 	}
 
@@ -47,7 +47,8 @@ li.gate {
 
 }
 
-/*NAVBAR*/
+/*END NAVBAR*/
+
 div.blue-top{
 	background-color: #AACCFF;
 	padding: 0.5em 0 0.5em;
@@ -194,10 +195,6 @@ div.new-albums {
 	width: 50%;
 }
 
-.reffer-container {
-	display: block;
-}
-
 .reffer-container-item {	
 	width: 100%;
 }
@@ -235,6 +232,9 @@ div.album-about {
 
 	font-size: 0.8em;
 }
+}
+.reffer-container-item {
+	width: 33.3333%;
 }
 
 /*------------*/

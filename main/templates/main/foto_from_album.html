@@ -25,7 +25,7 @@
 		{% for item in foto_from_album %}
 		<div class="mosaicflow__item">
 			<a class="fancyimage" data-fancybox-group="group" title="{{item.foto}}" href="{{item.foto.url}}">
-				<img src="{{item.foto.url}}" alt="{{item.foto}}">
+				<img src="{{item.foto_1x.url}}" srcset="{{item.foto_1x.url}} 1x,{{item.foto_2x.url}} 2x,{{item.foto_3x.url}} 3x," alt="{{item.foto}}">
 			</a>
 		</div>
 		{% endfor %}

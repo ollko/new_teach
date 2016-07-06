@@ -28,6 +28,8 @@ urlpatterns = [
         name='foto_from_album_del'), 
 
     url(r'^thanks/$', views.thanks, name='newproject'),
+    url(r'^thanksfornewalbum/$', views.thanksfornewalbum, name='thanksfornewalbum'),
+    
 
    
     url(r'^login/',"django.contrib.auth.views.login",

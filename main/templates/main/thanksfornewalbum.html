@@ -1,0 +1,25 @@
+{% extends "main/base-top.html" %}
+{% load staticfiles %}
+
+{% block title %}{{title}}{% endblock %}
+{% block auth %}
+
+{% include "includes/nav_bs.html" %}
+
+{% include "includes/blue_top.html" %}
+
+
+<div class='form'>
+	<h2>спасибо!</h2>
+	<form action="{% url 'main:fotoalbums' %}">
+	<table>
+		<tr>
+			<td>
+				Вы успешно выполнили процедуру добавления нового альбома.
+			</td>
+		</tr>
+	</table>
+	<input type="submit" value="Перейти в фотоальбомы">
+</div>
+
+{% endblock %}

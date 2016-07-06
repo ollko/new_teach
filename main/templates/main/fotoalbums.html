@@ -6,45 +6,24 @@
 
 {% include "includes/blue_top.html" %}
 
-<!-- for add albums () modals -->
-<!-- <div class="new-albums">
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-md">добавить альбом</button>
-</div>
-
-<div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-	<div class="modal-dialog modal-md">
-		<div class="modal-content">
-			<h3 >добавление нового альбома:</h3>
-			<form enctype="multipart/form-data" action = "{% url 'main:fotoalbums_new' %}" method="post">
-				{% csrf_token %}
-				{{ form.as_p }}
-				<input type="submit" value="OK" />
-			</form>
-		</div>
-	</div>
-</div> -->
-<!--end  modals -->
-<!-- links -->
-
 <div class="reffer-container">
 	{% if perms.main.add_album %}
-		<div class="reffer-container-item"><a href="{% url 'main:fotoalbums_new' %}" title="добавить фотоальбом"><span class="glyphicon glyphicon-plus">добавить фотоальбом</span></a></div>
+	<div class="reffer-container-item"><a href="{% url 'main:fotoalbums_new' %}" title="добавить фотоальбом"><span class="glyphicon glyphicon-plus">добавить фотоальбом</span></a></div>
 	{% endif %}
 	<div class="reffer-container-item"><a href="{% url 'main:fotostring' %}" title="добавленное недавно"><span class="glyphicon glyphicon-plus">новое</span></a></div>
 	<div class="reffer-container-item"><a href="{% url 'main:fotofavorite' %}" title="популярное"><span class="glyphicon glyphicon-heart-empty">популярное</span></a></div>
 </div>
-<!-- end links -->
-<!-- Thumbnails -->
+
 
 <div class="album-fond">
 	<div class="albums">
 		<div class="album-container">
 	{% for item in content %}
-		{% if  item.foto %}
+		{% if  item.foto_1x_url %}
 			<div class="album-item">
 				<a href="{% url 'main:foto_from_album' item.id %}">
 					<div class="album" >					
-						<div class="background" style="background-image: url({{item.foto}}); background-size: cover;">
+						<div class="background" style="background-image: url({{item.foto_1x_url}}); background-size: cover;">
 							<div class="album-about">
 								<div class="album-name">{{ item.album|upper }}</div>
 								<div>{{item.date|date:"SHORT_DATE_FORMAT"}}</div>
