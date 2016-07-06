@@ -7,6 +7,7 @@ import Image
 import os.path
 from new_teach.settings import BASE_DIR
 from django.core.files import File
+import os
 
 # Create your models here.
 class Album(models.Model):
@@ -49,45 +50,35 @@ class Foto(models.Model):
 		super(Foto,self).delete(*args,**kwargs)
 
 	def foto_1x_2x_3x(self):
-		print 
+		print 'начало foto_1x_2x_3x'
 		img=Image.open(self.foto.path)
-		foto_1x=img.copy()
-		foto_2x=img.copy()
-		foto_3x=img.copy()
 		
+		size=(((324,420),'_1x'),((648,840),'_2x'),((1296,1680),'_3x'))
 
-		size_1x = 324,420
-		size_2x = 648,840
-		size_3x = 1296,1680
+		file_file=[]
 
+		for item in size:
+
+			foto_copy=img.copy()
+			foto_copy.thumbnail(item[0], Image.ANTIALIAS)
+			path=self.foto.path.replace('.jpeg',item[1]+'.jpeg')
+			foto_copy.save(path)
+			foto_copy_data=open(path,'r')
+			file_file.append(File(foto_copy_data))
+			# удаляем 'foto_copy' файл:
+			os.remove(path)
+			# 
+		print 'ffile_file=',file_file
 		
-		foto_1x.thumbnail(size_1x, Image.ANTIALIAS)
-		path=self.foto.path.replace('.jpeg','_1x.jpeg')
-		foto_1x.save(path)
-		file_data=open(path,'r')
-		file_file=File(file_data)
-		print 'file_data.closed',file_data.closed
-		print 'file_file.closed',file_file.closed
-		self.foto_1x=file_file
-		os.remove(path)
-
-		
-		
-		foto_2x.thumbnail(size_2x, Image.ANTIALIAS)
-		path=self.foto.path.replace('.jpeg','_2x.jpeg')
-		foto_2x.save(path)
-		file_data=open(path,'r')
-		file_file=File(file_data)
-		self.foto_2x=file_file
-		os.remove(path)
-
-		foto_3x.thumbnail(size_3x, Image.ANTIALIAS)
-		path=self.foto.path.replace('.jpeg','_3x.jpeg')
-		foto_3x.save(path)
-		file_data=open(path,'r')
-		file_file=File(file_data)
-		self.foto_3x=file_file
-		os.remove(path)
+		self.foto_1x=file_file[0]
+		self.foto_2x=file_file[1]
+		self.foto_3x=file_file[2]
+		# remove(path)
+		# print 'foto_copy_data.closed',foto_copy_data.closed
+		# print 'file_file.closed',file_file.closed
+	
+	
+	
 
 		
 
