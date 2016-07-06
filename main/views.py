@@ -153,7 +153,9 @@ def fotoalbums_new(request):
 
     return render(request,  'main/form.html', {'form': form,
 					    	'title':'добавление нового альбома',
-					    	'value':'добавить альбом'})
+					    	'value':'добавить альбом',
+					    	'enctype_atr':'multipart/form-data'
+					    	})
 	
 
 def  video(request):
