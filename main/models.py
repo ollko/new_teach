@@ -47,6 +47,9 @@ class Foto(models.Model):
 
 	def delete(self,*args,**kwargs):
 		self.foto.delete(save=False)
+		self.foto_1x.delete(save=False)
+		self.foto_2x.delete(save=False)
+		self.foto_3x.delete(save=False)
 		super(Foto,self).delete(*args,**kwargs)
 
 	def foto_1x_2x_3x(self):

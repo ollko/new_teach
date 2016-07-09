@@ -33,8 +33,9 @@ urlpatterns = [
 
    
     url(r'^login/',"django.contrib.auth.views.login",
-        {"template_name":"main/form.html",
-        "extra_context":{'title':'вход','value':'войти'}}, name='login'),
+        {"template_name":"main/login.html"
+        # ,"extra_context":{'title':'вход','value':'войти'}
+        }, name='login'),
 
     url(r'^logout/',"django.contrib.auth.views.logout",
         {"template_name":"main/logout.html"}, name='logout'),

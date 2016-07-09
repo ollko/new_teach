@@ -11,6 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="{% static 'main/bootstrap/bootstrap-theme.min.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'main/fancybox/jquery.fancybox.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'main/base-top-style.css' %}">
+		<link rel="SHORTCUT ICON" href="{% static 'images/logo-small-small.ico' %}" type="image/x-icon">
 	<style> 
 		.mosaicflow__item {
 			padding:3px; 
@@ -36,10 +37,13 @@
 	</head>
 	<body>
 	
-
+		<div id="registration">
+		{% block registration %}
+		{% endblock %}
+		</div>
 		
-		<div id="auth">
-		{% block auth %}
+		<div id="login">
+		{% block login %}
 		{% endblock %}
 		</div>
 

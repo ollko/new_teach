@@ -1,17 +1,15 @@
 {% extends "main/base-top.html" %}
 {% load staticfiles %}
 {% block fotoalbums %}
-<!--<div>
-	<h3 style = "text-align: center;" >ФОТОГАЛЕРЕЯ</h3>
-	<form action="new">
-		<button type="submit">добавить новые фотографии</button>
-	</form>
-</div>
--->
+
+{% include "includes/nav_bs.html" %}
+
+{% include "includes/blue_top.html" %}
+
 <div class="page-header">
 	<h3 style = "text-align: center;">Фотоальбом:"{{album.album}}"</h3>
 	<div class="row">
-		<div class="col-sm-3"><a href="{% url 'main:fotoalbums' %}" title="к фотоальбомам"><span class="glyphicon glyphicon-log-out">к фотоальбомам</span></a></div>
+		<div class="col-sm-3"><a href="{% url 'main:fotoalbums' %}" title="к фотоальбомам">к фотоальбомам</span></a></div>
 		<div class="col-sm-3"><a href="{% url 'main:fotostring' %}" title="добавленное недавно"><span class="glyphicon glyphicon-plus">недавнee</span></a></div>
 		<div class="col-sm-3"><a href="{% url 'main:fotofavorite' %}" title="популярное"><span class="glyphicon glyphicon-heart-empty">популярное</span></a></div>
 		<div class="col-sm-3"><a href="{% url 'main:foto_from_album_del' album.id %}" title="удалить фото"><span class="glyphicon glyphicon-minus">удалить фото</span></a></div>
@@ -24,7 +22,7 @@
 	<div class="clearfix mosaicflow">
 		{% for item in foto_from_album %}
 		<div class="mosaicflow__item">
-			<a class="fancyimage" data-fancybox-group="group" title="{{item.foto}}" href="{{item.foto.url}}">
+			<a class="fancyimage" data-fancybox-group="group" title="{{item.foto}}" href="{{item.foto_1x.url}}">
 				<img src="{{item.foto_1x.url}}" srcset="{{item.foto_1x.url}} 1x,{{item.foto_2x.url}} 2x,{{item.foto_3x.url}} 3x," alt="{{item.foto}}">
 			</a>
 		</div>

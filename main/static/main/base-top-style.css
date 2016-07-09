@@ -3,7 +3,7 @@
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
-	outline: 1px solid red;
+	/*outline: 1px solid red;*/
 
 	}
 
@@ -13,6 +13,7 @@ div.form {
 	margin: 2em auto;
 	box-shadow:  3px 3px  3px #000;
 	text-align: center;
+	outline:  1px solid #CCCBCB;
 }
 
 ul.errorlist {
@@ -27,11 +28,21 @@ ul.errorlist {
 
 .form th{
 	text-align: right;
-	padding: .2em;
+	padding: 1em;
 }
 .form td{
 	text-align: center;
 	padding: .2em;
+}
+.button-container {
+	display: flex;
+	justify-content: space-around;
+	padding: 1.5em 1em;
+	outline:  1px solid #CCCBCB;
+
+}
+table.form {
+	outline:  1px solid #CCCBCB;
 }
 /*END FOR "FORMS" AND FOR "LOGOUT"*/
 

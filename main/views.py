@@ -194,6 +194,6 @@ def registration (request):
 		form=RegistrationForm()
 
 
-	return render (request, 'main/form.html',
-		{'form': form, 'title':'Регистрация','value':'зарегистрироваться'})
+	return render (request, 'main/registration.html',
+		{'form': form, 'next':next})
 

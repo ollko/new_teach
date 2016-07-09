@@ -10,15 +10,25 @@
 
 <div class='form'>
 	<h2>Выход</h2>
-	<form action="{% url 'main:fotoalbums' %}">
-	<table>
-		<tr>
-			<td>
-				Вы успешно выполнили процедуру выхода с сайта.
-			</td>
-		</tr>
-	</table>
-	<input type="submit" value="Перейти в фотоальбомы">
+	
+	<div>
+		Вы успешно выполнили процедуру выхода:)
+	</div>
+	<br>
+				
+
+	<div class="button-container">
+		<div>
+			<form action="{% url 'main:mainpage' %}">
+				<input type="submit" value="Вернуться на главную страницу">
+			</form>
+		</div>
+		<div>
+			<a href="/login/">войти снова?</a>
+		</div>	
+	</div>	
+	
+
 </div>
 
 {% endblock %}
