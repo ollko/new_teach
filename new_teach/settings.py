@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-
+    'django.contrib.sites',
+    'django.contrib.flatpages',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'new_teach.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,6 +70,8 @@ TEMPLATES = [
         },
     },
 ]
+
+print 'BASE_DIR=',BASE_DIR
 
 WSGI_APPLICATION = 'new_teach.wsgi.application'
 
@@ -125,9 +127,14 @@ STATIC_URL = '/static/'
 
 # for files uploading:
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
-print "MEDIA_ROOT =",MEDIA_ROOT 
 MEDIA_URL = '/media/'
 
 LOGIN_URL='main:login'
 LOGOUT_URL='main:logout'
 LOGIN_REDIRECT_URL='main:mainpage'
+
+
+STATUCFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
+
+
+SITE_ID=1

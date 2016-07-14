@@ -195,6 +195,15 @@ div.new-albums {
 	padding: 1em 0;
 }
 
+/*ABOUT*/
+h2.about,div.esse{
+	padding: 1em;
+
+}
+h2.about{
+	color: #030D80;
+}
+/*END ABOUT*/
 /*Two albums in the row*/
 @media screen and (min-width: 420px){
 
@@ -225,6 +234,15 @@ div.album-about {
 
 .reffer-container-item {
 	width: 50%;
+}
+
+/*ABOUT */
+h2.about,div.esse{
+	width: 700px;
+	margin: 0 auto;
+}
+div.esse > p {
+	text-align: center;
 }
 }
 

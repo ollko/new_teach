@@ -8,7 +8,10 @@ from django.contrib.auth.decorators import permission_required
 app_name = 'main'
 urlpatterns = [
     url(r'^$', views.mainpage, name='mainpage'),
-    url(r'^about/$', views.about, name='about'),
+    
+    url(r'^about/$', 'django.contrib.flatpages.views.flatpage',
+        {'url':'/about/'},name='about'),
+
     url(r'^news/$', views.news, name='news'),
     url(r'^oge/$', views.oge, name='oge'),  
     url(r'^fotoalbums/$', views.fotoalbums, name='fotoalbums'),
@@ -40,5 +43,9 @@ urlpatterns = [
     url(r'^logout/',"django.contrib.auth.views.logout",
         {"template_name":"main/logout.html"}, name='logout'),
 
-    url(r'^registration/',views.registration, name='registration')
+    url(r'^registration/',views.registration, name='registration'),
+
+
+    
+
 ]

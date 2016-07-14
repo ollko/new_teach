@@ -1,0 +1,12 @@
+{% extends "main/base-top.html" %}
+{% load staticfiles %}
+
+{% block title %}{{flatpage.title}}{% endblock %}
+{% block about %}
+
+{% include "includes/nav_bs.html" %}
+
+{% include "includes/blue_top.html" %}
+<h2 class="about"><em>{{flatpage.title}}</em></h2>
+	{{flatpage.content}}
+{% endblock %}
