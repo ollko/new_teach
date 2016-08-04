@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'^news/$', views.news, name='news'),
     url(r'^oge/$', views.oge, name='oge'),  
     url(r'^fotoalbums/$', views.fotoalbums, name='fotoalbums'),
-    url(r'^video/$', views.video, name='video'),
+  
     url(r'^newproject/$', views.newproject, name='newproject'),
     
 
@@ -23,12 +23,9 @@ urlpatterns = [
     url(r'^fotofavorite/$', views.fotofavorite, name='fotofavorite'),
     url(r'^foto/(?P<album_id>[0-9]+)/$', views.foto_from_album, name='foto_from_album'),
 
-    url(r'^fotoalbums/new$', 
-        permission_required("main.add_foto",raise_exception=True)(views.fotoalbums_new), 
-        name='fotoalbums_new'),
+    url(r'^fotoalbums/new$', views.fotoalbums_new, name='fotoalbums_new'),
 	url(r'^foto/(?P<album_id>[0-9]+)/del/$', 
-        permission_required("main.delete_foto",raise_exception=True)(views.foto_from_album_del), 
-        name='foto_from_album_del'), 
+        views.foto_from_album_del, name='foto_from_album_del'), 
 
     url(r'^thanks/$', views.thanks, name='newproject'),
     url(r'^thanksfornewalbum/$', views.thanksfornewalbum, name='thanksfornewalbum'),

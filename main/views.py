@@ -7,7 +7,7 @@ from .forms import AlbumForm, RegistrationForm
 from main.models import Foto, Album
 from django.utils import timezone
 
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -81,6 +81,9 @@ def foto_from_album(request,album_id):
 	# print content
 	return render (request, 'main/foto_from_album.html', content)
 
+
+
+@permission_required('main.delete_foto')
 @login_required	
 def foto_from_album_del(request,album_id):
 	#Get list of foto with album_id=album_id
@@ -101,7 +104,8 @@ def foto_from_album_del(request,album_id):
 
 	return render (request, 'main/foto_from_album_del.html', content)
 
-	
+@permission_required('main.add_foto')
+@login_required		
 def fotoalbums_new(request):
 	# if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -165,7 +169,7 @@ def  newproject(request):
 	return render (request, 'main/newproject.html')	
 
 def thanks(request):
-	return render (request, 'main/thanks.html')
+	return render (request, 'common/thanks.html')
 
 def thanksfornewalbum(request):
 	return render(request, 'main/thanksfornewalbum.html')

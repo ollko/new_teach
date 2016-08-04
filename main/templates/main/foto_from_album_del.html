@@ -1,6 +1,10 @@
 {% extends "main/base-top.html" %}
 {% load staticfiles %}
 {% block fotoalbums %}
+
+{% include "includes/nav_bs.html" %}
+
+{% include "includes/blue_top.html" %}
 <!--<div>
 	<h3 style = "text-align: center;" >ФОТОГАЛЕРЕЯ</h3>
 	<form action="new">
@@ -9,21 +13,9 @@
 </div>
 -->
 <div class="page-header">
-	<h3 style = "text-align: center;">ХОТЕЛИ ЧТО-ТО УДАЛИТЬ?
+	<h3 style = "text-align: center;">отметьте фото для удаления:
 	</h3>
-	<div>
-		<a href="{% url 'main:foto_from_album' album_id %}" title="снять все выделения">
-			<h1 style = "text-align: center;">
-				<span class="glyphicon glyphicon-refresh"></span>
-			</h1>
-		</a>
-		<a href="{% url 'main:foto_from_album_del' album_id %}" title="Жми,чтобы удалить фото">
-			<h1 style = "text-align: center;">
-				<span class="glyphicon glyphicon-minus-sign"></span>
-			</h1>
-		</a>	
-	</div>
-
+	
 </div>
 
 <form action="{% url 'main:foto_from_album_del' album_id %}" method="post">

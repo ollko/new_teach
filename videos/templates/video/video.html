@@ -1,0 +1,52 @@
+{% extends "main/base-top.html" %}
+
+{% block videos %}
+
+{% include "includes/nav_bs.html" %}
+
+{% include "includes/blue_top.html" %}
+
+
+{% if user.is_authenticated %}
+  {% if perms.videos.add_video %}
+
+<div class="reffer-container">
+
+  <!-- Trailer Video Modal -->
+  <div class="reffer-container-item"><a href="{% url 'videos:video_new' %}" title="добавить видео"><span class="glyphicon glyphicon-plus">добавить видео</span></a></div>
+
+  <div class="reffer-container-item"><a href="{% url 'videos:video_del' %}" title="добавить видео"><span class="glyphicon glyphicon-plus">удалить видео</span></a></div>
+  <!-- Trailer Video Modal -->
+</div>
+
+  {% endif %}
+{% endif %}
+
+
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+     <!--  <iframe width="640" height="360" src="https://www.youtube.com/embed/X0j_EYWLMj0" frameborder="0" allowfullscreen></iframe>
+<img src="//img.youtube.com/vi/X0j_EYWLMj0/mqdefault.jpg" width="320" height="180">  -->
+
+{% for video in content %}   
+<div class="col-md-12 col-lg-6 movie-tile text-center" data-trailer-youtube-id="{{video.youtube_id}}" data-toggle="modal" data-target="#trailer">
+    <img src="//img.youtube.com/vi/{{video.youtube_id}}/mqdefault.jpg" width="380" height="270">
+    <h2>{{video.title}}</h2>
+</div>
+{% endfor %}
+
+
+{% endblock %}
+
+
+

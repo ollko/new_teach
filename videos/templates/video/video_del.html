@@ -1,0 +1,43 @@
+{% extends "main/base-top.html" %}
+{% load staticfiles %}
+{% block videos %}
+
+{% include "includes/nav_bs.html" %}
+
+{% include "includes/blue_top.html" %}
+<!--<div>
+	<h3 style = "text-align: center;" >ФОТОГАЛЕРЕЯ</h3>
+	<form action="new">
+		<button type="submit">добавить новые фотографии</button>
+	</form>
+</div>
+--> <!-- Trailer Video Modal -->
+
+
+<div class="page-header">
+	<h3 style = "text-align: center;">отметьте видео для удаления:
+	</h3>
+	
+</div>
+
+<form action="{% url 'videos:video_del' %}" method="post">
+{% csrf_token %}
+	<div class="button">
+        <button type="submit">Удалить отмеченные видео</button>
+    </div>
+	{% for video in content %} 
+
+			  
+			<div class="col-md-12 col-lg-6 movie-tile text-center" >
+				<input type="checkbox" name='{{video.id}}'> 
+			    <img src="//img.youtube.com/vi/{{video.youtube_id}}/mqdefault.jpg" width="380" height="270">
+			    <h2>{{video.title}}</h2>
+
+			</div>
+		
+	{% endfor %}
+</form>
+
+
+
+{% endblock %}

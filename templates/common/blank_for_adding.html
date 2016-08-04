@@ -1,0 +1,25 @@
+{% extends "main/base-top.html" %}
+{% load staticfiles %}
+
+{% block title %}{{title}}{% endblock %}
+{% block fotoalbums %}
+
+{% include "includes/nav_bs.html" %}
+
+{% include "includes/blue_top.html" %}
+
+
+<div class='form'>
+	<h2>{{title}}</h2>
+	<form enctype="{{enctype_atr}}" action="{{action_atr}}" method="post">
+{% csrf_token %}
+	<!-- <table class="form"> -->
+		{{ form.as_p }}
+	<!-- </table> -->
+	
+	<input type="submit" value="{{value}}">
+	<!-- <input type="hidden" name="next" value="{{ next }}"> -->
+</form>
+</div>
+
+{% endblock %}
