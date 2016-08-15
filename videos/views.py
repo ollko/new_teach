@@ -32,7 +32,7 @@ def video_new(request):
 			v.save()
 			v.catch_youtube_id()
 			v.save()
-		return HttpResponseRedirect('/thanks/')
+		return HttpResponseRedirect('/thanks/add_video/')
 
 	else:
 		form=AddVideoForm()
@@ -55,12 +55,14 @@ def video_del(request):
 				
 				v.delete()
 
-		return HttpResponseRedirect('/thanks/')
+		return HttpResponseRedirect('/thanks/del_video/')
 				
 
 	return render (request, 'video/video_del.html',{'content':content})
 
 
-def thanks(request):
-	return render (request, 'common/thanks.html',{'context':'видео'})
+# def thanks(request):
+# 	print "req",request
+
+# 	return render (request, 'common/thanks.html')
 	

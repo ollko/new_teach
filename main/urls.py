@@ -24,10 +24,15 @@ urlpatterns = [
     url(r'^foto/(?P<album_id>[0-9]+)/$', views.foto_from_album, name='foto_from_album'),
 
     url(r'^fotoalbums/new$', views.fotoalbums_new, name='fotoalbums_new'),
-	url(r'^foto/(?P<album_id>[0-9]+)/del/$', 
-        views.foto_from_album_del, name='foto_from_album_del'), 
+	url(r'^foto/(?P<album_id>[0-9]+)/del/$',
+                                views.foto_from_album_del, name='foto_from_album_del'),
+    url(r'^foto/(?P<album_id>[0-9]+)/add/$', 
+                                views.foto_to_album_add, name='foto_to_album_add'),
 
-    url(r'^thanks/$', views.thanks, name='newproject'),
+    url(r'^thanks/([a-z_]{8,9})/([0-9]*)/*$', views.thanks, name='thanks'),
+
+
+
     url(r'^thanksfornewalbum/$', views.thanksfornewalbum, name='thanksfornewalbum'),
     
 

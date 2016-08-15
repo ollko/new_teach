@@ -3,7 +3,7 @@ import datetime
 
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from .forms import AlbumForm, RegistrationForm
+from .forms import AlbumForm, RegistrationForm, FotoToAlbumForm
 from main.models import Foto, Album
 from django.utils import timezone
 
@@ -96,13 +96,53 @@ def foto_from_album_del(request,album_id):
 				print 'request.POST[unicode(foto.id)]=',request.POST[unicode(foto.id)]
 				print 'foto=',foto
 				foto.delete()
-		return HttpResponseRedirect('/thanks/')
+
+
+		return HttpResponseRedirect('/thanks/del_foto/'+album_id+'/')
 				
 	else:
 		content= {'foto_from_album':fotos, 'album_id':album_id}
 		print "request.POST=",request.POST
 
 	return render (request, 'main/foto_from_album_del.html', content)
+
+@permission_required('main.add_foto')
+@login_required	
+def foto_to_album_add(request,album_id):
+	# if this is a POST request we need to process the form data
+	album = Album.objects.get(id=album_id)
+	if request.method == 'POST':
+        # create a form instance and populate it with data from the request:	
+		form = FotoToAlbumForm(request.POST, request.FILES)
+
+		if form.is_valid():
+
+			fotos = request.FILES
+
+			i=len(fotos.getlist('fotos'))-1
+			current_date=timezone.now().date()
+
+			while  i>=0:
+				foto = fotos.getlist('fotos')[i]
+				published_date=current_date
+				f = Foto(album =album, published_date = current_date, foto= foto)
+				f.save()
+
+				f.foto_1x_2x_3x()
+				f.save()
+				i=i-1
+			return HttpResponseRedirect('/thanks/add_foto/'+album_id+'/')
+	# if a GET (or any other method) we'll create a blank form
+	else:
+		form=FotoToAlbumForm()
+		a=album.album
+
+	return render(request,  'main/form.html', {'form': form,
+				    	'title':u'добавление новых фото в фотоальбом :%s'%album.album,
+				    	'value':'добавить фото',
+				    	'enctype_atr':'multipart/form-data'
+				    	})
+
 
 @permission_required('main.add_foto')
 @login_required		
@@ -131,25 +171,25 @@ def fotoalbums_new(request):
 			current_date=timezone.now().date()
 
 			while i>=0:
-				print 'foto=',fotos.getlist('fotos')[i]
-				print 'current_date.__format__=',current_date.__format__
+				# print 'foto=',fotos.getlist('fotos')[i]
+				# print 'current_date.__format__=',current_date.__format__
 				foto = fotos.getlist('fotos')[i]
 				published_date=current_date
 				f = Foto(album =a, published_date = current_date, foto= foto)
-				print 'type(a)=',type(a)
-				print 'type(published_date)=',type(published_date)
-				print 'type(foto)=',type(foto)
+				# print 'type(a)=',type(a)
+				# print 'type(published_date)=',type(published_date)
+				# print 'type(foto)=',type(foto)
 				f.save()
 				
 				f.foto_1x_2x_3x()
-				print 'f.foto_1x.name=',f.foto_1x.name
-				print 'f.foto_1x.url=',f.foto_1x.url
-				print 'f.foto_1x.path=',f.foto_1x.path
+				# print 'f.foto_1x.name=',f.foto_1x.name
+				# print 'f.foto_1x.url=',f.foto_1x.url
+				# print 'f.foto_1x.path=',f.foto_1x.path
 				f.save()
 				i=i-1
-				print f
+				# print f
             # redirect to a new URL:
-			return HttpResponseRedirect('/thanksfornewalbum/')
+			return HttpResponseRedirect('/thanks/add_album/')
     # if a GET (or any other method) we'll create a blank form
     else:
         form = AlbumForm()
@@ -168,8 +208,42 @@ def  video(request):
 def  newproject(request):
 	return render (request, 'main/newproject.html')	
 
-def thanks(request):
-	return render (request, 'common/thanks.html')
+def thanks(request,*args):
+	
+	v = {
+
+	'add_video':
+				[u'видео успешно добавлено :)',u'вернуться на страницу видео?','/videos/',],
+	'del_video':
+				[u'видео успешно удалено :(',u'вернуться на страницу видео?','/videos/',],	
+	'add_foto':
+				[u'фото успешно добавлено :)',u'вернуться на страницу текущего альбома?',],
+	'del_foto':
+				[u'фото успешно удалено :(',u'вернуться на страницу текущего альбома?',],
+	'add_album':
+				[u'альбом успешно добавлен :)',u'вернуться на страницу фотоальбомы?',"/fotoalbums/",],
+	'del_album':
+				[u'альбом успешно удалён :(',u'вернуться на страницу фотоальбомы?',"/fotoalbums/",],
+
+	}
+	print "request.path=",request.path
+	print 'args=',args
+	print 'request.GET=',request.GET
+	# print 'album_id=',album_id
+	content=v[args[0]]
+	print 'content=',content
+	print "type(content[0]=)",type(content[0])
+
+	
+
+	
+
+	if args[1] != '':
+
+		content.append('/foto/'+args[1]+'/')
+		print 'content=',content
+
+	return render (request, 'common/thanks.html', {'content':content})
 
 def thanksfornewalbum(request):
 	return render(request, 'main/thanksfornewalbum.html')
@@ -193,6 +267,7 @@ def registration (request):
 			user.first_name=first_name
 			user.last_name=last_name
 			user.save()
+			# content=['']
 			return HttpResponseRedirect('/thanks/')
 	else:	
 		form=RegistrationForm()

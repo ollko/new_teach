@@ -12,6 +12,11 @@ class AlbumForm(forms.Form):
 	album_date = forms.DateField(label=u'выберите дату, кот.будет отображаться вместе с названием альбома:',
 		widget=forms.SelectDateWidget(empty_label=("Choose Year", "Choose Month", "Choose Day"),))
 	fotos = forms.ImageField(label=u'выберите фотографии:', widget = MultiFileInput)
+
+class FotoToAlbumForm(forms.Form):
+	
+	fotos = forms.ImageField(label=u'выберите фотографии:', widget = MultiFileInput)
+
 			
 	
 class RegistrationForm(UserCreationForm):
