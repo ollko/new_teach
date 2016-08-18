@@ -13,7 +13,7 @@ urlpatterns = [
         {'url':'/about/'},name='about'),
 
     url(r'^news/$', views.news, name='news'),
-    url(r'^oge/$', views.oge, name='oge'),  
+    
     url(r'^fotoalbums/$', views.fotoalbums, name='fotoalbums'),
   
     url(r'^newproject/$', views.newproject, name='newproject'),

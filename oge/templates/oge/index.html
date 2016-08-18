@@ -1,0 +1,26 @@
+{% extends "main/base-top.html" %}
+{% load staticfiles %}
+
+{% block title %}{{title}}{% endblock %}
+{% block oge %}
+
+{% include "includes/nav_bs.html" %}
+
+{% include "includes/blue_top.html" %}
+
+<div class="oge">
+
+	<h3>Хотите добавить новое тестовое задание №№18-26?</h3>
+	<div class="button-container">
+		<div>
+			<form action="{% url 'oge:new' %}">
+				<input type="submit" value="OK">
+			</form>
+		</div>
+		
+	</div>	
+
+</div>
+
+
+{% endblock %}

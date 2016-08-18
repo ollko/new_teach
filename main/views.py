@@ -224,6 +224,7 @@ def thanks(request,*args):
 				[u'альбом успешно добавлен :)',u'вернуться на страницу фотоальбомы?',"/fotoalbums/",],
 	'del_album':
 				[u'альбом успешно удалён :(',u'вернуться на страницу фотоальбомы?',"/fotoalbums/",],
+	
 
 	}
 	print "request.path=",request.path

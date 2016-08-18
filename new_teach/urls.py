@@ -23,6 +23,7 @@ urlpatterns = [
 
     url(r'^', include("main.urls")),
     url(r'^videos/',include("videos.urls")),
+    url(r'^oge/',include('oge.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
