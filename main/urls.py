@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^foto/(?P<album_id>[0-9]+)/add/$', 
                                 views.foto_to_album_add, name='foto_to_album_add'),
 
-    url(r'^thanks/([a-z_]{8,9})/([0-9]*)/*$', views.thanks, name='thanks'),
+    url(r'^thanks/([a-z_1268/-]{8,14})/([0-9]*)/*$', views.thanks, name='thanks'),
 
 
 

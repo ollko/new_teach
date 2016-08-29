@@ -1,11 +1,6 @@
 {% extends "main/base-top.html" %}
 
-{% block videos %}
-
-{% include "includes/nav_bs.html" %}
-
-{% include "includes/blue_top.html" %}
-
+{% block body %}
 
 {% if user.is_authenticated %}
   {% if perms.videos.add_video %}

@@ -1,5 +1,6 @@
 # coding=utf-8
 import datetime
+from django.utils import timezone
 
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
@@ -151,10 +152,7 @@ def fotoalbums_new(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = AlbumForm(request.POST,request.FILES)
-        # print "form = ", form
-        # check whether it's valid:
-        # print form.is_valid()
-        # print form.errors
+
         if form.is_valid():
 			# process the data in form.cleaned_data as required
 			album = form.cleaned_data['album'].lower()
@@ -164,31 +162,23 @@ def fotoalbums_new(request):
 			a.save()
 			print 'a=',a
 			fotos = request.FILES
-			# print 'fotos=', fotos
 
-			# print fotos.getlist('fotos'), len(fotos.getlist('fotos'))
 			i=len(fotos.getlist('fotos'))-1
 			current_date=timezone.now().date()
 
 			while i>=0:
-				# print 'foto=',fotos.getlist('fotos')[i]
-				# print 'current_date.__format__=',current_date.__format__
+
 				foto = fotos.getlist('fotos')[i]
 				published_date=current_date
 				f = Foto(album =a, published_date = current_date, foto= foto)
-				# print 'type(a)=',type(a)
-				# print 'type(published_date)=',type(published_date)
-				# print 'type(foto)=',type(foto)
+
 				f.save()
 				
 				f.foto_1x_2x_3x()
-				# print 'f.foto_1x.name=',f.foto_1x.name
-				# print 'f.foto_1x.url=',f.foto_1x.url
-				# print 'f.foto_1x.path=',f.foto_1x.path
+
 				f.save()
 				i=i-1
-				# print f
-            # redirect to a new URL:
+
 			return HttpResponseRedirect('/thanks/add_album/')
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -224,7 +214,9 @@ def thanks(request,*args):
 				[u'альбом успешно добавлен :)',u'вернуться на страницу фотоальбомы?',"/fotoalbums/",],
 	'del_album':
 				[u'альбом успешно удалён :(',u'вернуться на страницу фотоальбомы?',"/fotoalbums/",],
-	
+	'add_tests18-26':
+				[u'добавлен очередной тест№№18-26 :)',u'проверить, что получилось?','/oge/',],
+
 
 	}
 	print "request.path=",request.path

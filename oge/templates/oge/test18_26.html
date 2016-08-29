@@ -1,0 +1,27 @@
+{% extends 'oge/fipi.html' %}
+
+{% block fipi_filling %}
+
+<div>
+	<p>Языковой материал</p>
+
+{% if user.is_authenticated %}
+	{% if perms.oge.add_test18_26 %}
+
+	<div class="reffer-container-item"><a href="{% url 'oge:test18_26_new' %}" title="добавить видео"><span class="glyphicon glyphicon-plus">добавить тест</span></a></div>
+
+	{% endif %}
+{% endif %}
+
+{% if latest_tests18_26_list %}
+		<ul>
+	{% for tests18_26 in latest_tests18_26_list %}
+			<li><a href="/oge/fipi/test18_26/{{ tests18_26.id }}/">{{ tests18_26.id }}</a></li>
+	{% endfor %}
+		</ul>
+{% else %}
+		<p>нет ни одного доступного задания.</p>
+{% endif %}
+</div>
+
+{% endblock %}

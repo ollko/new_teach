@@ -1,0 +1,19 @@
+	.mosaicflow__item {
+		padding:3px; 
+} 
+	.mosaicflow__column {
+		float:left; 
+} 
+	.mosaicflow__item img { 
+		display:block; 
+		width:100%; 
+		height:auto; 
+		padding: 8px; 
+		background-color: #fff; 
+		border: 1px solid #ddd; 
+		border-radius: 4px; 
+} 
+	.mosaicflow__item img:hover { 
+		opacity: 0.6; 
+		filter: alpha(opacity=60); 
+} 

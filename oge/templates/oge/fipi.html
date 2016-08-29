@@ -1,0 +1,18 @@
+{% extends "main/base-top.html" %}
+
+{% block top %}
+	{% include "includes/nav_brand_bs.html" %}
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+  <div class="row">
+
+		<div class="col-md-2">{% include "includes/oge_menu.html" %}</div>
+		<div class="col-md-10">
+			{% block fipi_filling %}{% endblock %}
+		</div>
+
+  </div>
+</div>
+{% endblock %}

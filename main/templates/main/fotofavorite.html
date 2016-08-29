@@ -1,6 +1,6 @@
 {% extends "main/base-top.html" %}
-{% load staticfiles %}
-{% block fotoalbums %}
+
+{% block body %}
 
 <div class="page-header">
 	<h3 style = "text-align: center;">любимые фотографии:</h3>
@@ -9,23 +9,5 @@
 		<div class="col-sm-6"><a href="{% url 'main:fotostring' %}" title="добавленное недавно"><span class="glyphicon glyphicon-plus">недавнee</span></a></div>
 	</div>
 </div>
-
-
-<!-- <div class="container" id="foto">
-	<div class="clearfix mosaicflow">
-		{% for item in ten_favorite_foto %}
-		<div class="mosaicflow__item">
-			<a class="fancyimage" data-fancybox-group="group" title="{{item.event}}" href="{{item.foto.url}}">
-				<img src="{{item.foto.url}}" alt="{{item.event}}">
-			</a>
-		</div>
-		{% endfor %} -->
-		
-
-
-	</div>
-
-</div>
-
 
 {% endblock %}

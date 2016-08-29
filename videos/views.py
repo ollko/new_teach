@@ -12,6 +12,7 @@ from videos.models import Video
 # Create your views here.
 def  videos(request):
 	content=Video.objects.all()
+	
 
 	return render (request, 'video/video.html',{'content':content})
 	# return HttpResponse("Hello, world. You're at the VIDEO index.")
