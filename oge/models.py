@@ -12,7 +12,7 @@ class Tests18_26(models.Model):
 	tests18_26 = models.TextField()
 	splited_tests18_26 = models.TextField(null=True,blank=True,default=None)
 	pub_data = models.DateTimeField('дата публикации',default=timezone.now)
-
+	answer=models.CharField(max_length=100,null=True,blank=True,default=None)
 
 	def __unicode__(self):
 
@@ -47,11 +47,11 @@ class Tests18_26(models.Model):
 
 		self.splited_tests18_26 = '-**-'.join(res)
 		
-	
-class Answer(models.Model):
-
-	tests18_26=models.OneToOneField(Tests18_26,)
-	answer=models.CharField(max_length=200,null=True,blank=True,default=None)
+class UserAnswer(models.Model):
+	user = models.ForeignKey(User)
+	tests18_26 = models.ForeignKey(Tests18_26)
+	user_answer = models.CharField(max_length=100,null=True,blank=True,default=None)
+	answer_pub_data = models.DateTimeField('дата ответа',default=timezone.now)
 
 				
 

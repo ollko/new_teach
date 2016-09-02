@@ -49,5 +49,13 @@ $(document).ready(function() {
 		z.style.transform = "translate(0, 0)";
 		z.style.transition ="transform 0.1s ease";
 		score = 1;
-	});
+	})
+
+	// Test18_26 validate
+var constraint = new RegExp('^[A-Za-z]{1,12}$',"");
+var error = 'Задание выполнено не полностью.'
+
+
 });
+
+

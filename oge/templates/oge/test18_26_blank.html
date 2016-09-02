@@ -10,7 +10,7 @@
 		<p>{{test}}</p>
 	</div>
 
-	<form action='{% url "oge:add_answer" id %}' method='post'>
+	<form action='{% url "oge:pass_test" id %}' method='post'>
 		{% csrf_token %}
 		{% for item in test_list %}
 		<div class="container-fluid">
@@ -33,7 +33,7 @@
 			</div>		
 		</div>
 		{% endfor %}
-		<input type="submit" value="Добавить ответы" />
+		<input type="submit" value="Проверить ответы" />
 	</form>
 
 </div>
