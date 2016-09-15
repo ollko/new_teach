@@ -8,17 +8,22 @@
 {% if user.is_authenticated %}
 	
 	{% if test_list %}
-		<table>
+		<table class="test-list">
 		{% for test in test_list %}
 			<tr>
 				<td>
-					тест №{{ test.id}}
+					<a href="{% url 'oge:test18_26_blank' test.0.id %}"> тест №{{ test.0.id}}
+					</a>
 				</td>
+				{% if test.1 %}
 				<td>
-					<form action="{% url 'oge:test18_26_blank' test.id %}">
-						<button type="submit">пройти тест</button>
-					</form>
+					пройдено{{test.1}}из{{test.0.qw_number}}
 				</td>
+				{% else %}
+				<td>
+					не пройдено
+				</td>
+				{% endif %}
 			</tr>	
 		{% endfor %}	
 		</table>

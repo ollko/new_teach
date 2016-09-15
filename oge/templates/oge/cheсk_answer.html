@@ -1,0 +1,57 @@
+{% extends 'oge/fipi.html' %}
+
+{% block fipi_filling %}
+
+<div class='total_test'>
+	<div class="container-fluid">
+		<div class='header row sentence'>
+			<div class="col-md-12">
+				<b>Прочитайте приведённый ниже текст. Преобразуйте слова, напечатанные заглавными буквами в конце строк, обозначенных номерами 18–26, так, чтобы они грамматически соответствовали содержанию текста. Заполните пропуски полученными словами. Каждый пропуск соответствует отдельному заданию 18–26.</b>
+			</div>
+		</div>
+	<div class="18_26 row sentence">
+		<div class="col-md-12">
+			{{test}}
+		</div>		
+	</div>
+{% for item in test_list %}
+	{% if item.4 %}
+	<div class="row sentence">
+		<div class="col-md-10 ">
+			<span>{{item.0}}</span>
+			<span>_____</span>
+			<input type="text" class="green-right-answer answer" name="{{forloop.counter}}" id="'test18_26_'+{{forloop.counter}}" value="{{item.1}}"/>
+			<span class="hide-answer">{{item.3}}</span>
+			<span>_____</span>
+			<span>{{item.2}}</span>
+		</div>
+		<div class="col-md-2 insert-word">
+			<span class="glyphicon glyphicon-plus-sign green-right-answer"></span>
+		</div>
+	</div>		
+	{% else %}
+	<div class="row sentence">
+		<div class="col-md-10 ">
+			<span>{{item.0}}</span>
+			<input type="text" class="red-wrong-answer answer" name="{{forloop.counter}}" id="'test18_26_'+{{forloop.counter}}" value="{{item.1}}"/>
+			<span class="hide-answer">{{item.3}}</span>
+			<span>_____</span>
+			<span>{{item.2}}</span>
+		</div>		
+		<div class="col-md-2 insert-word">
+			<span class="glyphicon glyphicon-minus-sign red-wrong-answer"></span>
+		</div>			
+	</div>		
+	{% endif %}
+{% endfor %}
+		<div class="row buttons" >
+			<input id="show-answer" class="col-md-6" type="submit" value="Посмотреть ответы" />
+			<form action="{% url 'oge:test18_26_blank' test_id %}">
+				<input id='pass_again' class="col-md-6" type="submit" value="Пройти тест снова" />			
+			</form>
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}

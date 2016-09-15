@@ -13,10 +13,12 @@ class Tests18_26(models.Model):
 	splited_tests18_26 = models.TextField(null=True,blank=True,default=None)
 	pub_data = models.DateTimeField('дата публикации',default=timezone.now)
 	answer=models.CharField(max_length=100,null=True,blank=True,default=None)
+	qw_number = models.CharField('число вопросов в тесте',null=True,max_length=1,default='9')
+
 
 	def __unicode__(self):
 
-		return u'tests18_26 №'+str(self.id)
+		return str(self.id)
 
 	def spliting(self):
 		res=[]
@@ -46,16 +48,35 @@ class Tests18_26(models.Model):
 		res.append(latest)
 
 		self.splited_tests18_26 = '-**-'.join(res)
+		self.qw_number = str(len(res))
 		
 class UserAnswer(models.Model):
 	user = models.ForeignKey(User)
-	tests18_26 = models.ForeignKey(Tests18_26)
-	user_answer = models.CharField(max_length=100,null=True,blank=True,default=None)
+	test18_26 = models.ForeignKey(Tests18_26)
+	user_answer = models.CharField(u'строка с ответами пользователя',max_length=100,
+									null=True,
+									blank=True,
+									default=None)
+	res=models.IntegerField(u'число правильных ответов',null=True,blank=True,default=None)	
+	res_numbers = models.CharField(max_length=9,
+									null=True,
+									blank=True,
+									default=None)
 	answer_pub_data = models.DateTimeField('дата ответа',default=timezone.now)
 
-				
+	def __unicode__(self):
 
+		return 	u'ответ пользователя '+str(self.user)+' на тест №'+str(self.test18_26)
 
+	def save(self,*args,**kwargs):
+
+		try: 
+			old_record=UserAnswer.objects.get(user=self.user,test18_26=self.test18_26)
+			if old_record:
+				old_record.delete()
+		except:
+			pass
+		super(UserAnswer, self).save(*args,**kwargs)
 
 
 

@@ -2,10 +2,12 @@
 <ul>
 	<li><a href="/oge/fipi/listen/">Аудирование</a></li>
 	<li><a href="/oge/fipi/read/">Чтение</a></li>
-	{% if perms.oge.add_test18_26 %}
+{% if user.is_authenticated %}
+	{% if perms.oge.add_tests18_26 %}
 	<li><a href="/oge/fipi/test18_26my/">Языковой материал</a></li>
 	{% else %}
 	<li><a href="/oge/fipi/test18_26/">Языковой материал</a></li>
-	{% endif %}
+	{% endif %}	
+{% endif %}
 </ul>
 </div>

@@ -276,14 +276,38 @@ div.total_test{
 
 }
 div.sentence{
-	margin-bottom: 1em;
-	outline: 1px solid #777;
-	margin-bottom: 0;
-}
-div.row.sentence{
 	margin-bottom: 1.5em;
+	outline: 1px solid #777;
 }
+
 div.insert-word{
 	text-align: center;
 	
+}
+
+.test-list{
+  
+  padding:.5em .5em .5em 3em;
+  text-align: center;
+}
+
+.green-right-answer {
+	color: green;
+}
+
+.red-wrong-answer {
+	color: red;
+}
+
+.hide-answer{
+	position: absolute;
+	top: 9999px;
+}
+.sign-out{
+	position: absolute;
+	top: 9999px;
+}
+.darker{
+	font-weight: 700;
+}
 }
