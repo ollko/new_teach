@@ -19,22 +19,23 @@
 		<ul class="test-list">
 			{% include "includes/_test18_26_list_my.html" %}
 		</ul>
-	</li>		
-	{% else %}
-	<li>Языковой материал
-		<ul class="test-list">
-			{% include "includes/_test18_26_list.html" %}
-		</ul>
-	</li>		
+	</li>	
 	{% endif %}	
 {% endif %}
 </ul>
 {% endblock %}
 
 {% block main_col %}
-	{% include "includes/_test18_26_blank.html" %}
-{% endblock %}
-{% block javascript %}
-	{{ block.super }}
-	<script type="text/javascript" charset="utf-8" src = "{% static 'js/oge.js' %}"></script>	
+<div class='form'>
+	<h2>{{title}}</h2>
+	<form enctype="{{enctype_atr}}" action="{{action_atr}}" method="post">
+{% csrf_token %}
+	<!-- <table class="form"> -->
+		{{ form.as_p }}
+	<!-- </table> -->
+	
+	<input type="submit" value="{{value}}">
+	<!-- <input type="hidden" name="next" value="{{ next }}"> -->
+</form>
+</div>
 {% endblock %}

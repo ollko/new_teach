@@ -48,7 +48,7 @@ class Tests18_26(models.Model):
 		res.append(latest)
 
 		self.splited_tests18_26 = '-**-'.join(res)
-		self.qw_number = str(len(res))
+		self.qw_number = str(len(res)/3)
 		
 class UserAnswer(models.Model):
 	user = models.ForeignKey(User)

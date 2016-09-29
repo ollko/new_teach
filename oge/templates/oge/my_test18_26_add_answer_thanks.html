@@ -8,7 +8,6 @@
 {% endblock %}
 
 {% block bluetop %}{% endblock %}
-
 {% block side_col %}
 <ul class="oge_menu">
 	<li><a href="/oge/fipi/listen/">Аудирование</a></li>
@@ -19,22 +18,11 @@
 		<ul class="test-list">
 			{% include "includes/_test18_26_list_my.html" %}
 		</ul>
-	</li>		
-	{% else %}
-	<li>Языковой материал
-		<ul class="test-list">
-			{% include "includes/_test18_26_list.html" %}
-		</ul>
-	</li>		
+	</li>	
 	{% endif %}	
 {% endif %}
 </ul>
 {% endblock %}
-
 {% block main_col %}
-	{% include "includes/_test18_26_blank.html" %}
-{% endblock %}
-{% block javascript %}
-	{{ block.super }}
-	<script type="text/javascript" charset="utf-8" src = "{% static 'js/oge.js' %}"></script>	
+<h2><span>Ответы к заданию № </span>{{test_id}}<span> успешно добавлены :))</span></h2>
 {% endblock %}

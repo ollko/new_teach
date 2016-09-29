@@ -1,0 +1,29 @@
+<div class="reffer-container-item"><a href="{% url 'oge:my_test18_26_add' %}" title="добавить тест18_26"><span class="glyphicon glyphicon-plus">добавить тест</span></a>
+</div>
+	{% if test_list_me %}
+		<table class="test-list">
+		{% for test in test_list_me %}
+			<tr>
+				<td>
+					№{{test.id}}
+				</td>
+				<td>
+					{{test.qw_number}}
+				</td>
+				{% if test.answer %}
+				<td>
+					ответы уже есть
+				</td>
+				{% else %}
+				<td>
+					<form action="{% url 'oge:my_test18_26_blank' test.id %}">
+						<button type="submit">добавить ответы</button>
+					</form>
+				</td>
+						
+				{% endif %}
+
+			</tr>	
+		{% endfor %}	
+		</table>
+	{% endif %}

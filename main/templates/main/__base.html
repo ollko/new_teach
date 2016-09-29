@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+	<head>
+		{% block meta_tags %}
+			<meta charset="utf-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<meta lang="ru">
+		{% endblock %}
+		{% block title %}Кухаренко Ольга Борисовна{% endblock %}
+		{% block stylesheet %}
+			<link rel="stylesheet" type="text/css" href="{% static 'main/bootstrap/bootstrap.min.css' %}">
+			<link rel="stylesheet" type="text/css" href="{% static 'main/bootstrap/bootstrap-theme.min.css' %}">
+			<link rel="stylesheet" type="text/css" href="{% static 'main/base-top-style.css' %}">
+			<link rel="SHORTCUT ICON" href="{% static 'images/logo-small-small.ico' %}" type="image/x-icon">
+		{% endblock %}
+		
+		<link rel="stylesheet" type="text/css" href="{% static 'main/fancybox/jquery.fancybox.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'main/mosaicflow.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'main/video.css' %}">		
+		{% block  extra_head %}{% endblock %}
+	</head>
+
+<body>
+	<header>
+		{% block navigation %}
+			<nav class="navbar navbar-default navbar-fixed-top">
+				{% include "includes/_nav_bs.html" %}
+			</nav>
+		{% endblock %}
+
+		{% block foroverlap %}
+			<div class="foroverlap"></div>
+		{% endblock %}
+		
+		{% block bluetop %}	
+			{% include "includes/_blue_top.html" %}
+		{% endblock %}
+	</header>
+	<div id="main" role="main">
+            <div class="container-fluid">
+                {% block content %}
+                {% endblock %}
+            </div>
+	</div>
+
+	<div id="footer">XXX</div>
+		
+		{% block javascript %}
+			<script type="text/javascript" src="{% static 'js/jquery/jQuery.js'%}"></script>
+			<script type="text/javascript" src="{% static 'js/bootstrap/bootstrap.min.js'%}"></script>	
+			<script type="text/javascript" src="{% static 'js/base-top.js'%}"></script>	
+		{% endblock %}
+		
+		<script type="text/javascript" src = "{% static 'main/fancybox/jquery.fancybox.pack.js' %}"></script>
+		<script src="{% static 'js/mosaicflow/jquery.mosaicflow.min.js' %}"></script>	
+		<script type="text/javascript" src = "{% static 'js/foto-video.js' %}"></script>
+		<script type="text/javascript" charset="utf-8" src = "{% static 'js/video.js' %}"></script>
+		
+</body>
+
+</html>
