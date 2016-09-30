@@ -31,11 +31,6 @@ urlpatterns = [
 
     url(r'^thanks/([a-z_1268/-]{8,14})/([0-9]*)/*$', views.thanks, name='thanks'),
 
-
-
-    url(r'^thanksfornewalbum/$', views.thanksfornewalbum, name='thanksfornewalbum'),
-    
-
    
     url(r'^login/',"django.contrib.auth.views.login",
         {"template_name":"main/login.html"
@@ -45,9 +40,6 @@ urlpatterns = [
     url(r'^logout/',"django.contrib.auth.views.logout",
         {"template_name":"main/logout.html"}, name='logout'),
 
-    url(r'^registration/',views.registration, name='registration'),
-
-
-    
+    url(r'^registration/',views.registration, name='registration'), 
 
 ]

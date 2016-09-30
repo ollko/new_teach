@@ -238,8 +238,6 @@ def thanks(request,*args):
 
 	return render (request, 'common/thanks.html', {'content':content})
 
-def thanksfornewalbum(request):
-	return render(request, 'main/thanksfornewalbum.html')
 
 def registration (request):
 	if request.method=='POST':

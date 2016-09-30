@@ -10,12 +10,16 @@
 {% block bluetop %}{% endblock %}
 
 {% block side_col %}
+<div class="reffer-container-item"><a href="{% url 'oge:my_test18_26_add' %}" title="добавить тест18_26"><span class="glyphicon glyphicon-plus">добавить тест</span></a></div>
 <ul class="oge_menu">
 	<li><a href="/oge/fipi/listen/">Аудирование</a></li>
 	<li><a href="/oge/fipi/read/">Чтение</a></li>
 {% if user.is_authenticated %}
 	{% if perms.oge.add_tests18_26 %}
-	<li>Языковой материал
+	
+	<li>	
+	<span class="glyphicon glyphicon-plus"></span>
+	<span>Языковой материал </span> 
 		<ul class="test-list">
 			{% include "includes/_test18_26_list_my.html" %}
 		</ul>
