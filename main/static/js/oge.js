@@ -1,3 +1,4 @@
+// Показывает правильные ответы на странице для зарегистрированного пользователя
 function ShowAnswer(){
   var answer;
   answer=$(this).next().text();
@@ -14,10 +15,62 @@ $('#show-answer').on('click',function() {
   
 });
 
+
+$('#show-answer-anonymous').on('click',function(){
+  $('.answer').each(ShowAnswer);
+});
+
+// Проверяет ответы незарегистрированного пользователя с помощью цвета
+//(зеленый - верно, красный не верно):
+function CheckAnswer(){
+  var anonymousAnswer, rightAnswer;
+  var ogeModal;
+  anonymousAnswer=$(this).val().toLowerCase();
+  console.log('anonymousAnswer=',anonymousAnswer)
+  rightAnswer=$(this).siblings('.right-answer').text();
+  console.log('rightAnswer=',rightAnswer)
+  if (anonymousAnswer===rightAnswer){
+
+    $(this).addClass('green-right-answer ');
+    }
+  else {
+      $(this).addClass('red-wrong-answer ');
+      score=2;
+    }
+};
+var score;
+$('#check-answer').on('click',function() {
+  score=1;
+  $('.anonymous-answer').each(CheckAnswer);
+  if (score===1){
+    $('#check-answer').remove();
+    $('#next-test').children().css('display','block');
+  };
+  
+  if (score===2){
+    $('#show-answer').css('display','block');
+    $('#check-answer').remove();
+    $('#pass-test-again').css('display','block');
+  };  
+});
+
+// После клика по input окну если есть текст, он исчезает, 
+// удаляются классы 'red-wrong-answer green-right-answer':
+
+$( 'input.anonymous-answer' ).on( 'select click', function( evt ) {
+  if ($(evt.target).val()!==0){
+    $(evt.target).val('');
+  };
+  $( evt.target ).removeClass( 'red-wrong-answer green-right-answer' );
+  
+});
+
+//Показывает/скрывает подменю в левой колонке:
+
 function handler( event ) {
   var target = $( event.target );
-  if ( target.is( "li" ) ){
+  if ( target.is( "li.oge_menu" ) ){
     target.children().toggle();
-  }
-}
-// $( "ul" ).click( handler ).find( "ul" ).hide();
+  };
+};
+$( "ul.oge_menu" ).click( handler ).find( "ul.oge_menu" ).hide();

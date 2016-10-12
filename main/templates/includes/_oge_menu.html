@@ -1,12 +1,27 @@
 <ul class="oge_menu">
-	<li><a href="/oge/fipi/listen/">Аудирование</a></li>
-	<li><a href="/oge/fipi/read/">Чтение</a></li>
+	<li class="oge_menu"><a href="/oge/fipi/listen/">Аудирование</a></li>
+	<li class="oge_menu"><a href="/oge/fipi/read/">Чтение</a></li>
 {% if user.is_authenticated %}
 	{% if perms.oge.add_tests18_26 %}
-	<li><a href="/oge/fipi/test18_26my/">Языковой материал</a></li>
-	{% else %}
-	<li>Языковой материал</a>
-	{% endif %}	
-{% endif %}
-</ul>
+		
+		<li class="oge_menu">Языковой материал
+			<ul class="oge_menu">
+				{% include "includes/_test18_26_list_my.html" %}
+			</ul>
+		</li>	
 
+	{% else %}	
+		<li class="oge_menu">Языковой материал
+		<ul class="oge_menu">
+			{% include "includes/_test18_26_list_user.html" %}		
+		</ul>
+	</li>
+	{% endif %}
+{% else %}	
+<li class="oge_menu">Языковой материал
+			<ul class="oge_menu">
+				{% include "includes/_test18_26_list_anonymous.html" %}
+			</ul>
+		</li>	
+</ul>
+{% endif %}

@@ -1,0 +1,8 @@
+{% if test_list_an %}
+	{% for test in test_list_an %}
+		<li class="oge_menu">
+			<a href="{% url 'oge:a_test18_26_blank' test.id %}"> {{ test.id}}</a>
+			
+		</li>	
+	{% endfor %}	
+{% endif %}	

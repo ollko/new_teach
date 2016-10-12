@@ -1,6 +1,6 @@
-{% if test_list_with_res %}
-	{% for test in test_list_with_res %}
-		<li>
+{% if test_list_user %}
+	{% for test in test_list_user %}
+		<li class="oge_menu">
 			<a href="{% url 'oge:test18_26_blank' test.0.id %}"> №{{ test.0.id}}</a>
 			
 			{% if test.1 %}

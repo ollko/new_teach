@@ -1,27 +1,20 @@
 {% if test_list_me %}
-	<table class="test-list">
+	<table class="oge_menu">
 	{% for test in test_list_me %}
-		<tr>
-			<td>
+		<li class="oge_menu">
 				№{{test.id}}
-			</td>
-			<td>
-				{{test.qw_number}}
-			</td>
+			
 			{% if test.answer %}
-			<td>
-				ответы уже есть
-			</td>
+			<span>  ответы есть</span>
 			{% else %}
-			<td>
+			<span>
 				<form action="{% url 'oge:my_test18_26_blank' test.id %}">
 					<button type="submit">добавить ответы</button>
 				</form>
-			</td>
-					
+			</span>					
 			{% endif %}
-
-		</tr>	
+			
+		</li>	
 	{% endfor %}	
 	</table>
 {% endif %}

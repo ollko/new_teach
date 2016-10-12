@@ -24,8 +24,6 @@ urlpatterns = [
 		views.my_test18_26_add_answer_thanks, name='my_test18_26_add_answer_thanks'),
 
 
-
-
 	url(r'^fipi/test18_26/(?P<test_id>[0-9]+)/$',
 		views.test18_26_blank, name='test18_26_blank'),
 
@@ -34,5 +32,9 @@ urlpatterns = [
 
 	url(r'^fipi/test18_26/(?P<test_id>[0-9]+)/check_answer/$',
 		views.check_answer, name='check_answer'),
+
+
+	url(r'^fipi/a/test18_26/(?P<test_id>[0-9]+)/$',
+		views.a_test18_26_blank, name='a_test18_26_blank'),
 
 ]

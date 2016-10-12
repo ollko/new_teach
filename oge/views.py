@@ -7,7 +7,7 @@ import datetime
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required, permission_required
 
-def testListWithRes(user):
+def testListForUser(user):
 	"""определяет список доступных тестов с результатами
 	для авторизованного ученика"""
 	available_tests_list = Tests18_26.objects.filter(answer__isnull=False)
@@ -29,6 +29,11 @@ def testListForMe():
 	res = Tests18_26.objects.all()
 	return res
 
+def testListAnonymous():
+	res = Tests18_26.objects.filter(answer__isnull=False)
+	return res
+
+
 def parseTestText(test_id):
 	test=Tests18_26.objects.get(id=test_id)
 	test_all=test.tests18_26
@@ -38,7 +43,10 @@ def parseTestText(test_id):
 	while len(test_reverse)>=3:
 		t, test_reverse = three_out(test_reverse)
 		test_list.append(t)
-
+	'''test_list=[[первая часть предложения, 
+					начальная форма слова, 
+					вторая часть предложения]  ,...]'''
+	
 	return test_all, test_list
 
 
@@ -53,14 +61,20 @@ def fipi(request):
 	print 'type(PERMS)=',type(PERMS)
 	
 	current_user=request.user
-	
+
 	if PERMS<=current_user.get_all_permissions():
 		test_list_me=testListForMe()
-		print 'test_list_me=',test_list_me
 		return render(request,'oge/fipi.html',{'test_list_me':test_list_me})
+	
+	elif current_user.is_anonymous():
+		test_list_an=testListAnonymous()
+		return render(request,'oge/fipi.html',{'test_list_an':test_list_an})
+
 	else:
-		test_list_with_res=testListWithRes(current_user)	
-	return render(request,'oge/fipi.html',{'test_list_with_res':test_list_with_res})
+		test_list_user=testListForUser(current_user)
+		print 	'test_list_user=',test_list_user
+		return render(request,'oge/fipi.html',{'test_list_user':test_list_user})
+
 
 
 def listening(request):
@@ -74,7 +88,7 @@ def reading(request):
 @permission_required('oge.add_tests18_26')
 
 def my_test18_26_add (request):
-	"""заносит новую запись в Tests18_26,
+	"""добавляет новую запись в Tests18_26,
 	перенаправляет на сообщение об успешном добавлении нового задания """
 	
 	if request.method=='POST':
@@ -158,7 +172,7 @@ def my_test18_26_add_answer_thanks(request,test_id):
 					{'test_id':test_id,'test_list_me':test_list_me})
 
 def  pass_test18_26(request,test_id):
-	"""Записывает ответ ученика в БД (модель UserAnswer) 
+	"""добавляет ответ ученика в БД (модель UserAnswer) 
 	и перенаправляет на страницу 
 	'/oge/fipi/test18_26/<test_id>/check_answer/'  """
 
@@ -232,16 +246,18 @@ def check_answer(request,test_id):
 		i=i+1
 
 		test_list.append(t)
-
+	print 'test_list=',test_list
+	'''test_list=[[начало предложения, ответ пользователя, конец предложения, правильный ответ,True or False],..
+	]'''
 	# Вывод всех доступных тестов с указанием степени пройденности для авторизованного учееника:
 	user=request.user
-	test_list_with_res=testListWithRes(user)	
+	test_list_user=testListForUser(user)	
 	
 	return render(request, 'oge/cheсk_answer.html',
 							{'test': test_all,
 							'test_list':test_list,
 							'test_id':test_id,
-							'test_list_with_res':test_list_with_res})
+							'test_list_user':test_list_user})
 
 def three_out(l):
 	t=[]
@@ -261,19 +277,55 @@ def test18_26_blank(request, test_id):
 	также данные отображения списка доступных заданий 
 	с результатами (например: пройдено 8 из 9)"""
 
-	# подготовим данные для отображения теста с test_id:
+	'''подготовим данные для отображения теста под номером test_id:
+	 '''
 	test_all,test_list = parseTestText(test_id)
-	print 'test_all=',test_all
-	print 'test_list=',test_list
 
 	
 	# Вывод всех доступных тестов с указанием степени пройденности для авторизованного учееника:
+
 	user=request.user
-	test_list_with_res=testListWithRes(user)	
-	print 'test_list_with_res=',test_list_with_res
-	return render(request, 'oge/test18_26_blank.html',
+	if user.is_anonymous():
+		return render(request, 'oge/test18_26_blank.html',
+							{'test_all': test_all,
+							'test_list':test_list,
+							'test_id':test_id,})
+	else:	
+		test_list_user=testListForUser(user)	
+		
+		return render(request, 'oge/test18_26_blank.html',
+								{'test_all': test_all,
+								'test_list':test_list,
+								'test_id':test_id,
+								'test_list_user':test_list_user})
+
+def a_test18_26_blank(request, test_id):
+	'''Вычисляет данные,для отображения пустого бланка 
+	одного теста из Test18_26 для заполнения анонимным 
+	пользователем,
+	также данные отображения списка доступных заданий 
+	для пользователя без регистрации	'''
+
+	test_all,test_list = parseTestText(test_id)
+	t=Tests18_26.objects.get(id=test_id)
+	ans=t.answer
+	answer=ans.split('-**-')
+	answer.reverse()
+
+	for item in test_list:
+		item.append(answer.pop())
+
+	'''test_list=[[начало предложения, 
+					ответ пользователя, 
+					конец предложения, 
+					правильный ответ],   [...]]'''
+	
+	test_list_an = Tests18_26.objects.filter(answer__isnull=False)
+	'''test_list_an - список тестов, 
+	доступных для незарегистрированного пользователя'''
+	
+	return render(request, 'oge/a_test18_26_blank.html',
 							{'test_all': test_all,
 							'test_list':test_list,
 							'test_id':test_id,
-							'test_list_with_res':test_list_with_res})
-
+							'test_list_an':test_list_an})
