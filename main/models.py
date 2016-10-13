@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 import datetime
-from Pillow import Image
+import Pillow
 import os.path
 from new_teach.settings import BASE_DIR
 from django.core.files import File
@@ -54,7 +54,7 @@ class Foto(models.Model):
 
 	def foto_1x_2x_3x(self):
 		print 'начало foto_1x_2x_3x'
-		img=Image.open(self.foto.path)
+		img=Pillow.Image.open(self.foto.path)
 		
 		size=(((324,420),'_1x'),((648,840),'_2x'),((1296,1680),'_3x'))
 
