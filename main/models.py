@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 import datetime
-from PIL import Image
+from Pillow import Image
 import os.path
 from new_teach.settings import BASE_DIR
 from django.core.files import File
