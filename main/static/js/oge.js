@@ -11,13 +11,13 @@ function ShowAnswer(){
 $('#show-answer').on('click',function() {
   $('.answer').each(ShowAnswer);
   $('#show-answer').remove();
-  $('#pass_again').removeClass("col-md-6").addClass("col-md-12");
-  
+  $('#next-test').children().css('display','block');
 });
 
 
 $('#show-answer-anonymous').on('click',function(){
   $('.answer').each(ShowAnswer);
+   
 });
 
 // Проверяет ответы незарегистрированного пользователя с помощью цвета
@@ -43,11 +43,13 @@ $('#check-answer').on('click',function() {
   score=1;
   $('.anonymous-answer').each(CheckAnswer);
   if (score===1){
+  // правильный ответ
     $('#check-answer').remove();
     $('#next-test').children().css('display','block');
   };
   
   if (score===2){
+  // ответ с ошибками
     $('#show-answer').css('display','block');
     $('#check-answer').remove();
     $('#pass-test-again').css('display','block');
@@ -74,3 +76,4 @@ function handler( event ) {
   };
 };
 $( "ul.oge_menu" ).click( handler ).find( "ul.oge_menu" ).hide();
+

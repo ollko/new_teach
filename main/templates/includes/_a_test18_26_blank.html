@@ -20,7 +20,7 @@
 					<span>{{item.0}}</span>
 					<span>_____</span>
 					<input type="text" name="{{forloop.counter}}" class='anonymous-answer answer' value="{{item.1}}" autocomplete="off"/>
-					<span class='right-answer'>{{item.3}}</span>	
+					<span class='right-answer' style='display:none;'>{{item.3}}</span>	
 					<span>_____</span>
 					<span>{{item.2}}</span>					
 				</p>
@@ -36,12 +36,12 @@
 		<div class="row buttons" >
 			<input id= 'show-answer' class="col-md-6" style='display:none;' type="submit" value="Посмотреть правильные ответы"/>
 			<input id="check-answer" class="col-md-6" type="submit" value="Проверить ответы"/>		
-			<form id='next-test' action="{% url 'oge:a_test18_26_blank' test_id %}">
-				<input id='next-test' class="col-md-6" type="submit" style='display:none;' value="Следующее задание"/>
-			</form>
-			<form id='next-test' action="{% url 'oge:a_test18_26_blank' test_id %}">
+			<form id='pass_again' action="{% url 'oge:a_test18_26_blank' test_id %}">
 				<input id='pass-test-again' class="col-md-6" type="submit" style='display:none;' value="Пройти тест снова"/>
 			</form>
+			<form id='next-test' action="{% url 'oge:a_test18_26_blank' next_test_id %}">
+				<input id='next-test' class="col-md-6" type="submit" style='display:none;' value="Пройти следующий тест"/>
+			</form>		
 		</div>
 	</div>
 </div>

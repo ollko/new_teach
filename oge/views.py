@@ -7,6 +7,32 @@ import datetime
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required, permission_required
 
+def listId():
+	'''создает список из полей id модели Tests18_26'''
+	tests=Tests18_26.objects.all()
+	res=[]
+	for test in tests:
+		print 'test.id=',test.id
+		res.append(test.id)
+	return res
+
+def nextTestId(test_id):
+	'''принимает test_id в виде строки 
+	и возвращает id в виде строки следующего теста18_26'''
+	list_of_id=listId()
+	if len(list_of_id)>1:
+
+		next_index=list_of_id.index(int(test_id))+1
+		print 'next_index=',next_index
+		if next_index==len(list_of_id):
+
+			return str(list_of_id[0])
+		else:
+			print 'type(str(list_of_id[next_index]))=',type(str(list_of_id[next_index]))
+			return str(list_of_id[next_index])
+	else:
+		return None
+
 def testListForUser(user):
 	"""определяет список доступных тестов с результатами
 	для авторизованного ученика"""
@@ -308,6 +334,8 @@ def a_test18_26_blank(request, test_id):
 
 	test_all,test_list = parseTestText(test_id)
 	t=Tests18_26.objects.get(id=test_id)
+	print 'test_id=',test_id
+	print 'type(test_id)=',type(test_id)
 	ans=t.answer
 	answer=ans.split('-**-')
 	answer.reverse()
@@ -324,8 +352,12 @@ def a_test18_26_blank(request, test_id):
 	'''test_list_an - список тестов, 
 	доступных для незарегистрированного пользователя'''
 	
+	test_id_int=int(test_id)
+	next_test_id=nextTestId(test_id)
 	return render(request, 'oge/a_test18_26_blank.html',
 							{'test_all': test_all,
 							'test_list':test_list,
 							'test_id':test_id,
+							'test_id_int': test_id_int,
+							'next_test_id':next_test_id,
 							'test_list_an':test_list_an})
