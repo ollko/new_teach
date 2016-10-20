@@ -17,8 +17,7 @@ from django.contrib.auth.models import User
 #def index (request):
 #	return HttpResponse('This is my MAIN app!!!')
 def mainpage(request):
-	return render (request, 'main/mainpage.html',
-		{"request": request})
+	return HttpResponseRedirect('/about/')
 
 def about(request):
 	return render (request, 'main/about.html')	
