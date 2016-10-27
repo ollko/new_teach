@@ -1,6 +1,0 @@
-<h2 >добавление нового альбома:</h2>
-<form enctype="multipart/form-data" action = "{% url 'main:fotoalbums_new' %}" method="post">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<input type="submit" value="OK" />
-</form>

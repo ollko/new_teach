@@ -19,9 +19,6 @@ from django.contrib.auth.models import User
 def mainpage(request):
 	return HttpResponseRedirect('/about/')
 
-def about(request):
-	return render (request, 'main/about.html')	
-
 def news(request):
 	return render (request, 'main/news.html')	
 

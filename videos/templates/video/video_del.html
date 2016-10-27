@@ -1,4 +1,8 @@
-{% extends "main/__l_single_col.html" %}
+{% extends "common/__l_single_col.html" %}
+
+{{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static 'main/video.css' %}">
+{% endblock %}
 
 {% block content %}
 
@@ -37,4 +41,9 @@
 
 
 
+{% endblock %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript" charset="utf-8" src = "{% static 'js/video.js' %}"></script>
 {% endblock %}

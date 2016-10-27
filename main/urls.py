@@ -11,7 +11,7 @@ urlpatterns = [
 
     url(r'^$', my_views.mainpage, name='mainpage'),
     
-    url(r'^about/$', views.flatpage, {'url':'/about/'}, name='about'),
+    url(r'^about/$', views.flatpage, {'url':'/about/'}),
 
     url(r'^news/$', my_views.news, name='news'),
     

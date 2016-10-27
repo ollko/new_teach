@@ -53,7 +53,7 @@ class Foto(models.Model):
 		super(Foto,self).delete(*args,**kwargs)
 
 	def foto_1x_2x_3x(self):
-		print 'начало foto_1x_2x_3x'
+		print u'начало foto_1x_2x_3x'
 		img=PIL.Image.open(self.foto.path)
 		
 		size=(((324,420),'_1x'),((648,840),'_2x'),((1296,1680),'_3x'))
@@ -63,7 +63,7 @@ class Foto(models.Model):
 		for item in size:
 
 			foto_copy=img.copy()
-			foto_copy.thumbnail(item[0], Image.ANTIALIAS)
+			foto_copy.thumbnail(item[0], PIL.Image.ANTIALIAS)
 			path=self.foto.path.replace('.jpeg',item[1]+'.jpeg')
 			foto_copy.save(path)
 			foto_copy_data=open(path,'r')
