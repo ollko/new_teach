@@ -29,10 +29,10 @@ def fotostring(request):
 	ten_fist_foto=Foto.objects.order_by('-id')[:10]
 	print 'ten_fist_foto=',ten_fist_foto
 	context= {'ten_fist_foto':ten_fist_foto}
-	return render (request, 'main/fotostring.html',context)
+	return render (request, 'main/foto/fotostring.html',context)
 
 def	fotofavorite(request):
-	return render (request, 'main/fotofavorite.html')
+	return render (request, 'main/foto/fotofavorite.html')
 
 def fotoalbums(request):
 	try:
@@ -65,7 +65,7 @@ def fotoalbums(request):
 
 	form = AlbumForm()
 
-	return render (request, 'main/fotoalbums.html',{"content": content})
+	return render (request, 'main/foto/fotoalbums.html',{"content": content})
 	
 
 def foto_from_album(request,album_id):
@@ -76,7 +76,7 @@ def foto_from_album(request,album_id):
 
 	content= {'foto_from_album':foto_from_album,'album':album}	
 	# print content
-	return render (request, 'main/foto_from_album.html', content)
+	return render (request, 'main/foto/foto_from_album.html', content)
 
 
 
@@ -101,7 +101,7 @@ def foto_from_album_del(request,album_id):
 		content= {'foto_from_album':fotos, 'album_id':album_id}
 		print "request.POST=",request.POST
 
-	return render (request, 'main/foto_from_album_del.html', content)
+	return render (request, 'main/foto/foto_from_album_del.html', content)
 
 @permission_required('main.add_foto')
 @login_required	

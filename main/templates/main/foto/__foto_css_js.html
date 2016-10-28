@@ -1,0 +1,15 @@
+{% extends "common/__l_single_col.html" %}
+{% load staticfiles %}
+
+{% block stylesheet %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static 'main/fancybox/jquery.fancybox.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'main/mosaicflow.css' %}">
+{% endblock %}
+
+{% block javascript %}
+	{{ block.super }}
+	<script type="text/javascript" src = "{% static 'main/fancybox/jquery.fancybox.pack.js' %}"></script>
+	<script src="{% static 'js/mosaicflow/jquery.mosaicflow.min.js' %}"></script>	
+	<script type="text/javascript" src = "{% static 'js/foto-video.js' %}"></script>
+{% endblock %}
