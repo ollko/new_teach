@@ -20,7 +20,8 @@ def mainpage(request):
 	return HttpResponseRedirect('/about/')
 
 def news(request):
-	return render (request, 'main/news.html')	
+	
+	return render (request, 'main/news.html',)	
 
 def oge(request):
 	return render (request, 'main/oge.html')
@@ -40,7 +41,7 @@ def fotoalbums(request):
 		print 'albums=',albums
 
 	except Album.DoesNotExist:
-		raise Http404(u"Пока в фотогалерею не добавлено ни одного фотоальбома :(")
+		raise Http404(u"Пока в фотогалерею не добавлено ни одного фотоальбома :-(")
 
 	content=[]
 	for album in albums:

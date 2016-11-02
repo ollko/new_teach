@@ -7,10 +7,13 @@
 			<a href="#">мой профиль</a></li>
 		<li role="separator" class="divider"></li>
 		<li>
-			<a href="/logout/">выход</a></li>
+			<a href='/logout/'>выход</a></li>
 	</ul>
 </li>
 {% else %}
-<li class="gate"><a href="/login/">войти</a></li>
+
+	
+	<li class="gate"><a href='/login/?next={{request.path}}'>войти</a></li>
+	
 
 {% endif %}

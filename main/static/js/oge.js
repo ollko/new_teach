@@ -57,12 +57,14 @@ $('#check-answer').on('click',function() {
 });
 
 // После клика по input окну если есть текст, он исчезает, 
-// удаляются классы 'red-wrong-answer green-right-answer':
+
 
 $( 'input.anonymous-answer' ).on( 'select click', function( evt ) {
   if ($(evt.target).val()!==0){
     $(evt.target).val('');
   };
+
+// удаляются классы 'red-wrong-answer green-right-answer':
   $( evt.target ).removeClass( 'red-wrong-answer green-right-answer' );
   
 });

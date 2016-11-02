@@ -1,4 +1,4 @@
-{% extends "main/__l_left_sidebar.html" %}
+{% extends "common/__l_left_sidebar.html" %}
 {% load staticfiles %}
 
 {% block navigation %}
@@ -26,16 +26,22 @@
 {% endblock %}
 
 {% block main_col %}
-<div class='form'>
-	<h2>{{title}}</h2>
-	<form enctype="{{enctype_atr}}" action="{{action_atr}}" method="post">
-{% csrf_token %}
-	<!-- <table class="form"> -->
-		{{ form.as_p }}
-	<!-- </table> -->
-	
-	<input type="submit" value="{{value}}">
-	<!-- <input type="hidden" name="next" value="{{ next }}"> -->
-</form>
+<div class='form add_new_test'>
+	<div class="remove-sign">
+		<a href="{% url 'oge:fipi' %}" title="">
+			<span class="glyphicon glyphicon-remove-sign"></span>
+		</a>
+	</div>
+	<div>
+		<form enctype="{{enctype_atr}}" action="{{action_atr}}" method="post">
+			{% csrf_token %}
+
+			{{ form.as_p }}
+
+		
+		<input type="submit" value="{{value}}">
+		<!-- <input type="hidden" name="next" value="{{ next }}"> -->
+		</form>
+	</div>
 </div>
 {% endblock %}

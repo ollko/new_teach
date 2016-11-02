@@ -2,7 +2,7 @@
 	<table class="oge_menu">
 	{% for test in test_list_me %}
 		<li class="oge_menu">
-				№{{test.id}}
+			<span>задание <span>{{ forloop.counter }}
 			
 			{% if test.answer %}
 			<span>  ответы есть</span>

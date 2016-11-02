@@ -87,17 +87,22 @@ def fipi(request):
 	print 'type(PERMS)=',type(PERMS)
 	
 	current_user=request.user
+	all_permissions=current_user.get_all_permissions()
+	print 'all_permissions=',all_permissions
 
 	if PERMS<=current_user.get_all_permissions():
+		print 'пользователь может редактировать tests18_26'
 		test_list_me=testListForMe()
 		return render(request,'oge/fipi.html',{'test_list_me':test_list_me})
 	
 	elif current_user.is_anonymous():
+		print 'анонимный пользователь tests18_26'
 		test_list_an=testListAnonymous()
 		return render(request,'oge/fipi.html',{'test_list_an':test_list_an})
 
 	else:
 		test_list_user=testListForUser(current_user)
+		print 'зарегистрированный пользователь'
 		print 	'test_list_user=',test_list_user
 		return render(request,'oge/fipi.html',{'test_list_user':test_list_user})
 
@@ -138,7 +143,7 @@ def my_test18_26_add (request):
 		form=AddTests18_26Form()
 		test_list_me = testListForMe()
 	return render(request, 'oge/my_add_test18_26.html', {'form': form,
-															'title':'добавьте новый тест:',
+															'title':'скопируйте в это поле текст теста c сайта fipi.ru',
 															'value': 'добавить',
 															'test_list_me':test_list_me})			    	
 def my_test18_26_add_thanks(request, test_id):

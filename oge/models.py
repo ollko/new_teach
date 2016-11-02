@@ -9,7 +9,7 @@ from django.utils import timezone
 # Create your models here.
 
 class Tests18_26(models.Model):
-	tests18_26 = models.TextField()
+	tests18_26 = models.TextField('Cкопируйте в это поле текст теста c сайта fipi.ru:')
 	splited_tests18_26 = models.TextField(null=True,blank=True,default=None)
 	pub_data = models.DateTimeField('дата публикации',default=timezone.now)
 	answer=models.CharField(max_length=100,null=True,blank=True,default=None)
