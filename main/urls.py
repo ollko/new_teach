@@ -3,15 +3,13 @@ from django.conf.urls import url
 from django.contrib.flatpages import views
 from django.contrib.auth import views as auth_views
 from . import views as my_views
-from models import Album
-from django.contrib.auth.decorators import permission_required
 
 app_name = 'main'
 urlpatterns = [
 
     url(r'^$', my_views.mainpage, name='mainpage'),
     
-    url(r'^about/$', views.flatpage, {'url':'/about/'}),
+    url(r'^about/$', views.flatpage, {'url':'/about/'}, name='about'),
 
     url(r'^news/$', my_views.news, name='news'),
     

@@ -129,6 +129,10 @@ def foto_to_album_add(request,album_id):
 				f.foto_1x_2x_3x()
 				f.save()
 				i=i-1
+
+			# удаляем первоначальное фото большого размера:
+			f.del_initial_foto()
+			
 			return HttpResponseRedirect('/thanks/add_foto/'+album_id+'/')
 	# if a GET (or any other method) we'll create a blank form
 	else:
@@ -175,6 +179,9 @@ def fotoalbums_new(request):
 
 				f.save()
 				i=i-1
+
+			# удаляем первоначальное фото большого размера:
+			f.del_initial_foto()
 
 			return HttpResponseRedirect('/thanks/add_album/')
     # if a GET (or any other method) we'll create a blank form

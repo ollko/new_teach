@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="page-header">
-	<h3 style = "text-align: center;">Фотоальбом:"{{album.album}}"</h3>
+	<h4 style = "text-align: center;"><span>Фотоальбом: </span>"{{album.album|upper}}"</h4>
 	<div class="row">
 		<div class="col-sm-3"><a href="{% url 'main:fotoalbums' %}" title="к фотоальбомам"><span>к фотоальбомам</span></a></div>
 

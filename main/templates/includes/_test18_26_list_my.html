@@ -2,18 +2,14 @@
 	<table class="oge_menu">
 	{% for test in test_list_me %}
 		<li class="oge_menu">
-			<span>задание <span>{{ forloop.counter }}
-			
-			{% if test.answer %}
-			<span>  ответы есть</span>
-			{% else %}
-			<span>
-				<form action="{% url 'oge:my_test18_26_blank' test.id %}">
-					<button type="submit">добавить ответы</button>
-				</form>
-			</span>					
-			{% endif %}
-			
+			<form action="{% url 'oge:my_test18_26_blank' test.id %}">
+				<span>задание <span>{{ forloop.counter }}		
+					{% if test.answer %}
+				<span><button type="submit">ответы есть</button></span>
+					{% else %}
+				<span><button type="submit">добавить</button></span>					
+					{% endif %}
+			</form>	
 		</li>	
 	{% endfor %}	
 	</table>

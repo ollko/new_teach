@@ -23,13 +23,13 @@ class Foto(models.Model):
 	album = models.ForeignKey(Album, 
 		verbose_name = u'Выберите из списка или введите новое название:',
 		on_delete=models.CASCADE)
-	foto = models.ImageField(u'Выберите фотофайл',upload_to = 'fotos/thumbnails/%Y/%m/%d')
+	foto = models.ImageField(u'Выберите фотофайл',upload_to = 'fotos/%Y/%m')
 	foto_1x = models.ImageField(null=True,default=None,
-		upload_to = 'fotos/thumbnails/%Y/%m/%d')
+		upload_to = 'fotos/%Y/%m')
 	foto_2x = models.ImageField(null=True,default=None,
-		upload_to = 'fotos/thumbnails/%Y/%m/%d')
+		upload_to = 'fotos/%Y/%m')
 	foto_3x = models.ImageField(null=True,default=None,
-		upload_to = 'fotos/thumbnails/%Y/%m/%d')
+		upload_to = 'fotos/%Y/%m')
 	published_date = models.DateField()
 	likes = models.IntegerField(default=0)
 
@@ -46,11 +46,15 @@ class Foto(models.Model):
 		super(Foto,self).save(*args,**kwargs)
 
 	def delete(self,*args,**kwargs):
-		self.foto.delete(save=False)
+		
 		self.foto_1x.delete(save=False)
 		self.foto_2x.delete(save=False)
 		self.foto_3x.delete(save=False)
 		super(Foto,self).delete(*args,**kwargs)
+
+	def del_initial_foto(self,*args,**kwargs):
+		self.foto.delete(save=False)	
+
 
 	def foto_1x_2x_3x(self):
 		print u'начало foto_1x_2x_3x'
@@ -76,9 +80,7 @@ class Foto(models.Model):
 		self.foto_1x=file_file[0]
 		self.foto_2x=file_file[1]
 		self.foto_3x=file_file[2]
-		# remove(path)
-		# print 'foto_copy_data.closed',foto_copy_data.closed
-		# print 'file_file.closed',file_file.closed
+		
 	
 	
 	

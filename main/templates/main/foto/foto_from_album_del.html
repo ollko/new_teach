@@ -2,8 +2,8 @@
 
 {% block content %}
 <div class="page-header">
-	<h3 style = "text-align: center;">отметьте фото для удаления:
-	</h3>
+	<h4 style = "text-align: center;">отметьте фото для удаления:
+	</h4>
 	
 </div>
 
@@ -17,8 +17,8 @@
 			{% for item in foto_from_album %}
 			<div class="mosaicflow__item">
 				<input type="checkbox" name='{{item.id}}'>
-				<a class="fancyimage" data-fancybox-group="group" title="{{item.album}}" href="{{item.foto.url}}">
-					<img src="{{item.foto.url}}" alt="{{item.album}}">
+				<a class="fancyimage" data-fancybox-group="group" title="{{item.album}}" href="{{item.foto_1x.url}}">
+					<img src="{{item.foto_1x.url}}" srcset="{{item.foto_1x.url}} 1x,{{item.foto_2x.url}} 2x,{{item.foto_3x.url}} 3x," alt="{{item.album}">
 				</a>
 			</div>
 			{% endfor %}

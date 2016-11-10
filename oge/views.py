@@ -165,15 +165,33 @@ def my_test18_26_blank(request, test_id):
 
 
 	test_all,test_list = parseTestText(test_id)
+
+	t=Tests18_26.objects.get(id=test_id)
+	ans=t.answer
+	# если ответы уже есть добавим их к test_list для отображения в бланке
+	# если пока нет, добавим к test_list ''
+	if ans:		
+		answer=ans.split('-**-')
+		answer.reverse()
+	else:
+		answer=['' for x in range(int(t.qw_number))]
+
+	for item in test_list:
+		item.append(answer.pop())
+
 	test_list_me = testListForMe()
 	return render(request, 'oge/test18_26_detail.html',
+	# test_all - тест целиком, как он заносится в поле для добавления нового теста учителем
+	# test_list(с ответами если есть) - см. def parseTestText(test_id) выше
+	# test_id - test_id
+	# test_list_me=Tests18_26.objects.all()
 		{'test_all': test_all,
 		'test_list':test_list,
 		'test_id':test_id,
 		'test_list_me':test_list_me})
 
 
-@permission_required('oge.add_test18_26')
+@permission_required('oge.add_tests18_26')
 @login_required
 def my_test18_26_add_answer(request,test_id):
 	"""Добавляет ответы теста 18_26 в бд,
@@ -183,11 +201,11 @@ def my_test18_26_add_answer(request,test_id):
 	t=get_object_or_404(Tests18_26, id=test_id)
 	ans=request.POST
 	l=len(ans)
-
+	print 'ans=',ans
 	answer = ['' for i in range(l-1) ]
 	
 	for x in range(1,l):
-		answer[x-1]=ans[str(x)].lower()
+		answer[x-1]=ans[str(x)].strip().lower()
 
 	a='-**-'.join(answer)
 	t.answer= a
@@ -220,10 +238,10 @@ def  pass_test18_26(request,test_id):
 	user_ans = ['' for i in range(l-1) ]
 	
 	for x in range(1,l):
-		user_ans[x-1]=p[str(x)].lower()
-# res - число правильных ответов пользователя в тесте
+		user_ans[x-1]=p[str(x)].strip().lower()
+	# res - число правильных ответов пользователя в тесте
 	res=0
-# res_number - строка из единиц и нулей (0 - неправильноб 1 - правильно) 
+	# res_number - строка из единиц и нулей (0 - неправильноб 1 - правильно) 
 	res_numbers=''
 	for (x,y) in zip(ans,user_ans):
 		if x==y:
@@ -298,8 +316,6 @@ def three_out(l):
 		i=i+1
 
 	return t,l
-
-
 
 
 def test18_26_blank(request, test_id):

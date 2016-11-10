@@ -270,7 +270,7 @@ div.album-about {
 .reffer-container-item {
 	width: 50%;
 }
-
+}
 
 @media screen and (min-width: 1000px){
 
@@ -295,7 +295,7 @@ div.album-about {
 /*Test18_26*/
 div.total_test{
 	background-color: #DADAE0;
-	padding: 0.5em;
+	padding: 0.5em 1em;
 	outline: 1px solid #999;
 
 }
@@ -307,6 +307,7 @@ div.sentence{
 div.insert-word{
 	text-align: center;	
 }
+
 
 .green-right-answer {
 	color: green;
