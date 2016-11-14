@@ -71,7 +71,6 @@ TEMPLATES = [
     },
 ]
 
-print 'BASE_DIR=',BASE_DIR
 
 WSGI_APPLICATION = 'new_teach.wsgi.application'
 
@@ -125,7 +124,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
-print 'STATIC_ROOT=',STATIC_ROOT
+
 # for files uploading:
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/media/'
@@ -137,5 +136,3 @@ LOGIN_REDIRECT_URL='main:mainpage'
 
 STATUCFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
 
-
-SITE_ID=1
