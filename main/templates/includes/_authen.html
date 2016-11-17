@@ -7,7 +7,7 @@
 			<a href="#">мой профиль</a></li>
 		<li role="separator" class="divider"></li>
 		<li>
-			<a href='/logout/'>выход</a></li>
+			<a href='/logout/?next={{request.path}}'>выход</a></li>
 	</ul>
 </li>
 {% else %}

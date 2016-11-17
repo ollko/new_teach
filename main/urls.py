@@ -38,7 +38,8 @@ urlpatterns = [
         }, name='login'),
 
     url(r'^logout/', auth_views.logout,
-        {"template_name":"main/logout.html"}, name='logout'),
+        # {"template_name":"main/logout.html"}, 
+        name='logout'),
 
     url(r'^registration/',my_views.registration, name='registration'), 
 

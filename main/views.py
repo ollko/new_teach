@@ -11,6 +11,7 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
 
 
 # Create your views here.
@@ -22,9 +23,6 @@ def mainpage(request):
 def news(request):
 	
 	return render (request, 'main/news.html',)	
-
-def oge(request):
-	return render (request, 'main/oge.html')
 
 def fotostring(request):
 	ten_fist_foto=Foto.objects.order_by('-id')[:10]
@@ -255,19 +253,18 @@ def registration (request):
 			email=form.cleaned_data['email']
 			password=form.clean_password2()
 
-			
-			print 'form=',form
-
 			user=User.objects.create_user(username,email,password)
 			user.first_name=first_name
 			user.last_name=last_name
 			user.save()
-			# content=['']
-			return HttpResponseRedirect('/thanks/')
+
+			new_user = authenticate(username=username, password=password)
+
+			login(request, new_user)
+			
+			return HttpResponseRedirect('/')
 	else:	
 		form=RegistrationForm()
-
-
-	return render (request, 'main/registration.html',
-		{'form': form, 'next':next})
+		return render (request, 'main/registration.html',
+			{'form': form})
 

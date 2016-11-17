@@ -15,7 +15,9 @@
 			<input type="hidden" name="next" value="{{ next }}">
 			</div>				
 			<div>
+			{% autoescape on %}
 				<a href="{% url 'main:registration' %}">Зарегистрироваться</a>
+			{% endautoescape %}
 			</div>
 		</div>
 	</form>

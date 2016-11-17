@@ -78,17 +78,22 @@ def parseTestText(test_id):
 
 # Create your views here.
 def my_materials(request):
+	request.session['return_path'] = request.path
+	print 'request.session["return_path"]=',request.session['return_path']
+	print 'request.session.__dict__=',request.session.__dict__
 	return render(request,'oge/my_materials/my_materials.html')
 
 def fipi(request):
+	request.session['return_path'] = request.path
+	print 'request.session["return_path"]=',request.session['return_path']
 	PERMS={ u'oge.add_tests18_26',u'oge.add_useranswer',
 			u'oge.change_tests18_26',u'oge.change_useranswer',
 			u'oge.delete_tests18_26',u'oge.delete_useranswer'}
-	print 'type(PERMS)=',type(PERMS)
+	# print 'type(PERMS)=',type(PERMS)
 	
 	current_user=request.user
 	all_permissions=current_user.get_all_permissions()
-	print 'all_permissions=',all_permissions
+	# print 'all_permissions=',all_permissions
 
 	if PERMS<=current_user.get_all_permissions():
 		print 'пользователь может редактировать tests18_26'
@@ -103,7 +108,7 @@ def fipi(request):
 	else:
 		test_list_user=testListForUser(current_user)
 		print 'зарегистрированный пользователь'
-		print 	'test_list_user=',test_list_user
+		# print 	'test_list_user=',test_list_user
 		return render(request,'oge/fipi.html',{'test_list_user':test_list_user})
 
 
