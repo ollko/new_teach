@@ -263,8 +263,9 @@ def registration (request):
 			login(request, new_user)
 		
 			return HttpResponseRedirect('/')
-	else:	
+	else:
+		print 'регистрация'	
 		form=RegistrationForm()
-		return render (request, 'main/registration.html',
-			{'form': form})
+	return render (request, 'main/registration.html',
+		{'form': form})
 
