@@ -1,0 +1,25 @@
+{% extends "common/__l_single_col.html" %}
+
+{% block content %}
+<br>
+<div class='form'>
+	<div class="iks">
+		<a href="{{return_path}}"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>	
+	</div>
+	<h3>Добавить видео:</h3>
+	<form action="" method="post">
+		{% csrf_token %}
+		<table class="form">
+			{{ form.as_table }}
+		</table>
+	<div class="button-container">
+		<br>
+		<input type="submit" value="добавить">
+	<!-- <input type="hidden" name="next" value="{{ next }}"> -->
+		<br>
+	</div>	
+	
+</form>
+</div>
+
+{% endblock %}

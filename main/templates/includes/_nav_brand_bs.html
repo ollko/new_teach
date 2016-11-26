@@ -4,10 +4,12 @@
       <a class="navbar-brand" href="/">
         <img alt="Brand" style="height: 40px" src="{% static 'images/logo.svg' %}">
       </a>
+
+
+        <ul class="nav navbar-nav">
+        {% include  "includes/_authen.html" %}
+        </ul>
     </div>
-     <ul class="nav navbar-nav">
-	    {% include  "includes/_authen.html" %}
-	    </ul>
   </div>
 
 

@@ -7,34 +7,32 @@
 {% endblock %}
 
 {% block content %}
-
-<!--<div>
-	<h3 style = "text-align: center;" >ФОТОГАЛЕРЕЯ</h3>
-	<form action="new">
-		<button type="submit">добавить новые фотографии</button>
-	</form>
-</div>
---> <!-- Trailer Video Modal -->
-
-
-<div class="page-header">
-	<h3 style = "text-align: center;">отметьте видео для удаления:
-	</h3>
-	
+<br>
+<div class="reffer-container">
+  <div class="col-md-12 text-center"> 
+	{% if videos %}
+	<h3><span>Видео подраздела: </span><b>{{video_section.title}}</b></h3>
+	<h4><em>Отметьте видео для удаления:</em></h4>
+	{% else %}
+	<h3><span>В подразделе: </span><b>{{video_section.title}}</b><span> пока нет ни одного видео</span></h3>
+	{% endif %}
+  </div>
 </div>
 
-<form action="{% url 'videos:video_del' %}" method="post">
-{% csrf_token %}
+<form action="{% url 'videos:video_del' video_section.id %}" method="post">
+	{% csrf_token %}
+	{% if videos %}
 	<div class="button">
-        <button type="submit">Удалить отмеченные видео</button>
+        <button type="submit">удалить</button>
     </div>
-	{% for video in content %} 
+    {% endif %}
+	{% for video in videos %} 
 
 			  
 			<div class="col-md-12 col-lg-6 movie-tile text-center" >
 				<input type="checkbox" name='{{video.id}}'> 
 			    <img src="//img.youtube.com/vi/{{video.youtube_id}}/mqdefault.jpg" width="380" height="270">
-			    <h2>{{video.title}}</h2>
+			    <h4>{{video.title}}</h4>
 
 			</div>
 		

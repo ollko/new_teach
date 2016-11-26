@@ -3,7 +3,15 @@
 {% block content %}
 
 <div class='form'>
-	<h2>Вход</h2>
+	<div class="iks">
+		{% if next %}
+		<a href="{{ next }}"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>	
+		{% else %}
+
+		<a href="/"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>	
+		{% endif %}
+	</div>
+	<h3 >Вход</h3>
 	<form action="" method="post">
 		{% csrf_token %}
 		<table class="form">

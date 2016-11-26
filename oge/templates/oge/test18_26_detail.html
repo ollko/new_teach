@@ -1,13 +1,5 @@
-{% extends "common/__l_left_sidebar.html" %}
+{% extends "common/__l_left_sidebar_fipi.html" %}
 {% load staticfiles %}
-
-{% block navigation %}
-			<nav class="navbar navbar-default navbar-fixed-top">
-				{% include "includes/_nav_brand_bs.html" %}
-			</nav>
-{% endblock %}
-
-{% block bluetop %}{% endblock %}
 
 {% block side_col %}
 <div class="reffer-container-item"><a href="{% url 'oge:my_test18_26_add' %}" title="добавить тест18_26"><span class="glyphicon glyphicon-plus">добавить тест</span></a></div>

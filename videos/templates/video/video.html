@@ -8,16 +8,27 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
-  {% if perms.videos.add_video %}
-
+<br>
 <div class="reffer-container">
 
-  <!-- Trailer Video Modal -->
-  <div class="reffer-container-item"><a href="{% url 'videos:video_new' %}" title="добавить видео"><span class="glyphicon glyphicon-plus">добавить видео</span></a></div>
+  <div class="col-md-12 text-center">
+  {% if videos %}
+    <h4><span>Видео подраздела: </span><b>{{video_section.title}}</b></h4>
+  {% else %}
+  <h4><span>В подразделе: </span><b>{{video_section.title}}</b><span> пока нет ни одного видео </span></h4>
+  {% endif %}
+  </div>
+</div>
 
-  <div class="reffer-container-item"><a href="{% url 'videos:video_del' %}" title="добавить видео"><span class="glyphicon glyphicon-plus">удалить видео</span></a></div>
-  <!-- Trailer Video Modal -->
+{% if user.is_authenticated %}
+  {% if perms.videos.add_video %}
+<div class="reffer-container">
+
+  <div class="reffer-container-item"><a href="{% url 'videos:video_new' video_section.id %}" title="добавить видео"><span class="glyphicon glyphicon-plus">добавить видео</span></a></div>
+
+  {% if videos %}
+  <div class="reffer-container-item"><a href="{% url 'videos:video_del' video_section.id %}" title="добавить видео"><span class="glyphicon glyphicon-plus">удалить видео</span></a></div>
+  {% endif %}
 </div>
 
   {% endif %}
@@ -36,13 +47,11 @@
         </div>
       </div>
     </div>
-     <!--  <iframe width="640" height="360" src="https://www.youtube.com/embed/X0j_EYWLMj0" frameborder="0" allowfullscreen></iframe>
-<img src="//img.youtube.com/vi/X0j_EYWLMj0/mqdefault.jpg" width="320" height="180">  -->
-
-{% for video in content %}   
+    
+{% for video in videos %}   
 <div class="col-md-12 col-lg-6 movie-tile text-center" data-trailer-youtube-id="{{video.youtube_id}}" data-toggle="modal" data-target="#trailer">
     <img src="//img.youtube.com/vi/{{video.youtube_id}}/mqdefault.jpg" width="380" height="270">
-    <h2>{{video.title}}</h2>
+    <h4>{{video.title}}</h4>
 </div>
 {% endfor %}
 

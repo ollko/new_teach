@@ -3,25 +3,43 @@
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-ms-box-sizing: border-box;
-	/*outline: 1px solid red;*/
+	outline: 1px solid red;
 
 	}
 
-div.foroverlap{
-	padding-top: 70px;
+div.fipi-blue-top{
+	margin-top: 70px;
 }
 /*FOR "FORMS" AND FOR "LOGOUT"*/
+h3.enter{
+	
+	padding-top: .5em;
+	
+}
+/*крестик для закрывания*/
+div.iks{
+	float: right;
+	padding-top: .25em;
+	padding-right: .5em;
+	font-size: 1.5em;
+}
 div.remove-sign{
 	text-align: right;
 	font-size: 1.5em;
 }
 
 div.form, div.thanks{
-	width: 340px;
 	margin: 2em auto;
-	box-shadow:  3px 3px  3px #000;
 	text-align: center;
+}
+
+@media screen and (min-width: 420px){
+div.form, div.thanks{
+	width: 340px;
+	
+	box-shadow:  3px 3px  3px #000;
 	outline:  1px solid #CCCBCB;
+}
 }
 
 div.add_new_test{
@@ -43,7 +61,7 @@ ul.errorlist {
 	padding: 1em;
 }
 .form td{
-	text-align: center;
+	text-align: left;
 	padding: .2em;
 }
 .button-container, .link-container{
@@ -55,8 +73,9 @@ ul.errorlist {
 }
 table.form {
 	outline:  1px solid #CCCBCB;
+	width: 100%;
 }
-/*END FOR "FORMS" AND FOR "LOGOUT"*/
+/*END FOR "FORMS" AND FOR "LOGOIN"*/
 
 /*NAVBAR*/
 .navbar-brand {
@@ -75,7 +94,7 @@ li.gate {
 div.blue-top{
 	background-color: #AACCFF;
 	padding: 0.5em 0 0.5em;
-	margin-top: -40px;
+	margin-top: 50px;
 	
 
 }
@@ -347,3 +366,6 @@ div.insert-word{
 .oge-modal.open{
 	display: block;
 }
+/*Login, registration*/
+
+

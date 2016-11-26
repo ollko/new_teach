@@ -12,8 +12,8 @@ class Tests18_26(models.Model):
 	tests18_26 = models.TextField('Cкопируйте в это поле текст теста c сайта fipi.ru:')
 	splited_tests18_26 = models.TextField(null=True,blank=True,default=None)
 	pub_data = models.DateTimeField('дата публикации',default=timezone.now)
-	answer=models.CharField(max_length=100,null=True,blank=True,default=None)
-	qw_number = models.CharField('число вопросов в тесте',null=True,max_length=1,default='9')
+	answer=models.CharField(max_length=100,blank=True,default=1)
+	qw_number = models.CharField('число вопросов в тесте',null=True,max_length=1,default='')
 
 
 	def __unicode__(self):

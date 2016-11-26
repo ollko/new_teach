@@ -36,8 +36,8 @@ def nextTestId(test_id):
 def testListForUser(user):
 	"""определяет список доступных тестов с результатами
 	для авторизованного ученика"""
-	available_tests_list = Tests18_26.objects.filter(answer__isnull=False)
-	
+	available_tests_list =  Tests18_26.objects.exclude(answer__exact='')
+
 	res=[]
 	for test in available_tests_list:		
 		a1=UserAnswer.objects.filter(user=user)
@@ -56,7 +56,7 @@ def testListForMe():
 	return res
 
 def testListAnonymous():
-	res = Tests18_26.objects.filter(answer__isnull=False)
+	res = Tests18_26.objects.exclude(answer__exact='')
 	return res
 
 
@@ -325,24 +325,16 @@ def three_out(l):
 
 def test18_26_blank(request, test_id):
 	"""Вычисляет данные,для отображения пустого бланка 
-	одного теста из Test18_26 для заполнения учениками,
-	также данные отображения списка доступных заданий 
+	одного теста из Test18_26 для заполнения зарегистрированным 
+	учеником,
+	также данные отображения списка доступных этому ученику заданий 
 	с результатами (например: пройдено 8 из 9)"""
 
-	'''подготовим данные для отображения теста под номером test_id:
-	 '''
-	test_all,test_list = parseTestText(test_id)
-
-	
-	# Вывод всех доступных тестов с указанием степени пройденности для авторизованного учееника:
-
 	user=request.user
-	if user.is_anonymous():
-		return render(request, 'oge/test18_26_blank.html',
-							{'test_all': test_all,
-							'test_list':test_list,
-							'test_id':test_id,})
-	else:	
+	if user.is_authenticated():
+		# подготовим данные для отображения теста под номером test_id:
+		test_all,test_list = parseTestText(test_id)
+		# Вывод всех доступных тестов с указанием степени пройденности для авторизованного учееника:
 		test_list_user=testListForUser(user)	
 		
 		return render(request, 'oge/test18_26_blank.html',
@@ -350,6 +342,8 @@ def test18_26_blank(request, test_id):
 								'test_list':test_list,
 								'test_id':test_id,
 								'test_list_user':test_list_user})
+	else:
+		return HttpResponseRedirect('/oge/fipi/')
 
 def a_test18_26_blank(request, test_id):
 	'''Вычисляет данные,для отображения пустого бланка 
@@ -358,32 +352,36 @@ def a_test18_26_blank(request, test_id):
 	также данные отображения списка доступных заданий 
 	для пользователя без регистрации	'''
 
-	test_all,test_list = parseTestText(test_id)
-	t=Tests18_26.objects.get(id=test_id)
-	print 'test_id=',test_id
-	print 'type(test_id)=',type(test_id)
-	ans=t.answer
-	answer=ans.split('-**-')
-	answer.reverse()
+	user=request.user
+	if user.is_anonymous():
+		test_all,test_list = parseTestText(test_id)
+		t=Tests18_26.objects.get(id=test_id)
+		ans=t.answer
+		answer=ans.split('-**-')
+		answer.reverse()
+		test_list_an = testListAnonymous()
+		print 'тесты для незарегистрированного пользователя',test_list_an
+		
+			
 
-	for item in test_list:
-		item.append(answer.pop())
-
-	'''test_list=[[начало предложения, 
-					ответ пользователя, 
-					конец предложения, 
-					правильный ответ],   [...]]'''
-	
-	test_list_an = Tests18_26.objects.filter(answer__isnull=False)
-	'''test_list_an - список тестов, 
-	доступных для незарегистрированного пользователя'''
-	
-	test_id_int=int(test_id)
-	next_test_id=nextTestId(test_id)
-	return render(request, 'oge/a_test18_26_blank.html',
-							{'test_all': test_all,
-							'test_list':test_list,
-							'test_id':test_id,
-							'test_id_int': test_id_int,
-							'next_test_id':next_test_id,
-							'test_list_an':test_list_an})
+		'''test_list=[[начало предложения, 
+						ответ пользователя, 
+						конец предложения, 
+						правильный ответ],   [...]]'''
+		
+		
+		'''test_list_an - список тестов, 
+		доступных для незарегистрированного пользователя'''
+		
+		test_id_int=int(test_id)
+		next_test_id=nextTestId(test_id)
+		return render(request, 'oge/a_test18_26_blank.html',
+								{'test_all': test_all,
+								'test_list':test_list,
+								'test_id':test_id,
+								'test_id_int': test_id_int,
+								'next_test_id':next_test_id,
+								'test_list_an':test_list_an})
+	else:
+		print 'переадресация'
+		return HttpResponseRedirect('/oge/fipi/')

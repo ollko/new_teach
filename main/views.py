@@ -261,7 +261,7 @@ def registration (request):
 			new_user = authenticate(username=username, password=password)
 
 			login(request, new_user)
-			
+		
 			return HttpResponseRedirect('/')
 	else:	
 		form=RegistrationForm()
