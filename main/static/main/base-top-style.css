@@ -318,8 +318,12 @@ div.total_test{
 	outline: 1px solid #999;
 
 }
-div.sentence{
+
+div.row-sentence{
 	margin-bottom: 1.5em;
+}
+div.sentence{
+	
 	outline: 1px solid #777;
 }
 

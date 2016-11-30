@@ -13,15 +13,13 @@
 
 	{% for item in test_list %}
 	
-		<div class="row sentence">
+		<div class="row sentence row-sentence">
 
 			<div class="col-md-10 sentence">
 				<p>
-					<span>{{item.0}}</span>
-					<span>_____</span>
+					<span>{{item.0}}</span>				
 					<input type="text" name="{{forloop.counter}}" class='anonymous-answer answer' value="{{item.1}}" autocomplete="off"/>
-					<span class='right-answer' style='display:none;'>{{item.3}}</span>	
-					<span>_____</span>
+					<span class='right-answer' style='display:none;'>{{item.3}}</span>					
 					<span>{{item.2}}</span>					
 				</p>
 		</div>
