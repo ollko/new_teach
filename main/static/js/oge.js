@@ -4,7 +4,7 @@ function ShowAnswer(){
   answer=$(this).next().text();
   $(this).val(answer);
   $(this).removeClass( "green-right-answer red-wrong-answer answer" ).addClass('darker');  
-  $(this).parent().siblings().children().addClass('sign-out');
+
 
 };
 

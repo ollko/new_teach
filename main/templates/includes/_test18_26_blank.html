@@ -1,12 +1,11 @@
 <div class='total_test'>
-	<div class='header'>
-	<h3>Задание {{test_id}}</h3>
-		{% if item|length_is:"10" %}
-		<b>Прочитайте приведённый ниже текст. Преобразуйте слова, напечатанные заглавными буквами в конце строк, обозначенных номерами 18–26, так, чтобы они грамматически соответствовали содержанию текста. Заполните пропуски полученными словами. Каждый пропуск соответствует отдельному заданию 18–26.</b>
-		{% else %}
-		<b>Прочитайте приведённый ниже текст. Преобразуйте слова, напечатанные заглавными буквами в конце строк, обозначенных номерами 27–32, так, чтобы они грамматически и лексически соответствовали содержанию текста. Заполните пропуски полученными словами. Каждый пропуск соответствует отдельному заданию 27–32.</b>
-		{% endif %}
-	</div>
+	<div class="container-fluid">
+		<h3>Задание {{test_id}}</h3>
+			{% if item|length_is:"10" %}
+			<p><b>Прочитайте приведённый ниже текст. Преобразуйте слова, напечатанные заглавными буквами в конце строк, обозначенных номерами 18–26, так, чтобы они грамматически соответствовали содержанию текста. Заполните пропуски полученными словами. Каждый пропуск соответствует отдельному заданию 18–26.</b></p>
+			{% else %}
+			<p><b>Прочитайте приведённый ниже текст. Преобразуйте слова, напечатанные заглавными буквами в конце строк, обозначенных номерами 27–32, так, чтобы они грамматически и лексически соответствовали содержанию текста. Заполните пропуски полученными словами. Каждый пропуск соответствует отдельному заданию 27–32.</b></p>
+			{% endif %}
 	<div class="18_26">
 		<p>{{test_all}}</p>
 	</div>
@@ -14,27 +13,25 @@
 	<form action='{% url "oge:pass_test18_26" test_id %}' method='post'>
 		{% csrf_token %}
 		{% for item in test_list %}
-		<div class="container-fluid">
-			<div class="row sentence">
-
-				<div class="col-md-10 sentence">
-					<p>
-						<span>{{item.0}}</span>
-						<span>_____</span>
-						<input type="text" name="{{forloop.counter}}" class="anonymous-answer" value="{{item.1}} " autocomplete="off"/>
-						<span>_____</span>
-						<span>{{item.2}}</span>	
-					</p>
+		<div class="row sentence row-sentence">
+			<div class="col-md-10 sentence">
+				<p>
+					<span>{{item.0}}</span>
+					<span>__</span>
+					<input type="text" name="{{forloop.counter}}" class="anonymous-answer" value="{{item.1}} " autocomplete="off"/>
+					<span>__</span>
+					<span>{{item.2}}</span>	
+				</p>
 			</div>
-				<div class="col-md-2 insert-word">
-					<p>
-						<span>{{item.1}}</span>
-					</p>
-				</div>
-			</div>		
-		</div>
+			<div class="col-md-2 insert-word">
+				<p>
+					<span>{{item.1}}</span>
+				</p>
+			</div>
+		</div>		
 		{% endfor %}
 		<input type="submit" value="Проверить ответы" />
 	</form>
+</div>
 </div>
 

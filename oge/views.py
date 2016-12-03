@@ -183,7 +183,7 @@ def my_test18_26_blank(request, test_id):
 
 	for item in test_list:
 		item.append(answer.pop())
-
+	print 'test_list=',test_list
 	test_list_me = testListForMe()
 	return render(request, 'oge/test18_26_detail.html',
 	# test_all - тест целиком, как он заносится в поле для добавления нового теста учителем
@@ -218,17 +218,13 @@ def my_test18_26_add_answer(request,test_id):
 
 	return HttpResponseRedirect('/oge/fipi/')
 
-def my_test18_26_add_answer_thanks(request,test_id):
-	"""отображает страницу 'ответ к тесту успешно добавлен'"""
-	test_list_me = testListForMe()
-
-	return render(request,'oge/my_test18_26_add_answer_thanks.html',
-					{'test_id':test_id,'test_list_me':test_list_me})
-
 def  pass_test18_26(request,test_id):
 	"""добавляет ответ ученика в БД (модель UserAnswer) 
 	и перенаправляет на страницу 
 	'/oge/fipi/test18_26/<test_id>/check_answer/'  """
+	
+	if request.user.is_anonymous():
+		return HttpResponseRedirect('/oge/fipi/')
 
 	user=request.user
 
@@ -266,8 +262,13 @@ def  pass_test18_26(request,test_id):
 
 def check_answer(request,test_id):
 	"""отображает бланк теста c ответами пользователя 
-	(зеленый правильно, красный неправильно)"""
-
+	(зеленый правильно, красный неправильно);
+	по нажатии на кнопку ПОСМОТРЕТЬ ОТВЕТЫ отображается бланк
+	с правильными ответами
+	"""
+	if request.user.is_anonymous():
+		return HttpResponseRedirect('/oge/fipi/')
+		
 	test=Tests18_26.objects.get(id=test_id)
 
 	test_all=test.tests18_26
@@ -289,30 +290,33 @@ def check_answer(request,test_id):
 
 	while len(test_splited)>=3:
 		t, test_splited = three_out(test_splited)
-	# заменим ЗАГОТОВКИ ответов ответами пользователя:
-		print 'user_answer=',user_answer
-		t[1]=user_answer.pop()
+	# добавим третьим индексом [3] ответ пользователя
+		t.append(user_answer.pop())
+	# добавим четвертым индексом [3] ответ пользователя
 		t.append(right_answer_reverse.pop())
-	# добавим к списку t 4й элемент в виде True, если пользователь дал правильный ответ
+	# добавим к списку t 5й элемент в виде True, если пользователь дал правильный ответ
 		if res_numbers.startswith('1',i):
 			t.append(True)
 		i=i+1
 
 		test_list.append(t)
-	print 'test_list=',test_list
-	'''test_list=[[начало предложения, ответ пользователя, конец предложения, правильный ответ,True or False],..
-	]'''
+	'''test_list=[[начало предложения, ЗАГОТОВКА ОТВЕТА, конец предложения, 
+	ответ пользователя,правильный ответ,True or False],..[] ]'''
 	# Вывод всех доступных тестов с указанием степени пройденности для авторизованного учееника:
 	user=request.user
 	test_list_user=testListForUser(user)	
 	
 	return render(request, 'oge/cheсk_answer.html',
-							{'test': test_all,
+							{'test_all': test_all,
 							'test_list':test_list,
 							'test_id':test_id,
 							'test_list_user':test_list_user})
 
 def three_out(l):
+	""" 
+	Принимает 
+	и возвращает []
+	"""
 	t=[]
 	i=0
 	while i<=2:
@@ -365,7 +369,7 @@ def a_test18_26_blank(request, test_id):
 			
 
 		'''test_list=[[начало предложения, 
-						ответ пользователя, 
+						слово, кот. нужно изменить, 
 						конец предложения, 
 						правильный ответ],   [...]]'''
 		

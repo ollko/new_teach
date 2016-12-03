@@ -1,41 +1,49 @@
 <div class='total_test'>
 	<div class="container-fluid">
-		<div class='row'>		
-			<p><b>Прочитайте приведённый ниже текст. Преобразуйте слова, напечатанные заглавными буквами в конце строк, обозначенных номерами 18–26, так, чтобы они грамматически соответствовали содержанию текста. Заполните пропуски полученными словами. Каждый пропуск соответствует отдельному заданию 18–26.</b></p>		
-		</div>
-	<br>
+		<h3>Задание {{test_id}}</h3>
+			{% if item|length_is:"10" %}
+			<p><b>Прочитайте приведённый ниже текст. Преобразуйте слова, напечатанные заглавными буквами в конце строк, обозначенных номерами 18–26, так, чтобы они грамматически соответствовали содержанию текста. Заполните пропуски полученными словами. Каждый пропуск соответствует отдельному заданию 18–26.</b></p>
+			{% else %}
+			<p><b>Прочитайте приведённый ниже текст. Преобразуйте слова, напечатанные заглавными буквами в конце строк, обозначенных номерами 27–32, так, чтобы они грамматически и лексически соответствовали содержанию текста. Заполните пропуски полученными словами. Каждый пропуск соответствует отдельному заданию 27–32.</b></p>
+			{% endif %}		
+
 		
-	<div class="row">
-		<p>{{test}}</p>					
-	</div>
-	<br>
-{% for item in test_list %}
-	{% if item.4 %}
-	<div class="row sentence">
-		<div class="col-md-10 ">
+		<div class="18_26">
+			<p>{{test_all}}</p>
+		</div>
+
+	{% for item in test_list %}
+	{% if item.5 %}
+	<div class="row sentence row-sentence">
+		<div class="col-md-10 sentence">
 			<span>{{item.0}}</span>
-			<span>_____</span>
-			<input type="text" class="green-right-answer answer" name="{{forloop.counter}}" id="'test18_26_'+{{forloop.counter}}" value="{{item.1}}"/>
-			<span class="hide-answer">{{item.3}}</span>
-			<span>_____</span>
+			<span>__</span>
+			<input type="text" class="green-right-answer answer" name="{{forloop.counter}}" id="'test18_26_'+{{forloop.counter}}" value="{{item.3}}"/>
+			<span class="hide-answer">{{item.4}}</span>
+			<span>__</span>
 			<span>{{item.2}}</span>
 		</div>
 		<div class="col-md-2 insert-word">
-			<span class="glyphicon glyphicon-plus-sign green-right-answer"></span>
+			<p>
+				<span>{{item.1}}</span>
+			</p>
 		</div>
 	</div>		
 	{% else %}
-	<div class="row sentence">
-		<div class="col-md-10 ">
+	<div class="row sentence row-sentence">
+		<div class="col-md-10 sentence">
 			<span>{{item.0}}</span>
-			<input type="text" class="red-wrong-answer answer" name="{{forloop.counter}}" id="'test18_26_'+{{forloop.counter}}" value="{{item.1}}"/>
-			<span class="hide-answer">{{item.3}}</span>
-			<span>_____</span>
+			<span>__</span>
+			<input type="text" class="red-wrong-answer answer" name="{{forloop.counter}}" id="'test18_26_'+{{forloop.counter}}" value="{{item.3}}"/>
+			<span class="hide-answer">{{item.4}}</span>
+			<span>__</span>
 			<span>{{item.2}}</span>
 		</div>		
 		<div class="col-md-2 insert-word">
-			<span class="glyphicon glyphicon-minus-sign red-wrong-answer"></span>
-		</div>			
+			<p>
+				<span>{{item.1}}</span>
+			</p>
+		</div>		
 	</div>		
 	{% endif %}
 {% endfor %}
@@ -44,7 +52,6 @@
 			<form action="{% url 'oge:test18_26_blank' test_id %}">
 				<input id='pass_again' class="col-md-6" type="submit" value="Пройти тест снова" />			
 			</form>
-
 		</div>
 	</div>
 </div>

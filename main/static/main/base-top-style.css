@@ -349,10 +349,7 @@ div.insert-word{
 	position: absolute;
 	top: 9999px;
 }
-.sign-out{
-	position: absolute;
-	top: 9999px;
-}
+
 .darker{
 	font-weight: 700;
 	font-size: 1.2em;
