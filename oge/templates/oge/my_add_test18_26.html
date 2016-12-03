@@ -2,38 +2,23 @@
 {% load staticfiles %}
 
 {% block side_col %}
-<ul class="oge_menu">
-	<li><a href="/oge/fipi/listen/">Аудирование</a></li>
-	<li><a href="/oge/fipi/read/">Чтение</a></li>
-{% if user.is_authenticated %}
-	{% if perms.oge.add_tests18_26 %}
-	<li>Языковой материал
-		<ul class="test-list">
-			{% include "includes/_test18_26_list_my.html" %}
-		</ul>
-	</li>	
-	{% endif %}	
-{% endif %}
-</ul>
+	{% include "includes/_oge_menu.html" %}
 {% endblock %}
 
 {% block main_col %}
-<div class='form add_new_test'>
-	<div class="remove-sign">
-		<a href="{% url 'oge:fipi' %}" title="">
-			<span class="glyphicon glyphicon-remove-sign"></span>
-		</a>
-	</div>
-	<div>
-		<form enctype="{{enctype_atr}}" action="{{action_atr}}" method="post">
-			{% csrf_token %}
 
+<div class='form form-add-test'>
+	<div class="iks">
+		<a href="/oge/fipi/"><span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></a>	
+	</div>
+	<p ><b>Скопируйте в это поле текст нового задания c сайта fipi.ru:</b></p>
+	<form action="" method="post">
+		{% csrf_token %}
 			{{ form.as_p }}
-
-		
-		<input type="submit" value="{{value}}">
-		<!-- <input type="hidden" name="next" value="{{ next }}"> -->
-		</form>
-	</div>
+		<div>
+			<input type="submit" value="добавить">
+			<input type="hidden" name="next" value="/oge/fipi/">				
+		</div>
+	</form>
 </div>
 {% endblock %}

@@ -75,7 +75,12 @@ table.form {
 	outline:  1px solid #CCCBCB;
 	width: 100%;
 }
-/*END FOR "FORMS" AND FOR "LOGOIN"*/
+
+/*форма для добавления нового теста*/
+div.form-add-test{
+	padding: 1em 0;
+}
+
 
 /*NAVBAR*/
 .navbar-brand {
@@ -371,5 +376,4 @@ div.insert-word{
 	display: block;
 }
 /*Login, registration*/
-
 

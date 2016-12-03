@@ -142,15 +142,13 @@ def my_test18_26_add (request):
 			t.save()
 			
 			test_id = t.id
-			return HttpResponseRedirect('/oge/fipi/my/test18_26/add/'+str(test_id)+'/thanks/')
+			return HttpResponseRedirect('/oge/fipi/')
 
 	else:
 		form=AddTests18_26Form()
 		test_list_me = testListForMe()
 	return render(request, 'oge/my_add_test18_26.html', {'form': form,
-															'title':'скопируйте в это поле текст теста c сайта fipi.ru',
-															'value': 'добавить',
-															'test_list_me':test_list_me})			    	
+													'test_list_me':test_list_me})			    	
 def my_test18_26_add_thanks(request, test_id):
 	"""отображает страницу 'новое задание успешно добавлено'"""
 	
@@ -168,6 +166,8 @@ def my_test18_26_blank(request, test_id):
 	также данные для отображения списка всех заданий 
 	с указанием есть к ним ответы или нет"""
 
+	if request.user.is_anonymous():
+		return HttpResponseRedirect('/oge/fipi/')
 
 	test_all,test_list = parseTestText(test_id)
 
@@ -216,7 +216,7 @@ def my_test18_26_add_answer(request,test_id):
 	t.answer= a
 	t.save()
 
-	return HttpResponseRedirect('/oge/fipi/my/test18_26/'+str(test_id)+'/add_answer/thanks/')
+	return HttpResponseRedirect('/oge/fipi/')
 
 def my_test18_26_add_answer_thanks(request,test_id):
 	"""отображает страницу 'ответ к тесту успешно добавлен'"""
@@ -275,7 +275,6 @@ def check_answer(request,test_id):
 	user_id=request.user.id
 	
 	useranswer=test.useranswer_set.get(user=user_id)
-	print 'useranswer=',useranswer
 	res_numbers=useranswer.res_numbers
 	# получим лист из тройных элементов для отображения каждого предлодения теста
 	test_splited=test.splited_tests18_26.split('-**-')
@@ -354,14 +353,15 @@ def a_test18_26_blank(request, test_id):
 
 	user=request.user
 	if user.is_anonymous():
-		test_all,test_list = parseTestText(test_id)
+		test_all,test_list = parseTestText(test_id)		
 		t=Tests18_26.objects.get(id=test_id)
 		ans=t.answer
 		answer=ans.split('-**-')
 		answer.reverse()
 		test_list_an = testListAnonymous()
-		print 'тесты для незарегистрированного пользователя',test_list_an
-		
+		# print 'тесты для незарегистрированного пользователя',test_list_an
+		for item in test_list:
+			item.append(answer.pop())
 			
 
 		'''test_list=[[начало предложения, 
@@ -374,7 +374,7 @@ def a_test18_26_blank(request, test_id):
 		доступных для незарегистрированного пользователя'''
 		
 		test_id_int=int(test_id)
-		next_test_id=nextTestId(test_id)
+		next_test_id=nextTestId(test_id)		
 		return render(request, 'oge/a_test18_26_blank.html',
 								{'test_all': test_all,
 								'test_list':test_list,

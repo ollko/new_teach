@@ -9,10 +9,10 @@ from django.utils import timezone
 # Create your models here.
 
 class Tests18_26(models.Model):
-	tests18_26 = models.TextField('Cкопируйте в это поле текст теста c сайта fipi.ru:')
+	tests18_26 = models.TextField("")
 	splited_tests18_26 = models.TextField(null=True,blank=True,default=None)
 	pub_data = models.DateTimeField('дата публикации',default=timezone.now)
-	answer=models.CharField(max_length=100,blank=True,default=1)
+	answer=models.CharField(max_length=100,blank=True,null=True,default='')
 	qw_number = models.CharField('число вопросов в тесте',null=True,max_length=1,default='')
 
 
@@ -66,7 +66,7 @@ class UserAnswer(models.Model):
 
 	def __unicode__(self):
 
-		return 	u'ответ пользователя '+str(self.user)+' на тест №'+str(self.test18_26)
+		return 	u'ответ пользователя '+unicode(self.user)+u'на тест №'+unicode(self.test18_26)
 
 	def save(self,*args,**kwargs):
 

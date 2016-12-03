@@ -12,16 +12,11 @@ urlpatterns = [
 
 	url(r'^fipi/my/test18_26/add/$', views.my_test18_26_add, name='my_test18_26_add'),
 
-	url(r'^fipi/my/test18_26/add/(?P<test_id>[0-9]+)/thanks/$', views.my_test18_26_add_thanks, name='my_test18_26_add_thanks'),
-
 	url(r'^fipi/my/test18_26/(?P<test_id>[0-9]+)/$',
 		views.my_test18_26_blank, name='my_test18_26_blank'),
 	
 	url(r'^fipi/my/test18_26/(?P<test_id>[0-9]+)/add_answer/$',
 		views.my_test18_26_add_answer, name='my_test18_26_add_answer'),
-
-	url(r'^fipi/my/test18_26/(?P<test_id>[0-9]+)/add_answer/thanks/$',
-		views.my_test18_26_add_answer_thanks, name='my_test18_26_add_answer_thanks'),
 
 
 	url(r'^fipi/test18_26/(?P<test_id>[0-9]+)/$',
