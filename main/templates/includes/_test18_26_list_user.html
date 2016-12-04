@@ -1,15 +1,32 @@
 {% if test_list_user %}
 	{% for test in test_list_user %}
-		<li class="oge_menu">
-			<a href="{% url 'oge:test18_26_blank'  test.0.id %}"><span>задание <span>{{ forloop.counter }}</a>
-			
-			{% if test.1 %}
-			<span>пройдено </span>{{test.1}}<span> из </span>{{test.0.qw_number}}
-				
-			{% else %}
-			<span>не пройдено</span>
 
-			{% endif %}
-		</li>	
+		{% if test.0.id == test_id_int %}
+			<li class="oge_menu darker">
+
+				<a href="{% url 'oge:test18_26_blank'  test.0.id %}"><span>задание <span>{{ forloop.counter }}</a>
+				
+				{% if test.1 %}
+				<span>пройдено </span>{{test.1}}<span> из </span>{{test.0.qw_number}}
+					
+				{% else %}
+				<span>не пройдено</span>
+
+				{% endif %}
+			</li>	
+		{% else %}
+			<li class="oge_menu">
+				<a href="{% url 'oge:test18_26_blank'  test.0.id %}"><span>задание <span>{{ forloop.counter }}</a>
+				
+				{% if test.1 %}
+				<span>пройдено </span>{{test.1}}<span> из </span>{{test.0.qw_number}}
+					
+				{% else %}
+				<span>не пройдено</span>
+
+				{% endif %}
+			</li>	
+		{% endif %}	
+
 	{% endfor %}	
 {% endif %}	

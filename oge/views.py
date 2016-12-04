@@ -183,8 +183,8 @@ def my_test18_26_blank(request, test_id):
 
 	for item in test_list:
 		item.append(answer.pop())
-	print 'test_list=',test_list
 	test_list_me = testListForMe()
+	test_id_int=int(test_id)
 	return render(request, 'oge/test18_26_detail.html',
 	# test_all - тест целиком, как он заносится в поле для добавления нового теста учителем
 	# test_list(с ответами если есть) - см. def parseTestText(test_id) выше
@@ -193,6 +193,7 @@ def my_test18_26_blank(request, test_id):
 		{'test_all': test_all,
 		'test_list':test_list,
 		'test_id':test_id,
+		'test_id_int': test_id_int,
 		'test_list_me':test_list_me})
 
 
@@ -305,11 +306,12 @@ def check_answer(request,test_id):
 	# Вывод всех доступных тестов с указанием степени пройденности для авторизованного учееника:
 	user=request.user
 	test_list_user=testListForUser(user)	
-	
+	test_id_int=int(test_id)
 	return render(request, 'oge/cheсk_answer.html',
 							{'test_all': test_all,
 							'test_list':test_list,
 							'test_id':test_id,
+							'test_id_int': test_id_int,
 							'test_list_user':test_list_user})
 
 def three_out(l):
@@ -339,11 +341,12 @@ def test18_26_blank(request, test_id):
 		test_all,test_list = parseTestText(test_id)
 		# Вывод всех доступных тестов с указанием степени пройденности для авторизованного учееника:
 		test_list_user=testListForUser(user)	
-		
+		test_id_int=int(test_id)
 		return render(request, 'oge/test18_26_blank.html',
 								{'test_all': test_all,
 								'test_list':test_list,
 								'test_id':test_id,
+								'test_id_int': test_id_int,								
 								'test_list_user':test_list_user})
 	else:
 		return HttpResponseRedirect('/oge/fipi/')

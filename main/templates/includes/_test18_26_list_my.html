@@ -1,11 +1,17 @@
 {% if test_list_me %}
-	<table class="oge_menu">
 	{% for test in test_list_me %}
-		<li class="oge_menu">
-			<a href="{% url 'oge:my_test18_26_blank' test.id %}"><span>задание <span>{{ forloop.counter }}		
-			</a>
-			{% if not test.answer %}<span> <b>NEW</b></span>{% endif %}
+		{% if test.id == test_id_int %}
+			<li class="oge_menu darker">
+				<a href="{% url 'oge:my_test18_26_blank' test.id %}"><span>задание <span>{{ forloop.counter }}
+				</a>
+				{% if not test.answer %}<span> <b>NEW</b></span>{% endif %}
 			</li>	
+		{% else %}
+			<li class="oge_menu">
+				<a href="{% url 'oge:my_test18_26_blank' test.id %}"><span>задание <span>{{ forloop.counter }}
+				</a>
+				{% if not test.answer %}<span> <b>NEW</b></span>{% endif %}
+			</li>	
+		{% endif %}
 	{% endfor %}	
-	</table>
 {% endif %}
