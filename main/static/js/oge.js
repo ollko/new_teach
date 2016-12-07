@@ -71,11 +71,20 @@ $( 'input.anonymous-answer' ).on( 'select click', function( evt ) {
 
 //Показывает/скрывает подменю в левой колонке:
 
+
 function handler( event ) {
   var target = $( event.target );
   if ( target.is( "li.oge_menu" ) ){
     target.children().toggle();
   };
 };
-$( "ul.oge_menu" ).click( handler ).find( "ul.oge_menu" ).hide();
+
+var urlString=window.location.toString();
+
+if (urlString.indexOf('/test18_26/')===-1){
+  $( "ul.oge_menu" ).click( handler ).find( "ul.oge_menu" ).hide();
+} else {
+  $( "ul.oge_menu" ).click( handler );
+}
+
 

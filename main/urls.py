@@ -33,9 +33,7 @@ urlpatterns = [
 
    
     url(r'^login/', auth_views.login,
-        {"template_name":"main/login.html",
-        "extra_context":{'title':'вход','value':'войти'}
-        }, name='login'),
+        {"template_name":"main/login.html"}, name='login'),
 
     url(r'^logout/', auth_views.logout,
         # {"template_name":"main/logout.html"}, 
