@@ -68,7 +68,7 @@ ul.errorlist {
 	display: flex;
 	justify-content: space-around;
 	padding: 1.5em 1em;
-	outline:  1px solid #CCCBCB;
+	/*outline:  1px solid #CCCBCB;*/
 
 }
 table.form {

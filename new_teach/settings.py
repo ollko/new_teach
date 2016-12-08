@@ -39,6 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+     # ... include the providers you want to enable:
+    'allauth.socialaccount.providers.vk',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -126,3 +134,12 @@ LOGIN_REDIRECT_URL='main:mainpage'
 
 STATUCFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
 
+AUTHENTICATION_BACKENDS = (
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+)

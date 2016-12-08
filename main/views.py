@@ -242,7 +242,7 @@ def registration (request):
 		if form.is_valid():
 			print "form.is_valid()=",form.is_valid()
 
-			username=form.cleaned_data['first_name']
+			username=form.cleaned_data['email']
 			first_name=form.cleaned_data['first_name']
 			last_name=form.cleaned_data['last_name']
 			email=form.cleaned_data['email']
