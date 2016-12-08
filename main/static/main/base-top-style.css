@@ -371,6 +371,9 @@ div.insert-word{
 }
 .oge-modal.open{
 	display: block;
-}
-/*Login, registration*/
 
+}
+
+li.oge_menu{
+	cursor: pointer;
+}
