@@ -86,5 +86,12 @@ if (urlString.indexOf('/test18_26/')===-1){
 } else {
   $( "ul.oge_menu" ).click( handler );
 }
+//Проставляет номер задания в главной колонке:
 
-
+window.onload = function () {
+var t=$('li.darker').text();
+console.log('text='+t);
+var reg=/[0-9]/;
+var testNumber=t.match(reg);
+$('h3.test-header').append('<span> '+testNumber+'</span>');
+};

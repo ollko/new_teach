@@ -3,12 +3,12 @@
 
 		{% if test.id == test_id_int %}
 			<li class="oge_menu darker">
-				<a href="{% url 'oge:a_test18_26_blank' test.id %}"><span>задание <span>{{ forloop.counter }}</a>
+				<a href="{% url 'oge:a_test18_26_blank' test.id %}"><span>задание </span><span>{{ forloop.counter }}</span></a>
 				
 			</li>
 		{% else %}	
 			<li class="oge_menu">
-				<a href="{% url 'oge:a_test18_26_blank' test.id %}"><span>задание <span>{{ forloop.counter }}</a>				
+				<a href="{% url 'oge:a_test18_26_blank' test.id %}"><span>задание </span><span>{{ forloop.counter }}</span></a>				
 			</li>
 		{% endif %}	
 
