@@ -6,22 +6,18 @@
   <link rel="stylesheet" type="text/css" href="{% static 'main/video.css' %}">
 {% endblock %}
 
-{% if video_section=='1' %}
-  {% block title %}Кухаренко Ольга Борисовна - мои видео{% endblock %}
-{% elif video_section=='2' %}
-  {% block title %}Кухаренко Ольга Борисовна - jokes{% endblock %}
-{% elif video_section=='3' %}
-  {% block title %}Кухаренко Ольга Борисовна - for classe{% endblock %}
-{% endif %}
+
+{% block title %}Кухаренко Ольга Борисовна - мои видео{% endblock %}
+
 
 
 {% block content %}
 
-{% if video_section=='1' %}
+{% if video_section == '1' %}
 <h1 class='hidden-title-text'>мои видео</h1>
-{% elif video_section=='2' %}
+{% elif video_section == '2' %}
 <h1 class='hidden-title-text'>jokes</h1>
-{% elif video_section=='3' %}
+{% elif video_section == '3' %}
 <h1 class='hidden-title-text'>for classes</h1>
 {% endif %}
 
