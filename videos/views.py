@@ -1,5 +1,6 @@
 # coding=utf-8
-from django.shortcuts import get_object_or_404,render
+from django.shortcuts import render
+from django.http import Http404
 from django.http import HttpResponse, HttpResponseRedirect
 
 import datetime
@@ -13,7 +14,11 @@ from videos.models import Video, VideoSection
 # Create your views here.
 
 def  videos(request,section_id):
-	video_section = get_object_or_404(VideoSection,id = section_id)
+	try:
+		video_section = VideoSection.objects.get(id = section_id)
+	except VideoSection.DoesNotExist:
+		raise Http404("Видео в данный подраздел пока не добавлены.")
+	
 	videos = video_section.video_set.all()
 	return render (request, 'video/video.html',{'video_section':video_section,
 												'videos':videos})

@@ -7,6 +7,11 @@
 
 	}
 
+h1.hidden-title-text{
+	position: absolute;
+	top: 9999px;
+}
+
 div.fipi-blue-top{
 	margin-top: 70px;
 }

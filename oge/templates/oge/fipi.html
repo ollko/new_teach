@@ -1,11 +1,14 @@
 {% extends "common/__l_left_sidebar_fipi.html" %}
 {% load staticfiles %}
 
+{% block title %}Кухаренко Ольга Борисовна - задания сайта фипи {% endblock %}
+
 {% block side_col %}
 	{% include "includes/_oge_menu.html" %}
 {% endblock %}
 
 {% block main_col %}
+<h1 class='hidden-title-text'>задания сайта фипи</h1>
 {% if perms.oge.add_tests18_26 %}
 		<div>
 			<a href="{% url 'oge:my_test18_26_add' %}" title="">
