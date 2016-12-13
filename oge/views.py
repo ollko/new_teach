@@ -219,10 +219,62 @@ def my_test18_26_add_answer(request,test_id):
 
 	return HttpResponseRedirect('/oge/fipi/')
 
+def quick_verb_form(v):
+	verb_dict={'do not':"don't",
+	'does not':"doesn't",
+	'did not':"didn't"}
+	'''
+	'have not':"haven't",
+	'has not': "hasn't",
+	'had not': "hadn't",
+	'will not': "won't",
+	'is not': "isn't",
+	'are not': "aren't",
+	'would not': "wouldn't"
+	'''
+				
+	if v in verb_dict:
+		return verb_dict[v]
+	return None
+def clear_space(word):
+	if ' 'in word:
+		l=word.split()
+		return ' '.join(l)
+	return word
+def get_another_form(user_answer):
+	'''
+	получает в качестве аргумента строку (ответ из теста18_26 
+	и отдает краткую форму ответа без лишних пробелов
+	'''
+	word_list=['not','will','is','am','are']
+	for item in word_list:
+		if item in user_answer:
+			first_part=user_answer[:user_answer.find(item)+len(item)]
+			first_part=clear_space(first_part)
+			quick_form=	quick_verb_form(first_part)
+			if quick_form:
+				secoud_part=user_answer[user_answer.find(item)+len(item):]
+				secoud_part=clear_space(secoud_part)
+				if secoud_part:
+					return quick_form+' '+secoud_part
+				return quick_form
+			else:
+				return None
+		else:
+			return None
+		
 def  pass_test18_26(request,test_id):
 	"""добавляет ответ ученика в БД (модель UserAnswer) 
 	и перенаправляет на страницу 
-	'/oge/fipi/test18_26/<test_id>/check_answer/'  """
+	'/oge/fipi/test18_26/<test_id>/check_answer/'  
+	ans -			список правильных ответов
+	user_ans - 		ответ зарегистрированного пользователя
+	p -				список ответов ученика
+	res=0 -			все ответы правильные
+	res=1 -			есть неправильные ответы
+	res_numbers -	строка длиной количество вопросов в тесте из 0 и 1
+	каждое значение соответствуют правильному/неправильному ответу 
+	"""
 	
 	if request.user.is_anonymous():
 		return HttpResponseRedirect('/oge/fipi/')
@@ -240,6 +292,7 @@ def  pass_test18_26(request,test_id):
 	user_ans = ['' for i in range(l-1) ]
 	
 	for x in range(1,l):
+
 		user_ans[x-1]=p[str(x)].strip().lower()
 	# res - число правильных ответов пользователя в тесте
 	res=0
@@ -250,7 +303,10 @@ def  pass_test18_26(request,test_id):
 			res=res+1
 			res_numbers=res_numbers+'1'
 		else:
-			res_numbers=res_numbers+'0'
+			if x==get_another_form(y):
+				res_numbers=res_numbers+'1'
+			else:
+				res_numbers=res_numbers+'0'
 	
 	user_answer = '-**-'.join(user_ans)
 	
