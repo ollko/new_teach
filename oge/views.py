@@ -220,18 +220,27 @@ def my_test18_26_add_answer(request,test_id):
 	return HttpResponseRedirect('/oge/fipi/')
 
 def quick_verb_form(v):
+
 	verb_dict={'do not':"don't",
 	'does not':"doesn't",
-	'did not':"didn't"}
-	'''
+	'did not':"didn't",
+
 	'have not':"haven't",
 	'has not': "hasn't",
 	'had not': "hadn't",
 	'will not': "won't",
 	'is not': "isn't",
 	'are not': "aren't",
-	'would not': "wouldn't"
-	'''
+	'would not': "wouldn't",
+
+	'I am':"I'm",
+	'he is':"he's",
+	'she is':"she's",
+	'it is':"it's",
+	'you are':"you're",
+	'we are':"we're",
+	'they are':"they're"}
+
 				
 	if v in verb_dict:
 		return verb_dict[v]
@@ -246,7 +255,8 @@ def get_another_form(user_answer):
 	получает в качестве аргумента строку (ответ из теста18_26 
 	и отдает краткую форму ответа без лишних пробелов
 	'''
-	word_list=['not','will','is','am','are']
+
+	word_list=[' am',' is',' are',' will',' not']
 	for item in word_list:
 		if item in user_answer:
 			first_part=user_answer[:user_answer.find(item)+len(item)]
@@ -258,10 +268,7 @@ def get_another_form(user_answer):
 				if secoud_part:
 					return quick_form+' '+secoud_part
 				return quick_form
-			else:
-				return None
-		else:
-			return None
+	return None
 		
 def  pass_test18_26(request,test_id):
 	"""добавляет ответ ученика в БД (модель UserAnswer) 
