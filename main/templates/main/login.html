@@ -1,5 +1,5 @@
 {% extends "common/__l_single_col.html" %}
-
+{% load socialaccount %}
 {% block content %}
 
 <div class='form'>
@@ -18,15 +18,25 @@
 			{{ form.as_table }}
 		</table>
 		<div class="button-container">
-			<div>
-			<input type="submit" value="Войти">
-			<input type="hidden" name="next" value="{{ next }}">
-			</div>				
-			<div>
-			{% autoescape on %}
-				<a href="{% url 'main:registration' %}">Зарегистрироваться</a>
-			{% endautoescape %}
-			</div>
+				<div>
+					<input type="submit" value="Войти">
+					<input type="hidden" name="next" value="{{ next }}">
+					
+					<div>
+						<a href="{% provider_login_url "vk" method="oauth2" next=next %}">Войти с помощью<i style="color:#45668e;" class="fa fa-vk fa-lg"></i> </a>
+					</div>		
+					{% comment %}
+					<div>
+						<a href="{% provider_login_url "facebook" method="oauth2" next=next %}"><i style="color:#3b5998;" class="fa fa-facebook-square fa-lg"></i> Facebook</a>
+					</div>
+					{% endcomment %}
+							
+				</div>		
+				<div>
+					{% autoescape on %}
+					<a href="{% url 'main:registration' %}">Зарегистрироваться</a>
+					{% endautoescape %}	
+				</div>			
 		</div>
 	</form>
 </div>
