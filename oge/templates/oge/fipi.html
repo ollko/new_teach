@@ -10,12 +10,13 @@
 {% block main_col %}
 <h1 class='hidden-title-text'>задания сайта фипи</h1>
 {% if perms.oge.add_tests18_26 %}
-		<div>
-			<a href="{% url 'oge:my_test18_26_add' %}" title="">
-				<span class="glyphicon glyphicon-plus">добавить новое задание</span>
-			</a>
-		</div>	
+<div class='add-new-task'>
+	<a href="{% url 'oge:my_test18_26_add' %}" title="">
+		<span class="glyphicon glyphicon-plus">добавить новое задание</span>
+	</a>
+</div>  
 {% endif %}
+
 {% endblock %}
 
 {% block javascript %}

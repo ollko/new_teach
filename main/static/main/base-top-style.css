@@ -324,7 +324,7 @@ div.album-about {
 /*Test18_26*/
 div.total_test{
 	background-color: #DADAE0;
-	padding: 0.5em 1em;
+	padding: 1em;
 	outline: 1px solid #999;
 
 }
@@ -381,4 +381,32 @@ div.insert-word{
 
 li.oge_menu{
 	cursor: pointer;
+}
+@media screen and (max-width: 400px){
+.oge-task, .add-new-task{
+	display: none;
+}
+
+.test-text{
+	font-size: 1.4em;
+}
+
+.button-text{
+	font-size: 1.2em;
+}
+div.total_test{
+	background-color: #FFF;
+	padding: 0;
+}
+.gray-sentence{
+	background-color: #DADAE0;
+}
+div.row-sentence{
+	margin-bottom: 2em;
+}
+
+div.col-md-9-mobile, div.sentence-mobile{
+	padding-right: 7px;
+	padding-left: 10px;
+}
 }

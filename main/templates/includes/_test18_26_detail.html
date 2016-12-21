@@ -1,28 +1,26 @@
 <div class='total_test'>
 	<div class="container-fluid">
-		<h3 class="test-header"><span>Задание</span></h3>
-			{% if test_list|length_is:"9" %}
-			<b>Прочитайте приведённый ниже текст. Преобразуйте слова, напечатанные заглавными буквами в конце строк, обозначенных номерами 18–26, так, чтобы они грамматически соответствовали содержанию текста. Заполните пропуски полученными словами. Каждый пропуск соответствует отдельному заданию 18–26.</b>
-			{% else %}
-			<b>Прочитайте приведённый ниже текст. Преобразуйте слова, напечатанные заглавными буквами в конце строк, обозначенных номерами 27–32, так, чтобы они грамматически и лексически соответствовали содержанию текста. Заполните пропуски полученными словами. Каждый пропуск соответствует отдельному заданию 27–32.</b>
-			{% endif %}
+		<h3 class="test-header oge-task"><span>Задание</span></h3>
+		{% if test_list|length_is:"9" %}
+		<p class="oge-task"><b>Прочитайте приведённый ниже текст. Преобразуйте слова, напечатанные заглавными буквами в конце строк, обозначенных номерами 18–26, так, чтобы они грамматически соответствовали содержанию текста. Заполните пропуски полученными словами. Каждый пропуск соответствует отдельному заданию 18–26.</b></p>
+		{% else %}
+		<p class="oge-task"><b>Прочитайте приведённый ниже текст. Преобразуйте слова, напечатанные заглавными буквами в конце строк, обозначенных номерами 27–32, так, чтобы они грамматически и лексически соответствовали содержанию текста. Заполните пропуски полученными словами. Каждый пропуск соответствует отдельному заданию 27–32.</b></p>
+		{% endif %}
 
-	<div class="18_26">
-		<p>{{test_all}}</p>
-	</div>
+		<p class="oge-task">{{test_all}}</p>
 
 		<form action='{% url "oge:my_test18_26_add_answer" test_id %}' method='post'>
 			{% csrf_token %}
 			{% for item in test_list %}
 
-				<div class="row sentence row-sentence">
+				<div class="row sentence row-sentence test-text gray-sentence ">
 
-					<div class="col-md-10 sentence">
+					<div class="col-md-10 sentence sentence-mobile">
 						<p>
 							<span>{{item.0}}</span>
-							<span>_____</span>
+							<span class='oge-task'>___</span>
 							<input type="text" name="{{forloop.counter}}" value="{{item.3}} " class='anonymous-answer' autocomplete="off"/>
-							<span>_____</span>
+							<span class='oge-task'>___</span>
 							<span>{{item.2}}</span>	
 						</p>
 				</div>
@@ -34,7 +32,10 @@
 				</div>		
 			
 			{% endfor %}
-			<input type="submit" value="Добавить ответы" />
+			<div class='button-text'>
+				<input type="submit" value="Добавить ответы" />
+			</div>
+			
 		</form>
 	</div>
 </div>
