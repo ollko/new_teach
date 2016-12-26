@@ -2,14 +2,15 @@
 	{% for test in test_list_an %}
 
 		{% if test.id == test_id_int %}
-			<li class="oge_menu darker">
-				<a href="{% url 'oge:a_test18_26_blank' test.id %}"><span>задание </span><span>{{ forloop.counter }}</span></a>
+			<a class="list-group-item oge-test-test" href="{% url 'oge:a_test18_26_blank' test.id %}">
+				<span class="darker">задание {{ forloop.counter }}<span>
 				
-			</li>
+			</a>
 		{% else %}	
-			<li class="oge_menu">
-				<a href="{% url 'oge:a_test18_26_blank' test.id %}"><span>задание </span><span>{{ forloop.counter }}</span></a>				
-			</li>
+			<a class="list-group-item oge-test-test" href="{% url 'oge:a_test18_26_blank' test.id %}">
+				<span>задание {{ forloop.counter }}<span>
+				
+			</a>				
 		{% endif %}	
 
 	{% endfor %}	

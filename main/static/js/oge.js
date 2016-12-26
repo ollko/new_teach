@@ -72,20 +72,20 @@ $( 'input.anonymous-answer' ).on( 'select click', function( evt ) {
 //Показывает/скрывает подменю в левой колонке:
 
 
-function handler( event ) {
-  var target = $( event.target );
-  if ( target.is( "li.oge_menu" ) ){
-    target.children().toggle();
-  };
-};
+// function handler( event ) {
+//   var target = $( event.target );
+//   if ( target.is( "li.oge_menu" ) ){
+//     target.children().toggle();
+//   };
+// };
 
-var urlString=window.location.toString();
+// var urlString=window.location.toString();
 
-if (urlString.indexOf('/test18_26/')===-1){
-  $( "ul.oge_menu" ).click( handler ).find( "ul.oge_menu" ).hide();
-} else {
-  $( "ul.oge_menu" ).click( handler );
-}
+// if (urlString.indexOf('/test18_26/')===-1){
+//   $( "ul.oge_menu" ).click( handler ).find( "ul.oge_menu" ).hide();
+// } else {
+//   $( "ul.oge_menu" ).click( handler );
+// }
 //Проставляет номер задания в главной колонке:
 
 window.onload = function () {
@@ -95,3 +95,50 @@ var reg=/[0-9]/;
 var testNumber=t.match(reg);
 $('h3.test-header').append('<span> '+testNumber+'</span>');
 };
+
+//  ОГЭ МЕНЮ
+
+function handler( event ) {
+  var target = $( event.target );
+  if ( target.is( "a.oge-test-type" ) ){
+    $( ".breadcrumb" ).children().removeClass( "active" ).html('<a href="/oge/fipi/">ОГЭ</a>');
+  $( ".breadcrumb" ).append( "<li class='active'>"+target.text()+"</li>" );
+    target.siblings('.oge-test-type').toggle();
+    target.next().toggle();
+    target.toggle(); 
+
+  };
+};
+
+function handler18_26( event ) {
+  var target = $( event.target );
+  if ( target.is( "a.oge-test-test" ) ){
+    $( ".breadcrumb" ).find().last().removeClass( "active" ).html('<a href="#">Языковой материал</a>'); 
+    $( ".breadcrumb" ).append( "<li class='active'>"+target.text()+"</li>" ); 
+  };
+};
+
+
+window.onload = function () {
+   var urlString=window.location.toString();
+  if (urlString.indexOf('/test18_26/')===-1){
+
+    // если /oge/fipi/
+    $('.list-of-tests').hide();
+    $( "a.oge-test-type" ).click( handler );
+  } else {
+
+    //если /test18_26/
+    $('.oge-test-type').hide();
+    $('.list-of-tests').hide();
+
+    $( ".breadcrumb" ).children().removeClass( "active" ).html('<a href="/oge/fipi/">ОГЭ</a></li>');
+    $( ".breadcrumb" ).append( "<li class='lang-test'><a href='#'>Языковой материал</a></li>" );
+    $( ".breadcrumb" ).append( "<li class='active darker'>"+$( "span.darker" ).text().replace('задание','№')+"</li>" );    
+
+    $('li.lang-test').click(function(){
+      $('div.lang-test').toggle();
+    });
+  };
+  
+    };

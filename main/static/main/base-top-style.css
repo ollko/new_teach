@@ -382,8 +382,14 @@ div.insert-word{
 li.oge_menu{
 	cursor: pointer;
 }
+
+div.list-of-tests{
+	
+	overflow: auto;
+}
+
 @media screen and (max-width: 400px){
-.oge-task, .add-new-task{
+.oge-task, .add-new-task {
 	display: none;
 }
 
@@ -405,8 +411,8 @@ div.row-sentence{
 	margin-bottom: 2em;
 }
 
-div.col-md-9-mobile, div.sentence-mobile{
+div.col-md-9-mobile, div.col-md-3-mobile, div.sentence-mobile{
 	padding-right: 7px;
-	padding-left: 10px;
+	padding-left: 7px;
 }
 }

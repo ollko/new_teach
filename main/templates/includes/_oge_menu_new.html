@@ -1,0 +1,29 @@
+<ol class="breadcrumb">
+  <li class="active">ОГЭ</li>
+  <!-- <li><a href="#">Library</a></li>
+  <li  class="active">Data</li> -->
+</ol>
+<div class="list-group">
+	<a href="#" id='listening' class="list-group-item oge-test-type ">Аудирование</a>
+	<div class="list-group listen-test list-of-tests">
+		<p>Ваши задания уже на подходе</p>
+	</div>
+	<a href="#" id='reading' class="list-group-item oge-test-type">Чтение</a>
+	<div class="list-group read-test list-of-tests ">
+		<p>Скоро здесь появятся задания для Вас</p>
+	</div>
+	<a href="#" id='language-material' class="list-group-item oge-test-type">Языковой материал</a>
+	<div class="list-group lang-test list-of-tests">
+{% if user.is_authenticated %} 
+	{% if perms.oge.add_tests18_26 %}
+		{% include "includes/_test18_26_list_my.html" %}
+	{% else %}
+		{% include "includes/_test18_26_list_user.html" %}
+	{% endif %}
+{% else %}
+		{% include "includes/_test18_26_list_anonymous.html" %}
+	
+{% endif %}
+	</div>
+</div>
+	
