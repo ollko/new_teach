@@ -12,7 +12,7 @@ class Tests18_26(models.Model):
 	tests18_26 = models.TextField("")
 	splited_tests18_26 = models.TextField(null=True,blank=True,default=None)
 	pub_data = models.DateTimeField('дата публикации',default=timezone.now)
-	answer=models.CharField(max_length=100,blank=True,null=True,default='')
+	answer=models.CharField(max_length=150,blank=True,null=True,default='')
 	qw_number = models.CharField('число вопросов в тесте',null=True,max_length=1,default='')
 
 

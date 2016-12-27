@@ -35,8 +35,7 @@ urlpatterns = [
     url(r'^login/', auth_views.login,
         {"template_name":"main/login.html"}, name='login'),
 
-    url(r'^logout/', auth_views.logout,
-        # {"template_name":"main/logout.html"}, 
+    url(r'^logout/', auth_views.logout, 
         name='logout'),
 
     url(r'^registration/',my_views.registration, name='registration'), 
