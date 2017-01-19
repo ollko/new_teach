@@ -20,7 +20,10 @@
 			<title>
 		{% block title %}Кухаренко Ольга Борисовна{% endblock %}			
 			</title>
-		
+		{% block analitics %}
+			<script type="text/javascript" src="{% static 'js/analitics/y-metrika.js'%}"></script>	
+			<noscript><div><img src="https://mc.yandex.ru/watch/42212789" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+		{% endblock %}
 		
 	</head>
 
