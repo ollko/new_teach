@@ -17,8 +17,12 @@ from django.contrib.auth import authenticate, login
 # Create your views here.
 #def index (request):
 #	return HttpResponse('This is my MAIN app!!!')
+
+def g_verification(request):
+	return render(request, 'main/googlecc709643abb21d7c.html',)
+
 def mainpage(request):
-	return HttpResponseRedirect('/about/')
+	return HttpResponseRedirect('/about/',)
 
 def news(request):
 	

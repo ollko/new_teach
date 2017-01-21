@@ -7,8 +7,10 @@ from . import views as my_views
 app_name = 'main'
 urlpatterns = [
 
-    url(r'^$', my_views.mainpage, name='mainpage'),
-    
+    url(r'^$', my_views.mainpage, name='mainpage',),
+
+    url(r'^googlecc709643abb21d7c.html$', my_views.g_verification, name='g_verification'),
+
     url(r'^about/$', views.flatpage, {'url':'/about/'}, name='about'),
 
     url(r'^news/$', my_views.news, name='news'),
