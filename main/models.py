@@ -23,7 +23,7 @@ class Foto(models.Model):
 	album = models.ForeignKey(Album, 
 		verbose_name = u'Выберите из списка или введите новое название:',
 		on_delete=models.CASCADE)
-	foto = models.ImageField(u'Выберите фотофайл',upload_to = 'fotos/%Y/%m')
+	foto = models.ImageField(u'Выберите фотофайл в формате .jpg или .jpeg',upload_to = 'fotos/%Y/%m')
 	foto_1x = models.ImageField(null=True,default=None,
 		upload_to = 'fotos/%Y/%m')
 	foto_2x = models.ImageField(null=True,default=None,
@@ -68,20 +68,30 @@ class Foto(models.Model):
 
 			foto_copy=img.copy()
 			foto_copy.thumbnail(item[0], PIL.Image.ANTIALIAS)
-			path=self.foto.path.replace('.jpeg',item[1]+'.jpeg')
-			foto_copy.save(path)
-			foto_copy_data=open(path,'r')
+			path=self.foto.path
+			if path.find('.jpeg')>-1:
+				new_path=path.replace('.jpeg',item[1]+'.jpeg')
+			elif path.find('.JPG')>-1:
+				new_path=path.replace('.JPG',item[1]+'.JPG')
+			else:
+				pass
+
+			print 'path=',path
+			foto_copy.save(new_path)
+			foto_copy_data=open(new_path,'r')
 			file_file.append(File(foto_copy_data))
 			# удаляем 'foto_copy' файл:
-			os.remove(path)
+			os.remove(new_path)
 			# 
-		print 'ffile_file=',file_file
+		
 		
 		self.foto_1x=file_file[0]
+		
 		self.foto_2x=file_file[1]
+		
 		self.foto_3x=file_file[2]
 		
-	
+
 	
 	
 

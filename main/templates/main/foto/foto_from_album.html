@@ -3,33 +3,35 @@
 {% block content %}
 
 <div class="page-header">
-	<h4 style = "text-align: center;"><span>Фотоальбом: </span>"{{album.album|upper}}"</h4>
-	<div class="row">
-		<div class="col-sm-3"><a href="{% url 'main:fotoalbums' %}" title="к фотоальбомам"><span>к фотоальбомам</span></a></div>
+	<h3 style = "text-align: center; color:#000080;"><em><span>💛	</span>{{album.album|title}}<span>	💛</span></em></h3>
 
-		{% if user.is_authenticated %}
-		  {% if perms.main.add_foto %}
-		<div class="col-sm-3"><a href="{% url 'main:foto_to_album_add' album.id %}" title="добавить фото"><span class="glyphicon glyphicon-plus">добавить фото</span></a></div>
-			{% endif %}
-		{% endif %}
-
-		<div class="col-sm-3"><a href="{% url 'main:fotofavorite' %}" title="популярное"><span class="glyphicon glyphicon-heart-empty">популярное</span></a></div>
-
-		{% if user.is_authenticated %}
-		  {% if perms.main.delete_foto %}
-		<div class="col-sm-3"><a href="{% url 'main:foto_from_album_del' album.id %}" title="удалить фото"><span class="glyphicon glyphicon-minus">удалить фото</span></a></div>
-			{% endif %}
-		{% endif %}
-	</div>
 
 </div>
 
 
 <div class="container" id="foto">
+	<div class="row">
+		<div class="col-sm-3"><a class='fotoalbom-menu' href="{% url 'main:fotoalbums' %}" title="к фотоальбомам"><em><span>⇐   </span>к фотоальбомам</em></a></div>
+
+		{% if user.is_authenticated %}
+		  {% if perms.main.add_foto %}
+		<div class="col-sm-3"><a class='fotoalbom-menu' href="{% url 'main:foto_to_album_add' album.id %}" title="добавить фото"><span class="glyphicon glyphicon-plus">добавить фото</span></a></div>
+			{% endif %}
+		{% endif %}
+
+		<!-- <div class="col-sm-3"><a class='fotoalbom-menu' href="{% url 'main:fotofavorite' %}" title="популярное"><span class="glyphicon glyphicon-heart-empty">популярное</span></a></div> -->
+
+		{% if user.is_authenticated %}
+		  {% if perms.main.delete_foto %}
+		<div class="col-sm-3"><a class='fotoalbom-menu' href="{% url 'main:foto_from_album_del' album.id %}" title="удалить фото"><span class="glyphicon glyphicon-minus">удалить фото</span></a></div>
+			{% endif %}
+		{% endif %}
+	</div>
+	<br>
 	<div class="clearfix mosaicflow">
 		{% for item in foto_from_album %}
 		<div class="mosaicflow__item">
-			<a class="fancyimage" data-fancybox-group="group" title="{{item.foto}}" href="{{item.foto_1x.url}}">
+			<a class="fancyimage" data-fancybox-group="group" title="{{item.foto}}" href="{{item.foto_3x.url}}">
 				<img src="{{item.foto_1x.url}}" srcset="{{item.foto_1x.url}} 1x,{{item.foto_2x.url}} 2x,{{item.foto_3x.url}} 3x," alt="{{item.foto}}">
 			</a>
 		</div>

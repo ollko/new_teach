@@ -133,7 +133,7 @@ def foto_to_album_add(request,album_id):
 				i=i-1
 
 			# удаляем первоначальное фото большого размера:
-			f.del_initial_foto()
+			# f.del_initial_foto()
 			
 			return HttpResponseRedirect('/thanks/add_foto/'+album_id+'/')
 	# if a GET (or any other method) we'll create a blank form
@@ -152,11 +152,11 @@ def foto_to_album_add(request,album_id):
 @login_required		
 def fotoalbums_new(request):
 	# if this is a POST request we need to process the form data
-    if request.method == 'POST':
+	if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = AlbumForm(request.POST,request.FILES)
-
-        if form.is_valid():
+		form = AlbumForm(request.POST,request.FILES)
+		
+		if form.is_valid():
 			# process the data in form.cleaned_data as required
 			album = form.cleaned_data['album'].lower()
 			album_date = form.cleaned_data['album_date']
@@ -165,10 +165,10 @@ def fotoalbums_new(request):
 			a.save()
 			print 'a=',a
 			fotos = request.FILES
-
+			print 'fotos=',fotos
 			i=len(fotos.getlist('fotos'))-1
 			current_date=timezone.now().date()
-
+			print 'i(число фотографий)=',i
 			while i>=0:
 
 				foto = fotos.getlist('fotos')[i]
@@ -176,22 +176,24 @@ def fotoalbums_new(request):
 				f = Foto(album =a, published_date = current_date, foto= foto)
 
 				f.save()
-				
+				print 'f.foto=',f.foto
+				print 'f.foto=',f.foto.path
+				print '1)self.foto=',f.foto
 				f.foto_1x_2x_3x()
-
+				print '2)self.foto=',f.foto
 				f.save()
 				i=i-1
 
 			# удаляем первоначальное фото большого размера:
-			f.del_initial_foto()
+			# f.del_initial_foto()
 
 			return HttpResponseRedirect('/thanks/add_album/')
     # if a GET (or any other method) we'll create a blank form
-    else:
-        form = AlbumForm()
+	else:
+		form = AlbumForm()
 
 
-    return render(request,  'main/form.html', {'form': form,
+	return render(request,  'main/form.html', {'form': form,
 					    	'title':'добавление нового альбома',
 					    	'value':'добавить альбом',
 					    	'enctype_atr':'multipart/form-data'
