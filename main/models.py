@@ -57,7 +57,7 @@ class Foto(models.Model):
 
 
 	def foto_1x_2x_3x(self):
-		print u'начало foto_1x_2x_3x'
+		print u'beginning foto_1x_2x_3x'
 		img=PIL.Image.open(self.foto.path)
 		
 		size=(((324,420),'_1x'),((648,840),'_2x'),((1296,1680),'_3x'))
