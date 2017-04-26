@@ -162,13 +162,12 @@ def fotoalbums_new(request):
 			album_date = form.cleaned_data['album_date']
 
 			a=Album(album=album,album_date=album_date)
-			a.save()
-			print 'a=',a
+			a.save()			
 			fotos = request.FILES
-			print 'fotos=',fotos
+			
 			i=len(fotos.getlist('fotos'))-1
 			current_date=timezone.now().date()
-			print 'i(число фотографий)=',i
+			
 			while i>=0:
 
 				foto = fotos.getlist('fotos')[i]
@@ -176,11 +175,9 @@ def fotoalbums_new(request):
 				f = Foto(album =a, published_date = current_date, foto= foto)
 
 				f.save()
-				print 'f.foto=',f.foto
-				print 'f.foto=',f.foto.path
-				print '1)self.foto=',f.foto
+
 				f.foto_1x_2x_3x()
-				print '2)self.foto=',f.foto
+				
 				f.save()
 				i=i-1
 

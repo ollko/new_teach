@@ -8,6 +8,8 @@ import os.path
 from new_teach.settings import BASE_DIR
 from django.core.files import File
 import os
+import StringIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
 
 # Create your models here.
 class Album(models.Model):
@@ -61,35 +63,50 @@ class Foto(models.Model):
 		img=PIL.Image.open(self.foto.path)
 		
 		size=(((324,420),'_1x'),((648,840),'_2x'),((1296,1680),'_3x'))
+		
+		# django_like_files - list с тремя Django file-like objects
+		django_like_files=[]
 
-		file_file=[]
+		# name - имя загруженного файла-изображения
+		name=self.foto.name
 
 		for item in size:
-
+			# делаем копию нашего исходного PIL объекта:
 			foto_copy=img.copy()
+			# преобразуе с помощю PIL в нужный формат
 			foto_copy.thumbnail(item[0], PIL.Image.ANTIALIAS)
-			path=self.foto.path
-			if path.find('.jpeg')>-1:
-				new_path=path.replace('.jpeg',item[1]+'.jpeg')
-			elif path.find('.JPG')>-1:
-				new_path=path.replace('.JPG',item[1]+'.JPG')
+			
+
+			if name.find('.jpeg')>-1:
+				new_name=name.replace('.jpeg',item[1]+'.jpeg')
+			elif name.find('.JPG')>-1:
+				new_name=name.replace('.JPG',item[1]+'.JPG')
 			else:
 				pass
 
-			print 'path=',path
-			foto_copy.save(new_path)
-			foto_copy_data=open(new_path,'r')
-			file_file.append(File(foto_copy_data))
-			# удаляем 'foto_copy' файл:
-			os.remove(new_path)
-			# 
+			print 'new_name=',new_name
+
+			# создаем объект StringIO -
+			foto_copy_io = StringIO.StringIO()
+			# запоминаем в него наш PIlовский foto_copy
+			foto_copy.save(foto_copy_io, format='JPEG')
+
+			#  создаем new Django file-like object, чтобы впоследствии запомнить его в 
+			# ImageFild поле модели
+
+			foto_copy_file = InMemoryUploadedFile(foto_copy_io, None, new_name, 'image/jpeg',
+                                  foto_copy_io.len, None)	
+			
+
+			django_like_files.append(foto_copy_file)
+			
 		
 		
-		self.foto_1x=file_file[0]
+		self.foto_1x=django_like_files[0]
 		
-		self.foto_2x=file_file[1]
+		self.foto_2x=django_like_files[1]
 		
-		self.foto_3x=file_file[2]
+		self.foto_3x=django_like_files[2]
 		
 
 	
