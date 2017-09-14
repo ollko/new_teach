@@ -139,7 +139,7 @@ background-image: -webkit-radial-gradient(right center, ellipse farthest-corner,
 
 /* W3C Markup, IE10 Release Preview */ 
 background-image: radial-gradient(ellipse farthest-corner at right center, #FFC9E8 0%, #0C8DEF 100%);
-	padding: 0.5em 0 0.5em;
+	padding: 1.5em;
 	margin-top: 50px;
 	
 
@@ -462,5 +462,6 @@ div.col-md-9-mobile, div.col-md-3-mobile, div.sentence-mobile{
  
 div.white-container{
 	background-color: #FFF;
+
 }
 
