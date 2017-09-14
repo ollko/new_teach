@@ -13,7 +13,7 @@ urlpatterns = [
 
     url(r'^about/$', views.flatpage, {'url':'/about/'}, name='about'),
 
-    url(r'^news/$', my_views.news, name='news'),
+    # url(r'^news/$', my_views.news, name='news'),
     
     url(r'^fotoalbums/$', my_views.fotoalbums, name='fotoalbums'),
   

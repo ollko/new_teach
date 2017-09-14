@@ -1,0 +1,17 @@
+{% if test_list_an %}
+	{% for test in test_list_an %}
+
+		{% if test.id == test_id_int %}
+			<a class="list-group-item oge-test-test" href="{% url 'oge:a_test10_17_1_blank' test.id %}">
+				<span class="darker">задание {{ forloop.counter }}<span>
+				
+			</a>
+		{% else %}	
+			<a class="list-group-item oge-test-test" href="{% url 'oge:a_test10_17_1_blank' test.id %}">
+				<span>задание {{ forloop.counter }}<span>
+				
+			</a>				
+		{% endif %}	
+
+	{% endfor %}	
+{% endif %}	

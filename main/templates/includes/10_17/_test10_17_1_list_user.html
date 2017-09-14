@@ -1,0 +1,26 @@
+{% if test_list_user %}
+	{% for test in test_list_user %}
+
+		{% if test.0 == test_id_int %}
+
+				<a class="list-group-item" href="{% url 'oge:r_test10_17_1_blank'  test.0 %}">
+					<span class="darker">задание {{ forloop.counter }}</span>
+					{% if test.1 %}
+						<span>({{test.1}} из {{test.2}} пройдено)</span>
+					
+					{% endif %}
+				</a>
+				
+		{% else %}
+				<a class="list-group-item" href="{% url 'oge:r_test10_17_1_blank'  test.0 %}">
+					<span>задание {{ forloop.counter }}</span>
+					{% if test.1 %}
+						<span>({{test.1}} из {{test.2}} пройдено)</span>				
+					
+					{% endif %}	
+				</a>				
+				
+		{% endif %}	
+
+	{% endfor %}	
+{% endif %}	

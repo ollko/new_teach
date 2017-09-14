@@ -1,0 +1,22 @@
+{% extends "common/__l_single_col.html" %}
+{% load bbcode_tags %}
+
+{% block title %}
+	{{ block.super }}
+	{{ object.title }}
+{% endblock %}
+
+{% block content %}
+<div class = 'news-container'>
+	<h2 class="text-primary"><strong>{{ object.title|upper }}</strong></h2 >
+
+	<p class="new text-muted"><em>{{ object.posted|date:"j.m.Y H:i:s" }}</em></p>
+	<hr>	
+	<div class = "new-photo" style="background-image:url({{object.image.url}})"></div>
+			
+			<p class="new">{{ object.content|bbcode|safe }}</p>
+
+			<p><a href="{% url "news:news_index" %}?page={{ pn }}">Назад</a></p>
+		
+</div>
+{% endblock %}

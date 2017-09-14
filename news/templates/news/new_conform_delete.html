@@ -1,0 +1,26 @@
+{% extends "common/__l_single_col.html" %}
+
+{% load bbcode_tags %}
+{% block content %}
+
+<div class = 'news-container'>
+<br>
+	<div class="row">
+	<h2>Вы действительно хотите удалить новость?</h2>
+  <h4>{{ object.title }}</h4>
+  <div>{{ object.content|bbcode|safe }}</div>
+  <p class="posted">{{ object.posted|date:"j.m.Y H:i:s" }}</p>
+	</div>
+	<div class="row">
+		<div class="col-sm-2">
+			<form action="" method="POST">
+				{% csrf_token %}
+				<input class="btn btn-warning" type="submit" action="" value="Да, удалить." />
+			</form>
+		</div>
+		<div class="col-sm-2">
+			<a class="btn btn-default" href="{% url "news:news_index" %}?page={{ pn }}" role="button">Нет, оставить.</a>
+		</div>
+	</div>	
+</div>
+{% endblock %}

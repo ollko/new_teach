@@ -102,7 +102,43 @@ li.gate {
 /*END NAVBAR*/
 
 div.blue-top{
-	background-color: #AACCFF;
+	/*background-color: #AACCFF;*/
+
+		/* IE10 Consumer Preview */ 
+	/*background-image: -ms-radial-gradient(center, ellipse farthest-side, #D6C2FF 0%, #56AEE8 100%);*/
+
+	/* Mozilla Firefox */ 
+	/*background-image: -moz-radial-gradient(center, ellipse farthest-side, #D6C2FF 0%, #56AEE8 100%);*/
+
+	/* Opera */ 
+	/*background-image: -o-radial-gradient(center, ellipse farthest-side, #D6C2FF 0%, #56AEE8 100%);*/
+
+	/* Webkit (Safari/Chrome 10) */ 
+	/*background-image: -webkit-gradient(radial, center center, 0, center center, 486, color-stop(0, #D6C2FF), color-stop(1, #56AEE8));*/
+
+	/* Webkit (Chrome 11+) */ 
+	/*background-image: -webkit-radial-gradient(center, ellipse farthest-side, #D6C2FF 0%, #56AEE8 100%);*/
+
+	/* W3C Markup, IE10 Release Preview */ 
+	/*background-image: radial-gradient(ellipse farthest-side at center, #D6C2FF 0%, #56AEE8 100%);*/
+
+	/* IE10 Consumer Preview */ 
+background-image: -ms-radial-gradient(right center, ellipse farthest-corner, #FFC9E8 0%, #0C8DEF 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-radial-gradient(right center, ellipse farthest-corner, #FFC9E8 0%, #0C8DEF 100%);
+
+/* Opera */ 
+background-image: -o-radial-gradient(right center, ellipse farthest-corner, #FFC9E8 0%, #0C8DEF 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(radial, right center, 0, right center, 981, color-stop(0, #FFC9E8), color-stop(1, #0C8DEF));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-radial-gradient(right center, ellipse farthest-corner, #FFC9E8 0%, #0C8DEF 100%);
+
+/* W3C Markup, IE10 Release Preview */ 
+background-image: radial-gradient(ellipse farthest-corner at right center, #FFC9E8 0%, #0C8DEF 100%);
 	padding: 0.5em 0 0.5em;
 	margin-top: 50px;
 	
@@ -129,9 +165,10 @@ div.round-foto {
 	z-index: 3;
 
 }
-.blue-top h3 {
+.blue-top h3,.blue-top h4 {
 	color: white;
 	text-align: center;
+	font-weight: 800;
 }
 
 div.logo-box {
@@ -152,7 +189,7 @@ a.fotoalbom-menu{
 }
 
 .album-fond {
-	background-color: #AACCFF;
+	/*background-color: #AACCFF;*/
 	width: 100%;
 }
 
@@ -422,3 +459,8 @@ div.col-md-9-mobile, div.col-md-3-mobile, div.sentence-mobile{
 	padding-left: 7px;
 }
 }
+ 
+div.white-container{
+	background-color: #FFF;
+}
+

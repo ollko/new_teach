@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'videos.apps.VideosConfig',
     'oge.apps.OgeConfig',
+    'news',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,10 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
-
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    'imagekit',
+    'bootstrapform',
+    'precise_bbcode',
 
      # ... include the providers you want to enable:
     'allauth.socialaccount.providers.vk',

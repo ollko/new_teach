@@ -1,0 +1,75 @@
+<div class='total_test'>
+	<div class="container-fluid">	
+		<div class='row'>
+			<div class='col-md-12 col-sm-12'>
+				
+				<b><p>Прочитайте тексты и установите соответствие между текстами и их заголовками: к каждому тексту, обозначенному буквами А–G, подберите соответствующий заголовок, обозначенный цифрами. Используйте каждую цифру <b>только один раз</b>. В задании есть <b>один лишний заголовок.</b>Запишите в таблицу выбранные цифры под соответствующими буквами.</p></b>
+			</div>
+
+		</div>	
+
+		<!-- Ячейки для ответов -->
+		<div class="row">
+			<div class='col-md-6 col-sm-12'>
+				<form action='{% url "oge:my_test10_17_1_add_answer" test_id %}' method='post'>
+					{% csrf_token %}											
+					<ol>
+						{% for item in test_answers_list %}
+							<li type="A" class='anonymous-answer'><input type="text" size="6" name="{{forloop.counter}}" autocomplete='off' value=""><span style='display:none'>{{item}}</span></li>
+						{% endfor %}
+					</ol>												
+				</form>
+			</div>				
+		</div>
+		<!-- /Ячейки для ответов -->	
+		<!-- кнопки управления -->
+
+		<div class="row buttons button-text" >
+		
+			<form id='pass_again' action="{% url 'oge:a_test10_17_1_blank' test_id %}">
+				{% csrf_token %}
+				<input id='pass-test-again' class="col-md-6 col-sm-12" type="submit" style='display:none;' value="Пройти тест снова"/>
+			</form>
+
+			<input id= 'show-answer-10-17-1' class="col-md-6 col-sm-12" style='display:none;' type="submit" value="Посмотреть правильные ответы"/>
+
+			<input id="check-answer-10-17-1" class="col-md-6 col-sm-12" type="submit" value="Проверить ответы"/>		
+
+			<form id='next-test' action="{% url 'oge:a_test10_17_1_blank' next_test_id %}">
+				{% csrf_token %}
+				<input id='next-test' class="col-md-6 col-sm-12" type="submit" style='display:none;' value="Пройти следующий тест"/>
+			</form>	
+
+		</div>
+		<!-- .кнопки управления -->
+		<!-- вопросы  (на один больше, чем текстов)-->
+		<br>
+		<div class='row'>
+		
+			<div class='col-md-6 col-sm-12'>
+				<b>
+					<ol>
+						{% for item in qw_list%}
+						<li><p>{{item}}</p></li>
+						{% endfor %}
+					</ol>
+				</b>
+			</div>
+			
+		</div>
+		<!-- /вопросы  (на один больше, чем текстов)-->	
+		<!-- тексты, пронумерованные A. B. C. ... -->		
+		<div class='row'>
+			<ol>
+				{% for item in text_list %}
+				<li type="A"><p>{{item}}</p></li>
+				{% endfor %}
+			</ol>
+		</div>
+		<!-- /тексты, пронумерованные A. B. C. ... -->
+	</div>
+	<!-- container-fluid	 -->
+</div>
+<!-- total_test -->
+
+

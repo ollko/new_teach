@@ -27,7 +27,9 @@
 		
 	</head>
 
-<body>
+<body style="background-image: url({% static 'images/inclined_lines.jpg' %}); background-size: auto;">
+<!-- <body style="background-image: url({% static 'images/background45.jpg' %}); background-size: cover;"> -->
+
 	<header>
 		{% block navigation %}
 			<nav class="navbar navbar-default navbar-fixed-top">
@@ -39,14 +41,20 @@
 			{% include "includes/_blue_top.html" %}
 		{% endblock %}
 	</header>
-	<div id="main" role="main">
-            <div class="container-fluid">
-                {% block content %}
-                {% endblock %}
-            </div>
+	
+    <div class="container white-container">
+        <div id="main" role="main">
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div class="row">
+			<div class="col-sm-12">
+				<hr>
+				<p class="text-muted">@ Ollko 2016-2017</p>
+			</div>			
+		</div>		
 	</div>
-
-	<div id="footer">___</div>
+		
 		
 		{% block javascript %}
 			<script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>			

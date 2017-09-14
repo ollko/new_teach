@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^', include("main.urls")),
     url(r'^videos/',include("videos.urls")),
     url(r'^oge/',include('oge.urls')),
+    url(r'^news/',include('news.urls')),
     url(r'^accounts/', include('allauth.urls')),
 
     url(r'^admin/', include(admin.site.urls)),

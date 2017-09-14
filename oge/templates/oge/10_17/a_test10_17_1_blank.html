@@ -1,0 +1,27 @@
+{% extends "oge/fipi10_17_1.html" %}
+{% load staticfiles %}
+{% load django_bootstrap_breadcrumbs %}
+
+{% block side_col %}
+	{% block breadcrumbs %}
+		 {{ block.super }}
+		{% breadcrumb test_id "oge:a_test10_17_1_blank" test_id_int%}
+	{% endblock %}
+
+	{% block render_crumbs %}
+	    {% render_breadcrumbs %}
+	{% endblock %}
+
+	{% include "includes/_oge_list_of_tests.html" %}
+{% endblock %}
+
+{% block main_col %}
+
+	{% include "includes/10_17/_a_test10_17_1_blank.html" %}
+
+{% endblock %}
+
+{% block javascript %}
+	{{ block.super }}
+	<script type="text/javascript" charset="utf-8" src = "{% static 'js/oge.js' %}"></script>	
+{% endblock %}
