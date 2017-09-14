@@ -5,7 +5,7 @@ from django.db import models
 
 # Create your models here.
 from datetime import datetime
-from taggit.managers import TaggableManager
+# from taggit.managers import TaggableManager
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from precise_bbcode.fields import BBCodeTextField
