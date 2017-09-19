@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'videos.apps.VideosConfig',
     'oge.apps.OgeConfig',
     'news',
+    'baner.apps.BanerConfig',
+    'newsletter',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -40,6 +40,21 @@
 		{% block bluetop %}	
 			{% include "includes/_blue_top.html" %}
 		{% endblock %}
+
+		{% block messages %}	
+			{% if messages %}
+				
+					<div class="alert alert-warning" style="margin-bottom: 0">
+					    <div class="container">
+					        {% for message in messages %}
+					          {{ message }}</br>
+					        {% endfor %} 
+					   
+					    </div>
+					</div>			    
+		    {% endif %}
+		{% endblock %}
+
 	</header>
 	
     <div class="container white-container">
