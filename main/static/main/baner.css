@@ -91,11 +91,14 @@ body {
 }
 
 /* Move down content because we have a fixed navbar that is 3.5rem tall */
-body div.jumbotron {
+body  {
   margin-top: 1rem;
   padding-top: 3.5rem;
 }
-
+div.jumbotron{
+  margin-top: 0;
+  margin-bottom: 0;
+}
 div.jumbotron0 {
   padding-bottom: 0;
 }
@@ -116,20 +119,44 @@ h3.text-plus, h4.text-plus{
   color: #2e2692;
 }
 
-div.jumbotron1, div.jumbotron3{
-  background-color: #FFF;
-  color: #705754;
+div.jumbotron1, div.jumbotron3, div.jumbotron5{
+  background-color: #f9f0d0;
+  color: #1c63ab;
+  font-weight: 700;
+}
+div.jumbotron3 ul{
+  font-size: 1.4em;
+  color: #1c63ab;
+}
+span.mute-jumbotron1 {
+  color: #e29a26;
+  font-weight: 900;
 }
 
-div.jumbotron2{
-  background-color: #705754;
-  color: #fdeebf;
+div.jumbotron2, div.jumbotron4{
+  background-color: #a2e293;
+  color:#1c63ab;
 }
 
-ul.mylist li{
-  font-size: 2em;
-}
-div.jumbotron1 p, div.jumbotron2 p, div.jumbotron3 p{
-  font-size: 2em;
+div.jumbotron4 .card-header,  div.jumbotron4 .card-body{
+  background-color:#f9efd0;
 }
 
+div.jumbotron5 .card{
+  background-color:#f9efd0;
+ }
+div.jumbotron.jumbotron2 li{
+  font-size: 1.3em;
+}
+
+div.jumbotron4 li{
+  font-size: 1.3em;
+}
+
+
+form.join-form h3, form.join-form label {
+  color: #033a05
+}
+footer<p.baner-footer{
+  color:#6b2020;
+}

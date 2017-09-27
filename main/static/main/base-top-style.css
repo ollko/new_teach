@@ -140,7 +140,7 @@ background-image: -webkit-radial-gradient(right center, ellipse farthest-corner,
 /* W3C Markup, IE10 Release Preview */ 
 background-image: radial-gradient(ellipse farthest-corner at right center, #FFC9E8 0%, #0C8DEF 100%);
 	padding: 1.5em;
-	margin-top: 50px;
+	margin-top: -20px;
 	
 
 }
@@ -169,6 +169,7 @@ div.round-foto {
 	color: white;
 	text-align: center;
 	font-weight: 800;
+	text-shadow: 4px 4px 18px #0e43f1;
 }
 
 div.logo-box {
@@ -462,6 +463,18 @@ div.col-md-9-mobile, div.col-md-3-mobile, div.sentence-mobile{
  
 div.white-container{
 	background-color: #FFF;
+	margin-top: -20px;
+	
 
 }
 
+div.baner-tab-children{
+		display: none;
+	}
+
+@media (min-width: 991px) {
+	div.baner-tab-children{
+		display: block;
+	}
+
+}

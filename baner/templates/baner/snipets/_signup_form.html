@@ -4,11 +4,32 @@
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <span class='join-form-error'></span>
   </div>
-  
-  <div class="input-group">
-    <input class = "form-control" type="email" name = 'email' placeholder = "Ваш email">
-    <span class="input-group-btn">
+<br>
+  <h3 class="text-center">Оставьте,пожалуйста, заявку, и мы свяжемся с Вами</h3>
+
+  {% if field.non_field_errors %}
+    <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> {{form.non_field_errors}}</div>
+  {% endif %}
+
+  {% for field in form %}
+    {% if field.errors %}
+      <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{field.errors}}</div>
+    {% endif %}
+
+    <div class="form-group">
+      {% if field.label %}
+      <label for="{{field.name}}">{{field.label}}</label><br>
+      {% endif %}
+
+      {{ field }}
+         
+    </div><!-- /input-group --> 
+
+  {% endfor %}  
+ 
       <input type="submit" value="Отправить" class='btn btn-primary'>
-    </span>
-  </div><!-- /input-group -->            
+    
+             
 </form>   

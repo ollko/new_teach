@@ -22,10 +22,17 @@ class BanerView(SuccessMessageMixin,CreateView):
 		# print(cleaned_data)
 		return 'Спасибо что присоединились к нам! Мы скоро свяжемся с Вами!'
 
-	# def form_valid(self, form):
-	# 	email = form.cleaned_data.get('email')
-	# 	# other thing with email
-	# 	return super(HomeView, self).form_valid(form)
+	def form_valid(self, form):
+		parents_name  = form.cleaned_data.get('parents_name')
+		child_name    = form.cleaned_data.get('child_name  ')
+		birth_data    = form.cleaned_data.get('birth_data')
+		check_in_date = form.cleaned_data.get('check_in_date')
+		tel           = form.cleaned_data.get('tel')
+		email         = form.cleaned_data.get('email')
+		timestamp         = form.cleaned_data.get('timestamp')
+
+		# other thing with email
+		return super(HomeView, self).form_valid(form)
 
 class PageDetailView(DetailView):
 	queryset  = Baner.objects.filter(active=True)

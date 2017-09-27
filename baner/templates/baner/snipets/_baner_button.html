@@ -1,0 +1,18 @@
+<!-- coding=utf-8 -->
+{% load staticfiles %}
+
+<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+<div class="my-baner" style="background-color: rgb(228, 220, 181); ">
+	<a href="{% url 'baner:baner' %}" style="position: relative; ">   
+		<div class="container" style=" background-color:#fdfede; background-image: url({% static 'images/falling-leaves.gif'%}) ;">
+			
+				<div class="col-sm-12 col-md-6">
+					<h2 class="text-center" style="color: #031994; font-family: 'Gloria Hallelujah', cursive; font-size: 40px; text-shadow: 4px 4px 4px #aaa;">English Weekend</h2>
+					<h3 class="text-right" style="color: #fd0730; text-shadow: 4px 4px 4px #aaa;font-weight: 800;">под Звенигородом!</h3>
+				</div>
+				<div class="col-sm-12 col-md-6 baner-tab-children" >
+					<img   src="{% static 'images/baner-children.jpg' %}" style="max-width: 100%">
+				</div>		
+		</div>
+	</a> 
+</div>

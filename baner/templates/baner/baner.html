@@ -7,7 +7,7 @@
     <meta name="description" content="{{ content.title }}">
     <meta name="author" content="Olga Korotkaya">
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
-
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
     <title>{{ content.title }}</title>
 
     <!-- Bootstrap core CSS -->
@@ -20,39 +20,47 @@
     <link href="{% static 'main/baner.css' %}" rel="stylesheet">
   </head>
   <body>
-    <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
-      <a class="navbar-brand" href="/">
-        <img alt="Brand" style="height: 40px" src="{% static 'images/logo.svg' %}">
-      </a>     
-    </nav>
-    {% block messages %}  
+      {% block messages %}  
       {% if messages %}
         
-          <div class="alert alert-warning" style="margin-bottom: 0">
+          <div class="alert alert-warning" style="margin-bottom: 0; margin-top: -50px;">
               <div class="container">
                   {% for message in messages %}
                     {{ message }}</br>
                   {% endfor %} 
              
               </div>
-          </div>          
+          </div>
+          <style type="text/css">
+            nav.navbar.navbar-expand-md.fixed-top.navbar-light.bg-light {
+              margin-top: 50px;
+            }         
+
+          </style>
         {% endif %}
     {% endblock %}
+    <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+      <a class="navbar-brand" href="/">
+        <img alt="Brand" style="height: 40px" src="{% static 'images/logo.svg' %}">
+      </a>     
+    </nav>
+
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
+    
     <div class="jumbotron jumbotron0" style = "background-image: url({{ object.jumbotron_bg_img.url }}); background-size: cover">
       <div class="container">
         <h3 class="text-center text-plus"><strong>Английский для тинейджеров с носителями языка</strong></h3>
-        <h1 class="display-1 text-center baner-title">{{ object.title }}</h1>
+        <h1 class="display-1 text-center baner-title" style="font-family: 'Gloria Hallelujah'; text-shadow: 4px 4px 4px #aaa;">{{ object.title }}</h1>
         <h3 class="text-center text-plus"><em><b>осень 2017</b></em></h3>
-        <h4 class="text-center text-plus"><em><b><span class="baner-date">22–24.09</span><span class="baner-date">29.09–01.10</span><span class="baner-date">6–8.10</span class="baner-date"><span class="baner-date">27–29.10</span><span class="baner-date">24–26.11</span></b></em></h3>
+        <h4 class="text-center text-plus"><em><b><span class="baner-date">22–24.09</span><span class="baner-date">29.09–01.10</span><span class="baner-date">6–8.10</span class="baner-date"><span class="baner-date">27–29.10</span><span class="baner-date">24–26.11</span></b></em></h4>
 
         <br>
         <br>
         <br>
         <div class="row">
           <div class="col-sm-12 col-md-8">
-            <h2 class="baner-title-description">{{ object.title_description|linebreaks }}</h2>
+            <h2 class="baner-title-description"></h2>
           </div>
           <div class="col-sm-12 col-md-4" style="background-color: rgba(155, 204, 80, 0.81);" >
           {% include 'baner/snipets/_signup_form.html' %}
@@ -60,134 +68,458 @@
         </div>       
       </div>
     </div>
-    
-    <div class="jumbotron jumbotron1">
-      <div class="container" >   
-        <h2 class= "display-3 text-center">Если ваш ребенок</h2>         
-          <p class="text-center"><i class="fa fa-hand-o-right" aria-hidden="true"></i> не в восторге от скучных упражнений</p>
-          <p class="text-center"><i class="fa fa-hand-o-right" aria-hidden="true"></i> любит квесты, командные игры</p>
-          <p class="text-center"><i class="fa fa-hand-o-right" aria-hidden="true"></i> засиделся в душном городе</p>
-          <p class="text-center"><i class="fa fa-hand-o-right" aria-hidden="true"></i> зависает в гаджетах</p>
+    <div class="container">
+      <div class="jumbotron jumbotron1">   
+        <h2 class= " jumbotron1 text-center display-4" style="color:#1c63ab;">Приглашаем Вас и Ваших учеников <span class="mute-jumbotron1">принять участие в программе English Weekend от StudyCamp!</span></h2>
       </div>
     </div>
-    <div class="jumbotron jumbotron2">
-      <div class="container" >
       
-        <h2 class= "display-4 text-center red-title">Наш рецепт на ближайшие выходные:</h2>
-        <p class= "display-4 text-center red-title"><i class="fa fa-chevron-down" aria-hidden="true"></i></p>
-          <p class="text-center"><i class="fa fa-hand-o-up" aria-hidden="true"> 3 интересных зянятия с носителями языка из Англии</i></p>
-          <p class="text-center"><i class="fa fa-hand-o-up" aria-hidden="true"> мастер-классы </i></p>
-          <p class="text-center"><i class="fa fa-hand-o-up" aria-hidden="true"> твоческие проекты</i></p>
-          <p class="text-center"><i class="fa fa-hand-o-up" aria-hidden="true"> театральные импровизации</i></p>
-          <p class="text-center"><i class="fa fa-hand-o-up" aria-hidden="true"> создание телепрограмм</i></p>
-          
+    <div class="container">
+      <div class="jumbotron jumbotron2">     
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading" style="color: #e29a26;">Где? <span  style="color:#1c63ab;">Актив-отель "Искра", Звенигород</span></h2>
+            <ul>
+              <li>Экологически-чистая природная зона</li>
+              <li>Проживание: 3 чел в комнате с удобствами</li>
+              <li>Питание: 3-разовое «шведский стол» </li>
+              <li>Проезд: автобус от м. Новослободская или для группы от 15 чел. от школы</li>
+            </ul>        
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="{% static 'images/iskra500.jpg' %}" alt='Актив-отель "Искра"'>
+          </div>
+        </div>
       </div>
     </div>
+  <div class="container">
     <div class="jumbotron jumbotron3">
-      <div class="container" >
-        <h2 class= "display-4 text-center">Стоимость участия:</h2>
-        <br>
-        <div class="row">
-          <div class="col-sm-12 col-md-6">         
-            <p class="text-center">ШКОЛЬНИКАМ:</p>
+      <h2 class= "display-4 text-center">3 дня Уикенда <span style="color:#e29a26; font-weight:600;">решают многие задачи:</span></h2>
+      <br><br> 
+      <div class="row">
+        <div class="col-sm-12 col-md-1"><h4 class="text-center"><i class="fa fa-check-circle-o" aria-hidden="true"></i></h4></div>
+        <div class="col-sm-12 col-md-10"><h4><em><strong> Снятие языкового барьера</strong> путем переноса учебной деятельности в неформальную атмосферу</em></h4></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-1"><h4 class="text-center"><i class="fa fa-check-circle-o" aria-hidden="true"></i></h4></div>
+        <div class="col-sm-12 col-md-10"><h4><em>Обучение английскому языку через <b>знакомство с культурой англоязычной страны</b>; формирование целостного взгляда на мир в единстве и разнообразии народов, культур, языков</em></h4></div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 col-md-1"><h4 class="text-center"><i class="fa fa-check-circle-o" aria-hidden="true"></i></h4></div>
+        <div class="col-sm-12 col-md-10"><h4><em>Обучение английскому языку через <b>знакомство с культурой англоязычной страны</b>; формирование целостного взгляда на мир в единстве и разнообразии народов, культур, языков</em></h4></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-1"><h4 class="text-center"><i class="fa fa-check-circle-o" aria-hidden="true"></i></h4></div>
+        <div class="col-sm-12 col-md-10"><h4><em>Формирование правильных разговорных навыков через <strong>общение с носителем языка</strong></em></h4></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-1"><h4 class="text-center"><i class="fa fa-check-circle-o" aria-hidden="true"></i></h4></div>
+        <div class="col-sm-12 col-md-10"><h4><em>Раскрытие у школьников <b>лидерских качеств</b> и развитие навыка командной работы</em></h4></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-1"><h4 class="text-center"><i class="fa fa-check-circle-o" aria-hidden="true"></i></h4></div>
+        <div class="col-sm-12 col-md-10"><h4><em>Демонстрация примера активного и интеллектуального отдыха детей в <b>отрыве от гаджетов</em></h4></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-1"><h4 class="text-center"><i class="fa fa-check-circle-o" aria-hidden="true"></i></h4></div>
+        <div class="col-sm-12 col-md-10"><h4><em>Отдых и оздоровление<b> детей в экологически чистой среде</b></em></h4></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-1"><h4 class="text-center"><i class="fa fa-check-circle-o" aria-hidden="true"></i></h4></div>
+        <div class="col-sm-12 col-md-10"><h4><em>Демонстрация детям модели активной жизненной позиции и лидерских качеств вожатых StudyCamp</em></h4></div>
+      </div>
+    </div>
+  </div>  
+  <div class="container"> 
+    <div class="jumbotron jumbotron4">
+      <h2 class= "display-4 text-center">Подробное расписание:</h2>
+      <br>
+      <div id="accordion" role="tablist">
+        <div class="card">
+          <div class="card-header" role="tab" id="headingOne">
+            <h5 class="text-center">
+              <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                ПЯТНИЦА:
+              </a>
+            </h5>
           </div>
-          <div class="col-sm-12 col-md-6">         
-            <p class="text-center">СОПРОВОЖДАЮЩИМ РОДИТЕЛЯМ:</p>
-          </div>                   
-        </div>
-        <div class="row">
-          <div class="col-sm-12 col-md-6">  
-            <br>       
-            <p class="text-center">9 000 руб.</p>
+
+          <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              <div class='row'>
+                <div class="col-sm-2">
+                  <p class="text-right">16:00</p>
+                </div>
+                <div class="col-sm-10 ">
+                  <p class="text-left">Заезд, расселение, инструктаж (традиции и правила StudyCamp), тимбилдинг. Делимся на
+                  команды, знакомимся с новыми друзьями, участвуем в увлекательных играх на командообразование.</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">18:30</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Ужин</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">19:00</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Готовим «визитные карточки» с вожатыми: представления команд на английском языке</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">20:30</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left"><o>Welcome to StudyCamp</o> – выступаем на сцене, знакомимся с другими командами, соревнуемся в ловкости и смекалке</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">21:30</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left"><b>Minute of Trust</b> (свечка) – разговор по душам внутри команд. </p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">23:00</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left"><b>Time to sleep</b> (отбой) </p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-sm-12 col-md-6">         
-            <p class="text-center">2-местное проживание – 6300 руб</p>
-            <p class="text-center">1-местное проживание – 8500 руб</p>
-          </div>                   
         </div>
-          <div class="col-sm-12 col-md-6">
-          
- 
+        <div class="card">
+          <div class="card-header" role="tab" id="headingTwo">
+            <h5 class="text-center">
+              <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                СУББОТА:
+              </a>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+              <div class='row'>
+                <div class="col-sm-2">
+                  <p class="text-right">08:00</p>
+                </div>
+                <div class="col-sm-10 ">
+                  <p class="text-left">Подъем</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">08:30</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Игровая зарядка <b>Trust Games</b> – разминаем руки-ноги и голову, заряжаемся энергией и хорошим настроением, учим английские скороговорки <b>tongue-twisters и rhymes</b></p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">08:45</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left"><b>Сытный завтрак</b></p>
+                </div>
+              </div>
+              <div calss="row"><div class="col-sm-12"><em><b>Младшие</b></em></div></div>
+              <hr >
+
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">09:30-11:00</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left"><b>English Lessons</b> – увлекательные уроки с носителями (тренировка разговорных навыков,расширение словарного запаса, увлекательное повторение грамматики, работа над проектами). Группы формируются соответственно классу и уровню владения языком.</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">11:10-12:00 </p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Бассейн.</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">12:00-12:40</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Активный отдых: спорт, прогулки. </p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">12:45 </p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Обед, послеобеденный отдых</p>
+                </div>
+              </div>
+              <div class="row"><div class="col-sm-12"><em><b>Старшие</b></em></div></div>
+              <hr>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">09:30-11:00</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Бассейн. Активный отдых: спорт, прогулки.</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">11:15-12:45</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left"><b>English Lessons</b> – увлекательные уроки с носителями (тренировка разговорных навыков,расширение словарного запаса, увлекательное повторение грамматики, работа над проектами). Группы формируются соответственно классу и уровню владения языком.</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">13:00</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Обед, послеобеденный отдых</p>
+                </div>
+              </div>
+              <hr>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">14:30 </p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Квест-игры «Сокровище Атлантиды», «Горшочек еприкона», «Harry Potter’s Quest» - и другие мероприятия на английском: справляемся с загадками, шифрами и головоломками.</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">16:00-17:30 </p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Тематические мастерские <u>на английском языке</u></p>
+                  <ul>
+                    <li><b>Drama</b> - комплекс упражнений, направленных на развитие сценической речи, улучшение дикции и интонации на английском языке;</li>
+                    <li><b>Tongue-twisters battle</b> – работа над дикцией и сценической речью;</li>
+                    <li><b>Professional Host</b> – мастер-класс по подготовке к телешоу, конферанс;</li>
+                  </ul>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                  <p class="text-right">17:30 </p>
+                </div>
+                <div class="col-sm-10">
+                  <p><b>Подготовка к финальному мероприятию:</b> каждая команда готовит и снимает свое <b>TV-SHOW</b> с различными рубриками, ведущими, приглашенными звездами, музыкальными номерами и конкурсами.</p>
+                </div>
+              </div>
+              
+              <div class='row'>
+                <div class="col-sm-2">
+                  <p class="text-right">19:00</p>
+                </div>
+                <div class="col-sm-10">
+                  <p>Ужин</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                  <p class="text-right">20:30</p>
+                </div>
+                <div class="col-sm-10">
+                  <p><b>Dance Battle</b> – Танцуем, веселимся, выплескиваем накопленную за день энергию</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                  <p class="text-right">21:30 </p>
+                </div>
+                <div class="col-sm-10">
+                  <p><b>Minute of Trust (свечка)</b> – разговор по душам внутри команд.</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                  <p class="text-right">22:30/23:00 </p>
+                </div>
+                <div class="col-sm-10">
+                  <p><b>Time to sleep</b> (отбой)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" role="tab" id="headingThree">
+            <h5 class="text-center">
+              <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                ВОСКРЕСЕНИЕ:
+              </a>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+               <div class='row'>
+                <div class="col-sm-2">
+                  <p class="text-right">08:00</p>
+                </div>
+                <div class="col-sm-10 ">
+                  <p class="text-left">Подъем</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">08:30</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Игровая зарядка <b>Trust Games</b> – разминаем руки-ноги и голову, заряжаемся энергией и хорошим настроением, учим английские скороговорки <b>tongue-twisters и rhymes</b></p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">08:45</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left"><b>Сытный завтрак</b></p>
+                </div>
+              </div>
+              <div calss="row"><div class="col-sm-12"><em><b>Младшие</b></em></div></div>
+               <hr >
+               <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">09:30-11:00</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left"><b>English Lessons</b> – увлекательные уроки с носителями</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">11:10-12:00</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Бассейн.</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">12:00-12:40</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Активный отдых: спорт, прогулки.</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">12:45 </p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Обед, послеобеденный отдых</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">12:45 </p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Обед, послеобеденный отдых</p>
+                </div>
+              </div>
+              <div calss="row"><div class="col-sm-12"><em><b>Старшие</b></em></div></div>
+               <hr >
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">09:30-11:00</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Бассейн. Активный отдых: спорт, прогулки.</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">11:15-12:45</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left"><b>Lessons</b>  – увлекательные уроки с носителями</p>
+                </div>
+              </div>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">13:00</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left">Обед, послеобеденный отдых</p>
+                </div>
+              </div>
+              <hr>
+              <div class='row'>
+                <div class="col-sm-2">
+                   <p class="text-right">14:30</p>
+                </div>
+                <div class="col-sm-10">
+                  <p class="text-left"><b>StudyСamp «TV-SHOW»</b> – просмотр телешоу команд! Подведение итогов, вручение сертификатов и фото на память!</p>
+                </div>
+              </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div> 
 
+  <div class="container">
+    <div class="jumbotron jumbotron5">
+      <h2 class= "display-4 text-center" style="color:#e29a26; font-weight:600;">Стоимость участия:</h2>
+      <br>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title text-center">Школьникам:</h4>
+              <hr>
+              <p class="card-text text-center">9 000 руб</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title text-center">Сопровождающим родителям:</h4>
+              <hr>
+              <p class="card-text text-center">2-местное проживание – 6300руб</p>
+              <p class="card-text text-center ">1-местное проживание – 8500руб</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
-
     <div class="container marketing">
-      <h2 class= "display-4 text-center">Отзывы участников:</h2>
-      <div class="row">
-      
-        <div class="col-lg-4">
-          <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-        <div class="col-lg-4">
-          <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
 
-
-      <!-- START THE FEATURETTES -->
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          {{ object.content1|safe }}
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-fluid mx-auto" src="{{ object.jumbotron_bg_img.url }}" alt="ggg">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7 order-md-2">
-          <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5 order-md-1">
-          <img class="featurette-image img-fluid mx-auto" data-src="{{ object.jumbotron_bg_img }}" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-        </div>
-        <div class="col-md-5">
-          <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-        </div>
-      </div>
-
-      <hr class="featurette-divider">
+     
 
       <!-- /END THE FEATURETTES -->
 
 
       <!-- FOOTER -->
       <footer>
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p class="float-right"><a href="#"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 48 48" enable-background="new 0 0 48 48" xml:space="preserve"> <path style="fill: #a2e293;" d="M43.006,47.529H4.964c-2.635,0-4.791-2.156-4.791-4.791V4.697c0-2.635,2.156-4.791,4.791-4.791h38.042 c2.635,0,4.791,2.156,4.791,4.791v38.042C47.797,45.373,45.641,47.529,43.006,47.529z M25.503,16.881l6.994,7.049 c0.583,0.588,1.532,0.592,2.121,0.008c0.588-0.583,0.592-1.533,0.008-2.122l-9.562-9.637c-0.281-0.283-0.664-0.443-1.063-0.443 c0,0,0,0-0.001,0c-0.399,0-0.782,0.159-1.063,0.442l-9.591,9.637c-0.584,0.587-0.583,1.537,0.005,2.121 c0.292,0.292,0.675,0.437,1.058,0.437c0.385,0,0.77-0.147,1.063-0.442L22.5,16.87v19.163c0,0.828,0.671,1.5,1.5,1.5 s1.5-0.672,1.5-1.5L25.503,16.881z"></path> </svg></a></p>
+        <p>&copy; 2017 &middot; OLLKO  </p>
       </footer>
 
     </div><!-- /.container -->
