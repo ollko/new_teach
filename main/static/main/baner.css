@@ -160,3 +160,14 @@ form.join-form h3, form.join-form label {
 footer<p.baner-footer{
   color:#6b2020;
 }
+.eng-weekend-top-word{
+  background-color:  rgba(232, 175, 175, 0.4);
+  }
+
+@media (min-width: 991px) {
+ .eng-weekend-top-word{
+  background-color:  rgba(232, 175, 175, 0);
+  }
+  
+    
+}

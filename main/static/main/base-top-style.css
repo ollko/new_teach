@@ -153,6 +153,7 @@ div.round-white {
 	margin: auto;
 	background-color: white;
 	z-index: 2;
+	margin-bottom: 1.5em;
 }
 
 div.round-foto {
@@ -468,13 +469,17 @@ div.white-container{
 
 }
 
-div.baner-tab-children{
+div.baner-tab-children, div.blue-top-words{
 		display: none;
 	}
 
+
+
 @media (min-width: 991px) {
-	div.baner-tab-children{
+	div.baner-tab-children, div.blue-top-words{
 		display: block;
 	}
-
+	
+    
 }
+
