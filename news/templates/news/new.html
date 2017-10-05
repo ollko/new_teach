@@ -7,14 +7,15 @@
 {% endblock %}
 
 {% block content %}
-<div class = 'news-container'>
+<br>
+<div class = 'container news-container'>
 	<h2 class="text-primary"><strong>{{ object.title|upper }}</strong></h2 >
 
-	<p class="new text-muted"><em>{{ object.posted|date:"j.m.Y H:i:s" }}</em></p>
+	<p class="new text-muted "><em>{{ object.posted|date:"j.m.Y H:i:s" }}</em></p>
 	<hr>	
 	<div class = "new-photo" style="background-image:url({{object.image.url}})"></div>
 			
-			<p class="new">{{ object.content|bbcode|safe }}</p>
+			<p class="new text-justify new-text">{{ object.content|bbcode|safe }}</p>
 
 			<p><a href="{% url "news:news_index" %}?page={{ pn }}">Назад</a></p>
 		
