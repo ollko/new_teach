@@ -28,12 +28,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'main.apps.MainConfig',
-    'videos.apps.VideosConfig',
-    'oge.apps.OgeConfig',
-    'news',
-    'baner.apps.BanerConfig',
-    'newsletter',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,10 +43,19 @@ INSTALLED_APPS = [
     'imagekit',
     'bootstrapform',
     'precise_bbcode',
+    # 'rest_framework',
 
      # ... include the providers you want to enable:
     'allauth.socialaccount.providers.vk',
     'allauth.socialaccount.providers.facebook',
+
+    'main.apps.MainConfig',
+    'videos.apps.VideosConfig',
+    'oge.apps.OgeConfig',
+    'news',
+    'baner.apps.BanerConfig',
+    'newsletter',
+    'mom',
 ]
 
 MIDDLEWARE_CLASSES = [

@@ -1,0 +1,46 @@
+{% extends "common/__l_single_col.html" %}
+{% load staticfiles %}
+
+{% block title %}
+  {{ block.super }}
+  Новости
+{% endblock %}
+
+{% block content %}
+  
+<div class = 'container'>
+<br>
+  <div class="row">
+    <div class="col-md-12">
+      {% if perms.mumstuffs.add_mumstuff %}
+        <p><a href="{% url 'mom:mumstuff_add' %}"><span class="glyphicon glyphicon-plus">добавить материал</span></a></p>
+      {% endif %}
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+       <h3 class="text-info text-center"><b>Материалы для моих занятий с мамами:</b></h3>
+       <hr>
+    </div> 
+  </div>
+
+    {% for object in latest %}
+      <p class="text-center">
+        <a href="{{ object.stuffFile.url }}?page={{ page_obj.number }}"><strong>{{ object.title|upper }}</strong></a>
+        <em>(добавлено {{ object.posted|date:"j.m.Y" }})</em>
+
+        {% if perms.mumstuffs.сhange_mumstuff %}
+        <a href="{% url 'mom:momstuff_update' pk=object.pk %}?page={{ page_obj.number }}">Изменить</a>
+        {% endif %}
+
+        {% if perms.mumstuffs.delete_mumstuff %}
+        <a href="{% url 'mom:momstuff_delete' pk=object.pk %}?page={{ page_obj.number }}">Удалить</a>
+        {% endif %}
+
+      </p>
+    {% endfor %}
+ 
+  {% include "includes/_pagination.html" %}
+</div>
+{% endblock %}
+<strong>{{ object.title|upper }}</strong><span><em>(добавлено :{{ object.posted|date:"j.m.Y" }})</em></span>

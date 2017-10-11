@@ -32,15 +32,17 @@ class New(models.Model):
 											processors= [ResizeToFill(450,300)],
 											format='JPEG',
 											options={'quality': 60},)
-
+	def __unicode__(self):
+		return self.title
+		
 	class Meta:
 		ordering = ["-posted"]
 		verbose_name = "новостная статья"
 		verbose_name_plural = "новостные статьи"
 
-def delete(self, *args, **kwargs):
-    self.image.delete(save = False)
-    super(New, self).delete(*args, **kwargs)
+	def delete(self, *args, **kwargs):
+	    self.image.delete(save = False)
+	    super(New, self).delete(*args, **kwargs)
 
 # from django.contrib.comments.moderation import CommentModerator, moderator
 

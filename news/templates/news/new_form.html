@@ -18,7 +18,7 @@
 
 <div class = 'news-container'>
   <div class="my-form-header">
-    <a href="{% url "news:news_index" %}" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+    <a href="{% url 'news:news_index' %}" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>
     <h4 class="lead">ДОБАВИТЬ/РЕДАКТИРОВАТЬ НОВОСТЬ</h4>
   </div>
   <hr>
@@ -27,7 +27,7 @@
 
     {{form|bootstrap}}   
   <div class="my-form-footer">
-      <a href="{% url "news:news_index" %}" type="button" class="btn btn-default">ЗАКРЫТЬ</a>
+      <a href="{% url 'news:news_index' %}" type="button" class="btn btn-default">ЗАКРЫТЬ</a>
       <button type="submit" class="btn btn-success">СОХРАНИТЬ</button>
     </div> 
 </form>

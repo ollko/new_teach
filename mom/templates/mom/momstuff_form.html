@@ -1,0 +1,33 @@
+{% extends "common/__l_single_col.html" %}
+{% load staticfiles %}
+
+{% load bootstrap %}
+
+{% block title %}
+  {{ block.super }}
+  Добавление нового материала
+{% endblock %}
+
+
+
+{% block content%}
+
+<div class = 'news-container'>
+  <div class="my-form-header">
+    <a href="{% url 'mom:momstuff_list' %}" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+    <h4 class="lead">ДОБАВИТЬ/РЕДАКТИРОВАТЬ МАТЕРИАЛ</h4>
+  </div>
+  <hr>
+<form  action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{form|bootstrap}}   
+  <div class="my-form-footer">
+      <a href="{% url 'mom:momstuff_list' %}" type="button" class="btn btn-default">ЗАКРЫТЬ</a>
+      <button type="submit" class="btn btn-success">СОХРАНИТЬ</button>
+    </div> 
+</form>
+</div>
+
+
+{% endblock %}

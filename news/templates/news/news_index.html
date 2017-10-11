@@ -33,27 +33,26 @@
     </div>
     
     <div class="col-md-8 col-sm-12">
-    <div class="news-header">
-      <h4 class="text-primary"><strong>{{ object.title|upper }}</strong></h4>
-      <p class="new text-muted"><em>{{ object.posted|date:"j.m.Y H:i:s" }}</em></p>
-    </div>
-      
+      <div class="news-header">
+        <h4 class="text-primary"><strong>{{ object.title|upper }}</strong></h4>
+        <p class="new text-muted"><em>{{ object.posted|date:"j.m.Y H:i:s" }}</em></p>
+      </div>
+        
       <a class = 'new' href="{% url "news:news_detail" pk=object.pk %}?page={{ page_obj.number }}"><p class="new">{{ object.description}}</p></a>
       
       <p class="buttons bottom-indent">
       {% if perms.news.change_new %}
-      <a href="{% url "news:news_edit" pk=object.pk %}?page={{ page_obj.number }}">Изменить</a>
+      <a href="{% url 'news:news_edit' pk=object.pk %}?page={{ page_obj.number }}">Изменить</a>
       {% endif %}
       {% if perms.news.delete_new %}
-      <a href="{% url "news:news_delete" pk=object.pk %}?page={{ page_obj.number }}">Удалить</a>
+      <a href="{% url 'news:news_delete' pk=object.pk %}?page={{ page_obj.number }}">Удалить</a>
       {% endif %}
       </p>
       
     </div>
     
   </div>
-  
-  {% endfor %}
+   {% endfor %}
 
   
   {% include "includes/_pagination.html" %}
