@@ -13,13 +13,13 @@
   <div class="row">
     <div class="col-md-12">
       {% if perms.news.add_new %}
-        <p><a href="{% url "news:news_add" %}"><span class="glyphicon glyphicon-plus">добавить новость</span></a></p>
+        <p><a href="{% url "news:news_add" %}"><span class="glyphicon glyphicon-plus">добавить статью</span></a></p>
       {% endif %}
       </div>
   </div>
 <div class="row">
   <div class="col-md-12">
-     <h3 class="text-info"><b>МОЙ БЛОГ</b></h3>
+     <h3 class="text-info"><b>СТАТЬИ</b></h3>
      <hr>
   </div> 
 </div>
@@ -35,10 +35,11 @@
     <div class="col-md-8 col-sm-12">
       <div class="news-header">
         <h4 class="text-primary"><strong>{{ object.title|upper }}</strong></h4>
-        <p class="new text-muted"><em>{{ object.posted|date:"j.m.Y H:i:s" }}</em></p>
       </div>
         
-      <a class = 'new' href="{% url "news:news_detail" pk=object.pk %}?page={{ page_obj.number }}"><p class="new">{{ object.description}}</p></a>
+      <p class="new">{{ object.description}}<span> ... </span><a class = 'new' href="{% url "news:news_detail" pk=object.pk %}?page={{ page_obj.number }}"><span><b>ЧИТАТЬ ДАЛЕЕ</b> </span>
+</a></p>
+      
       
       <p class="buttons bottom-indent">
       {% if perms.news.change_new %}

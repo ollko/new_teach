@@ -13,6 +13,13 @@ from precise_bbcode.fields import BBCodeTextField
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
 
+def image_bg_validator(value):
+	if value[0]  != '#':
+		raise ValidationError('Должно начинаться с #')
+	if len(value) == 4 or len(value) ==7:
+		return value
+	raise ValidationError('Некорректная длина')
+
 class New(models.Model):
 	title = models.CharField(max_length = 100,unique_for_date = 'posted',
 		verbose_name = "Заголовок")
@@ -22,7 +29,7 @@ class New(models.Model):
 	# is_commentable = models.BooleanField(default = True,
 	# 	verbose_name = "Разрешены комментарии")
 	# tags = TaggableManager(blank = True, verbose_name = "Теги")
-	# user = models.ForeinKey(User, editable = False)
+	user = models.ForeignKey(User, verbose_name="Автор статьи", null =True, default=None)
 
 	# def get_absolute_url(self):
 	# 	return reverse("news:news_detail", kwargs = {'pk': self.pk})
@@ -32,6 +39,8 @@ class New(models.Model):
 											processors= [ResizeToFill(450,300)],
 											format='JPEG',
 											options={'quality': 60},)
+	image_bg_color = models.CharField(max_length = 7, default = '#000000', validators = [image_bg_validator])
+
 	def __unicode__(self):
 		return self.title
 		
