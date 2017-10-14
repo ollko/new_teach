@@ -501,9 +501,15 @@ img.news-img{
 	margin-bottom: 1.5em;
 }
 img.new-img{
-	margin: 0 auto ;
+	margin: 0 auto;
+	width: 100%;
+	height: auto;
 }
+
 div.new-img{
 	margin-top: 1.5em;
 	margin-bottom: 2.5em;
+}
+p.new-pre-in-index{
+	margin-bottom: 1.5em;
 }

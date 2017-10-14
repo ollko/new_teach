@@ -27,6 +27,7 @@ class NewDetailView(DetailView, PageNumberMixin):
 	template_name = "news/new.html"
 
 class NewCreate(SuccessMessageMixin, CreateView):
+	permission_required = 'new.can_add'
 	model = New
 	success_url = reverse_lazy("news:news_index")
 	success_message = "Новость успешно добавлена"
@@ -43,12 +44,14 @@ class NewCreate(SuccessMessageMixin, CreateView):
 	# 	return output
 
 class NewUpdate(SuccessMessageMixin, PageNumberView, UpdateView, PageNumberMixin):
+	permission_required = 'new.can_change'
 	model = New
 	success_url = reverse_lazy("news:news_index")
 	success_message = "Новость успешно изменена"
 	fields = '__all__'
 
 class NewDelete(PageNumberView, DeleteView, PageNumberMixin):
+	permission_required = 'new.can_delete'
 	model = New
 	template_name = "news/new_conform_delete.html"
 	success_url = reverse_lazy("news:news_index")
