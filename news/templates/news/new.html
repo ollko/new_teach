@@ -9,7 +9,7 @@
 {% block content %}
 <br>
 <div class = 'container news-container'>
-	<h2 class="text-primary"><strong>{{ object.title|upper }}</strong></h2 >
+	<h2 class="text-primary text-center"><strong>{{ object.title|upper }}</strong></h2 >
 	<div class="col-sm-12 new-img" style="background-color:{{object.image_bg_color}}";>
       <img class = "new-img img-responsive" src="{{object.image.url}}">     
     </div>
@@ -23,7 +23,7 @@
 	</div>
 	<div class="col-sm-12 col-md-9">
 		<p class="new text-justify new-text">{{ object.content|bbcode|safe }}</p>
-		<p><a href="{% url "news:news_index" %}?page={{ pn }}">Назад</a></p>
+		<p><a href="{% url "news:news_index" %}?page={{ pn }}"><b><i class="fa fa-chevron-left" aria-hidden="true"></i><span> НАЗАД</span></b></a></p>
 	</div>
 </div>
 	

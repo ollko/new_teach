@@ -28,17 +28,23 @@
   {% for object in latest %}
   <div class="row">
     <div class="col-md-4 col-sm-12">
-      <img class = "news-img img-responsive" src="{{object.image.url}}">
+      <a class = 'new' href="{% url "news:news_detail" pk=object.pk %}?page={{ page_obj.number }}">
+        <img class = "news-img img-responsive" src="{{object.image.url}}">
+      </a>
+      
       
     </div>
     
     <div class="col-md-8 col-sm-12">
       <div class="news-header">
-        <h4 class="text-primary"><strong>{{ object.title|upper }}</strong></h4>
+        <a class = 'new' href="{% url "news:news_detail" pk=object.pk %}?page={{ page_obj.number }}">
+          <h4 class="text-primary news-index-header"><strong>{{ object.title|upper }}</strong></h4></span>
+        </a>
+        
       </div>
         
-      <p class="new">{{ object.description}}<span> ... </span><a class = 'new' href="{% url "news:news_detail" pk=object.pk %}?page={{ page_obj.number }}"><span><b>ЧИТАТЬ ДАЛЕЕ</b> </span>
-</a></p>
+      <p class="new">{{ object.description}}<a class = 'new' href="{% url "news:news_detail" pk=object.pk %}?page={{ page_obj.number }}"><b><span>  <span>ЧИТАТЬ ДАЛЕЕ </span><i class="fa fa-chevron-right" aria-hidden="true"></i></span></b>
+      </a></p>
       
       
       <p class="buttons bottom-indent">

@@ -483,6 +483,11 @@ div.baner-tab-children, div.blue-top-words{
     
 }
 
+@media (max-width: 991px) {
+	h4.news-index-header{
+		font-size: .75em;
+	}
+}
 div.news-container{
 	max-width: 730px;
 	margin-left: auto;
