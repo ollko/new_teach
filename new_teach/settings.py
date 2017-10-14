@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-from .local_settings import DATABASES, SITE_ID, BASE_DIR, DEBUG
+from .local_settings import DATABASES, SITE_ID, BASE_DIR, DEBUG, ALLOWED_HOSTS
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -19,9 +19,6 @@ from .local_settings import DATABASES, SITE_ID, BASE_DIR, DEBUG
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '07e0tns$o@&g$)^*b5_6hlg62@m&qum%-nqyuc+d59!i8lw$4='
 
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
