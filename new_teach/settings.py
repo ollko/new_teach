@@ -19,8 +19,7 @@ from .local_settings import DATABASES, SITE_ID, BASE_DIR
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '07e0tns$o@&g$)^*b5_6hlg62@m&qum%-nqyuc+d59!i8lw$4='
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 ALLOWED_HOSTS = []
 
