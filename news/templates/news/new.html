@@ -2,7 +2,7 @@
 {% load bbcode_tags %}
 
 {% block title %}
-	{{ block.super }}
+	{{object.user.get_full_name}}
 	{{ object.title }}
 {% endblock %}
 

@@ -18,7 +18,7 @@ class NewListView(ArchiveIndexView ):
 	model = New
 	date_field = "posted"
 	template_name = "news/news_index.html"
-	paginate_by = 2
+	paginate_by = 4
 	allow_empty = True
 	allow_future = True
 

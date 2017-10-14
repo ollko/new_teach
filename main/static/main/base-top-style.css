@@ -491,9 +491,14 @@ div.news-container{
 div.news-container p.new-text{
 	font-size: 1.25em;
 }
+
+img.news-img{
+	margin-bottom: 1.5em;
+}
 img.new-img{
 	margin: 0 auto ;
 }
 div.new-img{
+	margin-top: 1.5em;
 	margin-bottom: 2.5em;
 }
