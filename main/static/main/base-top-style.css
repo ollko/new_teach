@@ -484,8 +484,12 @@ div.baner-tab-children, div.blue-top-words{
 }
 
 @media (max-width: 991px) {
-	h4.news-index-header{
-		font-size: .75em;
+	h2.new-header{
+		font-size: 1.5em;
+		text-align: left;
+	}
+	div.blue-top{
+		display: none;
 	}
 }
 div.news-container{
