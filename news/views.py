@@ -13,6 +13,8 @@ from news.models import New
 from generic.mixins import  PageNumberMixin
 from generic.controllers import PageNumberView
 
+from django.contrib.auth.mixins import PermissionRequiredMixin
+
 
 class NewListView(ArchiveIndexView ):
 	model = New
@@ -26,7 +28,7 @@ class NewDetailView(DetailView, PageNumberMixin):
 	model = New
 	template_name = "news/new.html"
 
-class NewCreate(SuccessMessageMixin, CreateView):
+class NewCreate(SuccessMessageMixin, PermissionRequiredMixin, CreateView):
 	permission_required = 'new.can_add'
 	model = New
 	success_url = reverse_lazy("news:news_index")
@@ -43,14 +45,14 @@ class NewCreate(SuccessMessageMixin, CreateView):
 	# 		send_mass_mail(letters, fail_silently = True)
 	# 	return output
 
-class NewUpdate(SuccessMessageMixin, PageNumberView, UpdateView, PageNumberMixin):
+class NewUpdate(SuccessMessageMixin, PermissionRequiredMixin, PageNumberView, UpdateView, PageNumberMixin):
 	permission_required = 'new.can_change'
 	model = New
 	success_url = reverse_lazy("news:news_index")
 	success_message = "Новость успешно изменена"
 	fields = '__all__'
 
-class NewDelete(PageNumberView, DeleteView, PageNumberMixin):
+class NewDelete(PermissionRequiredMixin, PageNumberView, DeleteView, PageNumberMixin):
 	permission_required = 'new.can_delete'
 	model = New
 	template_name = "news/new_conform_delete.html"
