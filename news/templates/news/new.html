@@ -15,7 +15,11 @@
 {% block content %}
 <br>
 <div class = 'container news-container'>
-	<h2 class="text-primary text-center new-header"><strong>{{ object.title|upper }}</strong></h2 >
+	<h2 class="text-primary text-center new-header"><strong>{{ object.title|upper }}</strong>
+		{% if object.title2 %}
+			<strong> {{ object.title2|lower}}</strong>
+		{% endif %}
+	</h2 >
 	<div class="col-sm-12 new-img" style="background-color:{{object.image_bg_color}}";>
       <img class = "new-img center-block img-responsive" src="{{object.image.url}}">     
     </div>

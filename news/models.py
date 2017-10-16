@@ -23,6 +23,8 @@ def image_bg_validator(value):
 class New(models.Model):
 	title = models.CharField(max_length = 100,unique_for_date = 'posted',
 		verbose_name = "Заголовок")
+	title2 = models.CharField(max_length = 100,unique_for_date = 'posted',
+		verbose_name = "Подзаголовок",  null = True, default='', blank = True)
 	description = models.TextField(verbose_name = "Краткое содержание")
 	content = models.TextField(verbose_name = "Полное содержание")
 	posted = models.DateTimeField(auto_now_add=True,db_index = True,verbose_name = 'Дата и время создания')
@@ -39,7 +41,7 @@ class New(models.Model):
 											processors= [ResizeToFill(450,300)],
 											format='JPEG',
 											options={'quality': 60},)
-	image_bg_color = models.CharField(max_length = 7, default = '#000000', validators = [image_bg_validator])
+	image_bg_color = models.CharField(max_length = 7, default = '#fff', validators = [image_bg_validator])
 
 	def __unicode__(self):
 		return self.title
