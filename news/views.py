@@ -13,7 +13,7 @@ from news.models import New
 from generic.mixins import  PageNumberMixin
 from generic.controllers import PageNumberView
 
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin, AccessMixin
 
 
 class NewListView(ArchiveIndexView ):
@@ -28,8 +28,9 @@ class NewDetailView(DetailView, PageNumberMixin):
 	model = New
 	template_name = "news/new.html"
 
-class NewCreate(SuccessMessageMixin, PermissionRequiredMixin, CreateView):
+class NewCreate(SuccessMessageMixin, PermissionRequiredMixin, AccessMixin, CreateView):
 	permission_required = 'new.can_add'
+	raise_exception =  True
 	model = New
 	success_url = reverse_lazy("news:news_index")
 	success_message = "Новость успешно добавлена"
@@ -45,15 +46,17 @@ class NewCreate(SuccessMessageMixin, PermissionRequiredMixin, CreateView):
 	# 		send_mass_mail(letters, fail_silently = True)
 	# 	return output
 
-class NewUpdate(SuccessMessageMixin, PermissionRequiredMixin, PageNumberView, UpdateView, PageNumberMixin):
+class NewUpdate(SuccessMessageMixin, PermissionRequiredMixin, AccessMixin , PageNumberView, UpdateView, PageNumberMixin):
 	permission_required = 'new.can_change'
+	raise_exception =  True
 	model = New
 	success_url = reverse_lazy("news:news_index")
 	success_message = "Новость успешно изменена"
 	fields = '__all__'
 
-class NewDelete(PermissionRequiredMixin, PageNumberView, DeleteView, PageNumberMixin):
+class NewDelete(PermissionRequiredMixin, AccessMixin, PageNumberView, DeleteView, PageNumberMixin):
 	permission_required = 'new.can_delete'
+	raise_exception =  True
 	model = New
 	template_name = "news/new_conform_delete.html"
 	success_url = reverse_lazy("news:news_index")
