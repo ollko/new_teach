@@ -30,10 +30,10 @@ body {
 html,
 body {
   height: 100%;
-  background-color: ##5a5ab7;
+  background-color: #fff;
 }
 body {
-  color: #fff;
+  color: #1e1582;
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
@@ -126,7 +126,7 @@ body {
  */
 
 .mastfoot {
-  color: #999; /* IE8 proofing */
+  color: #1e1582; /* IE8 proofing */
   color: rgba(255,255,255,.5);
 }
 
