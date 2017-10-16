@@ -25,7 +25,7 @@ class Join(models.Model):
 	
 	parents_name  = models.CharField(max_length=100, default = 'Иванов Иван Иванович')
 	child_name    = models.CharField(max_length=100, default = 'Иванов Иван Иванович')
-	birth_data    = models.DateField(default=timezone.now().date() )
+	birth_data    = models.DateField()
 	check_in_date = models.CharField(verbose_name = 'Выберите дату заезда:', max_length=15, choices= CHECK_IN_DATAS, default='5' )
 	tel = models.CharField(max_length=16, default='1234567890', validators = [tel_validator])
 	email = models.EmailField()	
